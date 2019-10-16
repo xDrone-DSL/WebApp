@@ -1,52 +1,62 @@
 <template>
   <v-app id="coding-view">
-    <v-card class="overflow-hidden">
-      <v-app-bar
-        absolute
-        color="#fcb69f"
-        dark
-        shrink-on-scroll
-        src="https://picsum.photos/1920/1080?random"
-        scroll-target="#scrolling-techniques-2"
-      >
-        <template v-slot:img="{ props }">
-          <v-img
-            v-bind="props"
-            gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
-          ></v-img>
-        </template>
+    <NavigationDrawer v-model="drawer" :items="items" />
+    <v-app-bar absolute color="#fcb69f" dark collapse-on-scroll="true">
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
 
-        <v-toolbar-title>Title</v-toolbar-title>
-
-        <v-spacer></v-spacer>
-
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-      </v-app-bar>
-      <v-sheet
-        id="scrolling-techniques-2"
-        class="overflow-y-auto"
-        max-height="600"
-      >
-        <v-container style="height: 1000px;"></v-container>
-      </v-sheet>
-    </v-card>
+      <v-spacer></v-spacer>
+    </v-app-bar>
   </v-app>
 </template>
 
-<script>
+<script lang="ts">
+import NavigationDrawer from "../components/NavigationDrawer.vue";
+
 export default {
-  name: "CodingView"
+  name: "CodingView",
+  components: { NavigationDrawer },
+  data: () => ({
+    drawer: false,
+    items: [
+      {
+        key: "adventure1",
+        title: "Adventure I",
+        items: [
+          {
+            title: "Lesson 1",
+            key: "lesson1",
+            subtitle: "New to Drone"
+          }
+        ]
+      },
+      {
+        key: "adventure2",
+        title: "Adventure II",
+        items: [
+          {
+            title: "Lesson 1",
+            key: "lesson1",
+            subtitle: "Be Bolder"
+          }
+        ]
+      },
+      {
+        key: "adventure3",
+        title: "Adventure III",
+        items: [
+          {
+            title: "Lesson 1",
+            key: "lesson1",
+            subtitle: "Let's Python"
+          }
+        ]
+      }
+    ]
+  }),
+  props: {
+    title: { type: String, default: "Lesson 1" }
+  }
 };
 </script>
