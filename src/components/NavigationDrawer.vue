@@ -22,15 +22,23 @@
         no-action
       >
         <template v-slot:activator>
-          <v-list-item-content>
+          <v-list-item-content class="text-left">
             <v-list-item-title v-text="item.title"></v-list-item-title>
           </v-list-item-content>
         </template>
 
-        <v-list-item v-for="subItem in item.items" :key="subItem.title">
+        <v-list-item
+          v-for="subItem in item.items"
+          :key="subItem.title"
+          style="margin-left: -50px"
+          link
+        >
           <v-list-item-content>
-            <v-subheader v-text="subItem.title"></v-subheader>
-            <v-list-itme-title v-text="subItem.subtitle"></v-list-itme-title>
+            <v-list-item-subtitle
+              v-text="subItem.title"
+              class="text-left"
+            ></v-list-item-subtitle>
+            <v-list-item-title v-text="subItem.subtitle"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list-group>

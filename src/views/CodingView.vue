@@ -1,9 +1,11 @@
 <template>
   <v-app id="coding-view">
     <NavigationDrawer v-model="drawer" :items="items" />
-    <v-app-bar absolute color="#fcb69f" dark collapse-on-scroll="true">
+    <v-app-bar absolute color="deep-purple" dark collapse-on-scroll>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
+      <v-toolbar-title>{{ level }}</v-toolbar-title>
+      <v-divider class="ml-5 mr-10" inset vertical></v-divider>
       <v-toolbar-title>{{ title }}</v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -11,7 +13,7 @@
   </v-app>
 </template>
 
-<script lang="ts">
+<script>
 import NavigationDrawer from "../components/NavigationDrawer.vue";
 
 export default {
@@ -25,9 +27,19 @@ export default {
         title: "Adventure I",
         items: [
           {
-            title: "Lesson 1",
-            key: "lesson1",
+            title: "Task 1",
+            key: "task1",
             subtitle: "New to Drone"
+          },
+          {
+            title: "Task 2",
+            key: "task2",
+            subtitle: "Move Forwards"
+          },
+          {
+            title: "Task 3",
+            key: "task3",
+            subtitle: "Turn Left!"
           }
         ]
       },
@@ -36,9 +48,14 @@ export default {
         title: "Adventure II",
         items: [
           {
-            title: "Lesson 1",
-            key: "lesson1",
+            title: "Task 1",
+            key: "task1",
             subtitle: "Be Bolder"
+          },
+          {
+            title: "Task 2",
+            key: "task2",
+            subtitle: "Advanced Movement"
           }
         ]
       },
@@ -47,16 +64,21 @@ export default {
         title: "Adventure III",
         items: [
           {
-            title: "Lesson 1",
-            key: "lesson1",
+            title: "Task 1",
+            key: "task1",
             subtitle: "Let's Python"
           }
         ]
       }
     ]
   }),
-  props: {
-    title: { type: String, default: "Lesson 1" }
+  computed: {
+    level() {
+      return `${this.items[0].title} - ${this.items[0].items[0].title}`;
+    },
+    title() {
+      return this.items[0].items[0].subtitle;
+    }
   }
 };
 </script>
