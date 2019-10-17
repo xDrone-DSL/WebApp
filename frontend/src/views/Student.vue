@@ -17,7 +17,6 @@
 import NavigationDrawer from "../components/NavigationDrawer.vue";
 
 export default {
-  name: "CodingView",
   components: { NavigationDrawer },
   data: () => ({
     drawer: false,
