@@ -14,8 +14,24 @@ export default new Router({
     },
     {
       path: "/student",
-      name: "Student",
-      component: () => import("./views/Student.vue")
+      name: "Explore",
+      routes: [
+        {
+          path: "/:adventure",
+          name: "Adventure",
+          props: true,
+          routes: [
+            {
+              path: "/:task",
+              name: "Task",
+              props: true,
+              component: () => import("./views/Task.vue")
+            }
+          ],
+          component: () => import("./views/Adventure.vue")
+        }
+      ],
+      component: () => import("./views/Explore.vue")
     },
     {
       path: "/teacher",

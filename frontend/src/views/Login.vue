@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-btn class="ma-4">
-      <router-link to="/student">Student</router-link>
+      <router-link to="/explore">Explore</router-link>
     </v-btn>
   </div>
 </template>
