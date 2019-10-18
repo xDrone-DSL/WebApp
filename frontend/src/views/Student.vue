@@ -1,7 +1,7 @@
 <template>
   <v-app id="coding-view">
     <NavigationDrawer v-model="drawer" :items="items" />
-    <v-app-bar absolute color="deep-purple" dark collapse-on-scroll>
+    <v-app-bar app absolute color="deep-purple" dark collapse-on-scroll>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>{{ level }}</v-toolbar-title>
@@ -10,6 +10,9 @@
 
       <v-spacer></v-spacer>
     </v-app-bar>
+    <v-content>
+      <BlocklyEditor />
+    </v-content>
   </v-app>
 </template>
 

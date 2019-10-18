@@ -1,0 +1,3 @@
+[submodule "frontend/public/blockly"]
+	path = frontend/public/blockly
+	url = https://github.com/xDrone-DSL/blockly.git
