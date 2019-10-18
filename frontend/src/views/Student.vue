@@ -14,10 +14,11 @@
 </template>
 
 <script>
-import NavigationDrawer from "../components/NavigationDrawer.vue";
+import NavigationDrawer from "../components/NavigationDrawer";
+import BlocklyEditor from "../components/BlocklyEditor";
 
 export default {
-  components: { NavigationDrawer },
+  components: { NavigationDrawer, BlocklyEditor },
   data: () => ({
     drawer: false,
     items: [
