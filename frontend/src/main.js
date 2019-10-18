@@ -5,6 +5,7 @@ import "./registerServiceWorker";
 import vuetify from "./plugins/vuetify";
 
 Vue.config.productionTip = false;
+Vue.config.ignoredElements = ["xml", "block"];
 
 new Vue({
   router,

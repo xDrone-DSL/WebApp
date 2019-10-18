@@ -1,9 +1,11 @@
 <template>
   <v-navigation-drawer
+    style="z-index: 10000"
     v-bind:value="value"
     v-on:input="$emit('input', $event)"
     absolute
     temporary
+    app
   >
     <v-list-item>
       <v-subheader>Group number</v-subheader>
