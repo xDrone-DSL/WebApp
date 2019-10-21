@@ -23,6 +23,11 @@ import BlocklyEditor from "../components/BlocklyEditor";
 export default {
   components: { NavigationDrawer, BlocklyEditor },
   data: () => ({
+    currSession: {
+      adventure: 0,
+      task: 0
+    },
+
     drawer: false,
     items: [
       {
@@ -75,6 +80,11 @@ export default {
       }
     ]
   }),
+  methods: {
+    input(event) {
+      console.log(event);
+    }
+  },
   computed: {
     level() {
       return `${this.items[0].title} - ${this.items[0].items[0].title}`;

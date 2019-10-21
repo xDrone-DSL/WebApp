@@ -1,8 +1,8 @@
 <template>
   <div>
-    <router-link to="/explore">
+    <router-link to="task" append>
       <v-btn class="ma-4">
-        Explore
+        task
       </v-btn>
     </router-link>
   </div>

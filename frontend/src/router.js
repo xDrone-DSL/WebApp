@@ -13,9 +13,21 @@ export default new Router({
       component: () => import("./views/Login.vue")
     },
     {
-      path: "/student",
-      name: "Student",
-      component: () => import("./views/Student.vue")
+      path: "/explore",
+      name: "Explore",
+      component: () => import("./views/Explore.vue")
+    },
+    {
+      path: "/explore/:adventure",
+      name: "Adventure",
+      props: true,
+      component: () => import("./views/Adventure.vue")
+    },
+    {
+      path: "/explore/:adventure/:task",
+      name: "Task",
+      props: true,
+      component: () => import("./views/Task.vue")
     },
     {
       path: "/teacher",
