@@ -1,8 +1,10 @@
 <template>
   <div>
-    <v-btn class="ma-4">
-      <router-link to="/explore">Explore</router-link>
-    </v-btn>
+    <router-link to="/explore">
+      <v-btn class="ma-4">
+        Explore
+      </v-btn>
+    </router-link>
   </div>
 </template>
 
