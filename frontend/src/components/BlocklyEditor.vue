@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import * as Blockly from "blockly-xdronedsl";
+
 export default {
   mounted() {
     // Actually run blockly
