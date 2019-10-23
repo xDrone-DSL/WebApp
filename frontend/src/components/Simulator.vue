@@ -5,7 +5,6 @@
 <script>
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-//import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 export default {
@@ -76,7 +75,6 @@ export default {
       var loader = new GLTFLoader();
       loader.load(
         "/drone/scene.gltf",
-        // onLoad callback
         // Here the loaded data is assumed to be an object
         obj => {
           obj.scene.children[0].children[0].children[0].children.pop(12);
