@@ -71,13 +71,6 @@ export default {
       this.renderer.setSize(window.innerWidth, window.innerHeight - 10);
       document.body.appendChild(this.renderer.domElement);
 
-      // // Object
-      // const geometry = new THREE.BoxGeometry(1, 1, 1);
-      // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-      // this.cube = new THREE.Mesh(geometry, material);
-      // this.cube.castShadow = true;
-      // this.scene.add(this.cube);
-
       //object 2
 
       var loader = new GLTFLoader();
