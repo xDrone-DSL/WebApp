@@ -16,11 +16,11 @@ import * as Blockly from "blockly-xdronedsl";
 export default {
   mounted() {
     // Actually run blockly
-    var workspace = Blockly.inject("blocklyDiv", {
+    const workspace = Blockly.inject("blocklyDiv", {
       toolbox: document.getElementById("toolbox")
     });
     function myUpdateFunction() {
-      var code = Blockly.JavaScript.workspaceToCode(workspace);
+      const code = Blockly.JavaScript.workspaceToCode(workspace);
       document.getElementById("textarea").value = code;
     }
     workspace.addChangeListener(myUpdateFunction);

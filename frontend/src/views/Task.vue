@@ -1,6 +1,6 @@
 <template>
   <v-app id="coding-view">
-    <NavigationDrawer v-model="drawer" :items="items" />
+    <NavigationDrawer :items="courses" v-model="drawer" />
     <v-app-bar app absolute color="deep-purple" dark collapse-on-scroll>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
@@ -19,66 +19,21 @@
 <script>
 import NavigationDrawer from "../components/NavigationDrawer";
 import BlocklyEditor from "../components/BlocklyEditor";
+import { getAllAdventures } from "../apiCalls";
 
 export default {
   components: { NavigationDrawer, BlocklyEditor },
+  props: {
+    advId: { type: String, required: true },
+    taskId: { type: String, required: true }
+  },
   data: () => ({
     currSession: {
       adventure: 0,
       task: 0
     },
-
     drawer: false,
-    items: [
-      {
-        key: "adventure1",
-        title: "Adventure I",
-        items: [
-          {
-            title: "Task 1",
-            key: "task1",
-            subtitle: "New to Drone"
-          },
-          {
-            title: "Task 2",
-            key: "task2",
-            subtitle: "Move Forwards"
-          },
-          {
-            title: "Task 3",
-            key: "task3",
-            subtitle: "Turn Left!"
-          }
-        ]
-      },
-      {
-        key: "adventure2",
-        title: "Adventure II",
-        items: [
-          {
-            title: "Task 1",
-            key: "task1",
-            subtitle: "Be Bolder"
-          },
-          {
-            title: "Task 2",
-            key: "task2",
-            subtitle: "Advanced Movement"
-          }
-        ]
-      },
-      {
-        key: "adventure3",
-        title: "Adventure III",
-        items: [
-          {
-            title: "Task 1",
-            key: "task1",
-            subtitle: "Let's Python"
-          }
-        ]
-      }
-    ]
+    courses: []
   }),
   methods: {
     input(event) {
@@ -87,11 +42,21 @@ export default {
   },
   computed: {
     level() {
-      return `${this.items[0].title} - ${this.items[0].items[0].title}`;
+      return `${this.advId} - ${this.taskId}`;
     },
     title() {
-      return this.items[0].items[0].subtitle;
+      if (this.courses.length > 0) {
+        return this.courses
+          .find(adv => adv.key === this.advId)
+          ["tasks"].find(task => task.key === this.taskId)["subtitle"];
+      }
+      return [];
     }
+  },
+  mounted() {
+    getAllAdventures()
+      .then(advs => (this.courses = advs))
+      .catch(err => alert(err));
   }
 };
 </script>
