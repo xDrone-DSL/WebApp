@@ -33,6 +33,12 @@ export default new Router({
       path: "/teacher",
       name: "Teacher",
       component: () => import("./views/Teacher.vue")
+    },
+    {
+      // Test simulator
+      path: "/simulator",
+      name: "Simulator",
+      component: () => import("./components/Simulator.vue")
     }
   ]
 });
