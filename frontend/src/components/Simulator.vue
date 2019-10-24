@@ -17,8 +17,58 @@ export default {
       controls: null,
       mixer: null,
       animTime: 0,
-      time: 0
+      framesPerSecond: 30,
+      axis10cm: null,
+      axis1m: null,
+      start: true,
+      play: true,
+      animation: [
+        {
+          action: "up",
+          value: 1
+        },
+        {
+          action: "forward",
+          value: 2.5
+        },
+        // {
+        //   action: "wait",
+        //   value: 2
+        // },
+        // {
+        //   action: "left",
+        //   value: 5
+        // },
+        // {
+        //   action: "rotateL",
+        //   value: Math.PI / 2
+        // },
+        // {
+        //   action: "backwards",
+        //   value: 5
+        // },
+        // {
+        //   action: "rotateR",
+        //   value: Math.PI
+        // },
+        // {
+        //   action: "right",
+        //   value: 5
+        // },
+        {
+          action: "down",
+          value: 1
+        }
+      ]
     };
+  },
+  computed: {
+    angleSpeed() {
+      return Math.PI / 2 / this.framesPerSecond;
+    },
+    speed() {
+      return 4 / 3 / 2.5;
+    }
   },
   methods: {
     init: function() {
@@ -29,12 +79,11 @@ export default {
         1,
         1000
       );
-      this.scene.background = new THREE.Color("#b1b1b1");
+      this.scene.background = new THREE.Color("#cccccc");
 
       this.group = new THREE.Group();
 
       //Light
-      //this.scene.add(new THREE.AmbientLight(0xf0f0f0));
       var light1 = new THREE.PointLight("#ffffff", 1);
       light1.position.set(4, 4, -4);
       this.group.add(light1);
@@ -51,19 +100,18 @@ export default {
       light4.position.set(4, 4, 4);
       this.group.add(light4);
 
-      // light.shadow = new THREE.LightShadow(
-      //   new THREE.PerspectiveCamera(-1, 1, 1, 1000)
-      // );
-      // light.shadow.bias = -0.000222;
-      // light.shadow.mapSize.width = 1024;
-      // light.shadow.mapSize.height = 1024;
-
       //Helper
-      var helper = new THREE.GridHelper(2000, 1000);
-      helper.position.y = -1;
-      helper.material.opacity = 0.5;
-      helper.material.transparent = true;
-      this.scene.add(helper);
+      this.axis10cm = new THREE.GridHelper(2000, 500);
+      this.axis10cm.position.y = 0;
+      this.axis10cm.material.opacity = 0.5;
+      this.axis10cm.material.transparent = true;
+      this.scene.add(this.axis10cm);
+
+      this.axis1m = new THREE.GridHelper(2000, 50);
+      this.axis1m.position.y = 0;
+      this.axis1m.material.opacity = 1;
+      this.axis1m.material.transparent = true;
+      this.scene.add(this.axis1m);
 
       // Renderer
       this.renderer = new THREE.WebGLRenderer();
@@ -78,6 +126,7 @@ export default {
         // Here the loaded data is assumed to be an object
         obj => {
           obj.scene.children[0].children[0].children[0].children.pop(12);
+          obj.scene.position.y += 1.5;
           this.group.add(obj.scene);
           this.scene.add(this.group);
           this.mixer = new THREE.AnimationMixer(this.group);
@@ -101,50 +150,93 @@ export default {
 
       // Controls
       this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-      this.camera.position.x = 8;
-      this.camera.position.y = 12;
-      this.camera.position.z = -20;
+      this.camera.position.x = 10;
+      this.camera.position.y = 24;
+      this.camera.position.z = 40;
+      this.controls.maxPolarAngle = Math.PI / 2;
+      this.controls.autoRotate = true;
+      this.controls.autoRotateSpeed = -25;
+      this.controls.dampingFactor = true;
+      this.camera.zoom = 8;
+      this.camera.updateProjectionMatrix();
 
       this.controls.update();
     },
     animate: function() {
-      requestAnimationFrame(this.animate);
-      this.controls.update();
-      if (this.mixer != null) {
+      setTimeout(() => {
+        requestAnimationFrame(this.animate);
+      }, 1000 / this.framesPerSecond);
+      //crop animation
+      if (this.play) {
         if (this.animTime < 2.1 || this.animTime >= 3.9) {
           this.mixer.setTime(2.1);
           this.animTime = 2.1;
         } else {
-          this.animTime += 0.01;
-          this.mixer.update(0.01);
+          this.animTime += 0.05;
+          this.mixer.update(0.05);
         }
       }
-      this.time += 0.1;
-      if (this.time < 5) {
-        this.group.position.y += 0.1;
-      }
 
-      if (this.time > 5 && this.time < 20) {
-        this.group.position.z += 0.1;
+      if (this.start) {
+        this.camera.zoom *= 0.97;
+        this.camera.updateProjectionMatrix();
+        if (this.camera.position.z < -40) {
+          this.controls.autoRotate = false;
+          this.start = false;
+        }
+      } else {
+        this.move();
       }
-      if (this.time > 20 && this.time < 36) {
-        this.group.rotation.y -= 0.01;
-      }
-      if (this.time > 36 && this.time < 51) {
-        this.group.position.x -= 0.1;
-      }
-      if (this.time > 51 && this.time < 67) {
-        this.group.rotation.y -= 0.01;
-      }
-
-      if (this.time > 67 && this.time < 70) {
-        this.group.position.y -= 0.15;
-      }
-      if (this.time > 70) {
-        this.mixer = null;
-      }
+      this.controls.update();
 
       this.renderer.render(this.scene, this.camera);
+    },
+    move: function() {
+      if (this.animation.length > 0) {
+        if (this.animation[0].value <= 0) {
+          this.animation.shift();
+          return;
+        }
+        switch (this.animation[0].action) {
+          case "forward":
+            this.group.translateZ(this.speed);
+            this.animation[0].value -= 1 / this.framesPerSecond;
+            break;
+          case "backwards":
+            this.group.translateZ(-this.speed);
+            this.animation[0].value -= 1 / this.framesPerSecond;
+            break;
+          case "right":
+            this.group.translateX(this.speed);
+            this.animation[0].value -= 1 / this.framesPerSecond;
+            break;
+          case "left":
+            this.group.translateX(-this.speed);
+            this.animation[0].value -= 1 / this.framesPerSecond;
+            break;
+          case "up":
+            this.group.translateY(this.speed);
+            this.animation[0].value -= 1 / this.framesPerSecond;
+            break;
+          case "down":
+            this.group.translateY(-this.speed);
+            this.animation[0].value -= 1 / this.framesPerSecond;
+            break;
+          case "rotateR":
+            this.group.rotation.y -= this.angleSpeed;
+            this.animation[0].value -= this.angleSpeed;
+            break;
+          case "rotateL":
+            this.group.rotation.y -= this.angleSpeed;
+            this.animation[0].value -= this.angleSpeed;
+            break;
+          case "wait":
+            this.animation[0].value -= 1 / this.framesPerSecond;
+            break;
+        }
+      } else {
+        this.play = false;
+      }
     }
   },
   mounted() {
