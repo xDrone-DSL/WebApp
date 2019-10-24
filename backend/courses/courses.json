@@ -1,0 +1,53 @@
+{
+  "courses": [
+     {
+      "key": "adventure1",
+      "title": "Adventure I",
+      "tasks": [
+        {
+          "title": "Task 1",
+          "key": "task1",
+          "subtitle": "New to Drone"
+        },
+        {
+          "title": "Task 2",
+          "key": "task2",
+          "subtitle": "Move Forwards"
+        },
+        {
+          "title": "Task 3",
+          "key": "task3",
+          "subtitle": "Turn Left!"
+        }
+      ]
+    },
+    {
+      "key": "adventure2",
+      "title": "Adventure II",
+      "tasks": [
+        {
+          "title": "Task 1",
+          "key": "task1",
+          "subtitle": "Be Bolder"
+        },
+        {
+          "title": "Task 2",
+          "key": "task2",
+          "subtitle": "Advanced Movement"
+        }
+      ]
+    },
+    {
+      "key": "adventure3",
+      "title": "Adventure III",
+      "tasks": [
+        {
+          "title": "Task 1",
+          "key": "task1",
+          "subtitle": "Let's Python"
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,8 +1,20 @@
 const express = require("express");
 const path = require("path");
+const bodyParser = require("body-parser");
 
 const app = express();
 const port = 8081;
+
+app.use(bodyParser.json());
+
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+
+// COURSES
+const courses = require("./courses/courses.js")(app);
 
 app.use("/", express.static(path.resolve("../dist")));
 

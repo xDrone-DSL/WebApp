@@ -30,10 +30,11 @@
         </template>
 
         <v-list-item
-          v-for="subItem in item.items"
+          v-for="subItem in item.tasks"
           :key="subItem.title"
           style="margin-left: -50px"
           link
+          @click="redirect(item.key, subItem.key)"
         >
           <v-list-item-content>
             <v-list-item-subtitle
@@ -48,13 +49,20 @@
   </v-navigation-drawer>
 </template>
 
-<script lang="ts">
+<script>
+import router from "@/router.js";
+
 export default {
   name: "NavigationDrawer",
   props: {
     value: { type: Boolean, default: false },
     groupNumber: { type: Number, default: 1 },
     items: { type: Array, required: true }
+  },
+  methods: {
+    redirect(advId, taskId) {
+      router.push(`/explore/${advId}/${taskId}`);
+    }
   }
 };
 </script>

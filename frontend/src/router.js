@@ -18,13 +18,13 @@ export default new Router({
       component: () => import("./views/Explore.vue")
     },
     {
-      path: "/explore/:adventure",
+      path: "/explore/:advId",
       name: "Adventure",
       props: true,
       component: () => import("./views/Adventure.vue")
     },
     {
-      path: "/explore/:adventure/:task",
+      path: "/explore/:advId/:taskId",
       name: "Task",
       props: true,
       component: () => import("./views/Task.vue")

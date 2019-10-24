@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="adv in advs" :key="adv.id">
-      <router-link :to="`${adv.id}`" append>
+      <router-link :to="`${adv.key}`" append>
         <v-btn class="ma-4">
           {{ adv.title }}
         </v-btn>
@@ -11,18 +11,16 @@
 </template>
 
 <script>
+import { getAllAdventures } from "../apiCalls";
+
 export default {
+  mounted() {
+    getAllAdventures()
+      .then(advs => (this.advs = advs))
+      .catch(err => alert(err));
+  },
   data: () => ({
-    advs: [
-      {
-        id: 1,
-        title: "hello world"
-      },
-      {
-        id: 2,
-        title: "hello world 2"
-      }
-    ]
+    advs: []
   })
 };
 </script>
