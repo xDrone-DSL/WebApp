@@ -14,7 +14,6 @@ module.exports = app => {
   });
 
   app.post("/api/simulate", (req, res) => {
-    console.log(req.body);
     axios
       .post(`${FLASK_HOST}/simulate`, {
         body: req.body

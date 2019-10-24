@@ -23,14 +23,14 @@ import { simulate } from "../apiCalls";
 
 export default {
   components: { Simulator },
-  prop: {
+  props: {
     code: { type: String, required: true }
   },
   methods: {
     getAnimation: function() {
-      console.log(this.code);
       simulate(this.code).then(res => {
-        this.animation = res.body.actions;
+        console.log(res.data);
+        this.animation = res.data.actions;
         this.dialog = true;
       });
     }
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       animation: [],
-      dialog: false
+      dialog: false,
     };
   }
 };

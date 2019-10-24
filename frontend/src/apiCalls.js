@@ -25,7 +25,6 @@ export function fly(prog) {
 }
 
 export function simulate(prog) {
-  console.log(prog);
   return axios.post(`/api/simulate`, {
     body: {
       program: prog
