@@ -49,7 +49,7 @@
   </v-navigation-drawer>
 </template>
 
-<script lang>
+<script>
 import router from "@/router.js";
 
 export default {
