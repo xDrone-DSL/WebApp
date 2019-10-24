@@ -19,50 +19,20 @@
 
 <script>
 import Simulator from "./Simulator";
+import { simulate } from "../apiCalls";
 
 export default {
   components: { Simulator },
+  prop: {
+    code: { type: String, required: true }
+  },
   methods: {
     getAnimation: function() {
-      this.animation = [
-        {
-          action: "up",
-          value: 1
-        },
-        {
-          action: "forward",
-          value: 2.5
-        },
-        // {
-        //   action: "wait",
-        //   value: 2
-        // },
-        // {
-        //   action: "left",
-        //   value: 5
-        // },
-        // {
-        //   action: "rotateL",
-        //   value: Math.PI / 2
-        // },
-        // {
-        //   action: "backwards",
-        //   value: 5
-        // },
-        // {
-        //   action: "rotateR",
-        //   value: Math.PI
-        // },
-        // {
-        //   action: "right",
-        //   value: 5
-        // },
-        {
-          action: "down",
-          value: 1
-        }
-      ];
-      this.dialog = true;
+      console.log(this.code);
+      simulate(this.code).then(res => {
+        this.animation = res.body.actions;
+        this.dialog = true;
+      });
     }
   },
   data() {

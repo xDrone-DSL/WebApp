@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="tasks.length > 0">
     <div v-for="task in tasks" :key="task.key">
       <router-link :to="`${task.key}`" append>
         <v-btn class="ma-4">{{ task.title }}</v-btn>
