@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const FLASK_HOST = "http://146.169.131.100:8081";
+const FLASK_HOST = "http://0.0.0.0:8081";
 
 module.exports = app => {
   console.log("Drone module ready");
@@ -18,6 +18,8 @@ module.exports = app => {
       .post(`${FLASK_HOST}/simulate`, {
         body: req.body
       })
-      .then(respond => res.send(respond.body));
+      .then(response => {
+        res.send(response.data);
+      });
   });
 };

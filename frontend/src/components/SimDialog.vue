@@ -29,8 +29,7 @@ export default {
   methods: {
     getAnimation: function() {
       simulate(this.code).then(res => {
-        console.log(res.data);
-        this.animation = res.data.actions;
+        this.animation = res.data.commands;
         this.dialog = true;
       });
     }
@@ -38,7 +37,7 @@ export default {
   data() {
     return {
       animation: [],
-      dialog: false,
+      dialog: false
     };
   }
 };

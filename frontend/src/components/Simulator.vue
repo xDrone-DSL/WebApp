@@ -92,8 +92,6 @@ export default {
           obj.animations.forEach(clip => {
             this.mixer.clipAction(clip).play();
           });
-          console.log(this.group);
-          console.log(obj.animations);
         },
 
         // onProgress callback
@@ -166,27 +164,27 @@ export default {
             this.animation[0].value -= 1 / this.framesPerSecond;
             break;
           case "right":
-            this.group.translateX(this.speed);
+            this.group.translateX(-this.speed);
             this.animation[0].value -= 1 / this.framesPerSecond;
             break;
           case "left":
-            this.group.translateX(-this.speed);
+            this.group.translateX(this.speed);
             this.animation[0].value -= 1 / this.framesPerSecond;
             break;
           case "up":
             this.group.translateY(this.speed);
-            this.animation[0].value -= 1 / this.framesPerSecond;
+            this.animation[0].value -= 5 / this.framesPerSecond;
             break;
           case "down":
             this.group.translateY(-this.speed);
-            this.animation[0].value -= 1 / this.framesPerSecond;
+            this.animation[0].value -= 5 / this.framesPerSecond;
             break;
           case "rotateR":
             this.group.rotation.y -= this.angleSpeed;
             this.animation[0].value -= this.angleSpeed;
             break;
           case "rotateL":
-            this.group.rotation.y -= this.angleSpeed;
+            this.group.rotation.y += this.angleSpeed;
             this.animation[0].value -= this.angleSpeed;
             break;
           case "wait":
