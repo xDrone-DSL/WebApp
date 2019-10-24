@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-btn color="primary" dark @click.stop="dialog = true">
+    <v-btn color="primary" dark @click="getAnimation">
       Simulate
     </v-btn>
 
@@ -22,10 +22,9 @@ import Simulator from "./Simulator";
 
 export default {
   components: { Simulator },
-  data() {
-    return {
-      dialog: false,
-      animation: [
+  methods: {
+    getAnimation: function() {
+      this.animation = [
         {
           action: "up",
           value: 1
@@ -62,7 +61,14 @@ export default {
           action: "down",
           value: 1
         }
-      ]
+      ];
+      this.dialog = true;
+    }
+  },
+  data() {
+    return {
+      animation: [],
+      dialog: false
     };
   }
 };
