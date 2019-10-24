@@ -8,6 +8,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 export default {
+  props: ["animation"],
   data() {
     return {
       group: null,
@@ -21,45 +22,7 @@ export default {
       axis10cm: null,
       axis1m: null,
       start: true,
-      play: true,
-      animation: [
-        {
-          action: "up",
-          value: 1
-        },
-        {
-          action: "forward",
-          value: 2.5
-        },
-        // {
-        //   action: "wait",
-        //   value: 2
-        // },
-        // {
-        //   action: "left",
-        //   value: 5
-        // },
-        // {
-        //   action: "rotateL",
-        //   value: Math.PI / 2
-        // },
-        // {
-        //   action: "backwards",
-        //   value: 5
-        // },
-        // {
-        //   action: "rotateR",
-        //   value: Math.PI
-        // },
-        // {
-        //   action: "right",
-        //   value: 5
-        // },
-        {
-          action: "down",
-          value: 1
-        }
-      ]
+      play: true
     };
   },
   computed: {
@@ -72,13 +35,9 @@ export default {
   },
   methods: {
     init: function() {
+      var container = document.getElementById("container");
       this.scene = new THREE.Scene();
-      this.camera = new THREE.PerspectiveCamera(
-        70,
-        window.innerWidth / window.innerHeight,
-        1,
-        1000
-      );
+      this.camera = new THREE.PerspectiveCamera(70, 8 / 6, 1, 1000);
       this.scene.background = new THREE.Color("#cccccc");
 
       this.group = new THREE.Group();
@@ -115,8 +74,8 @@ export default {
 
       // Renderer
       this.renderer = new THREE.WebGLRenderer();
-      this.renderer.setSize(window.innerWidth, window.innerHeight - 10);
-      document.body.appendChild(this.renderer.domElement);
+      this.renderer.setSize(800, 600);
+      container.appendChild(this.renderer.domElement);
 
       //object 2
 
@@ -167,7 +126,7 @@ export default {
         requestAnimationFrame(this.animate);
       }, 1000 / this.framesPerSecond);
       //crop animation
-      if (this.play) {
+      if (this.play && this.mixer !== null) {
         if (this.animTime < 2.1 || this.animTime >= 3.9) {
           this.mixer.setTime(2.1);
           this.animTime = 2.1;
@@ -245,3 +204,10 @@ export default {
   }
 };
 </script>
+
+<style>
+#container {
+  width: 800px;
+  height: 600px;
+}
+</style>

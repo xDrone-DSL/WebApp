@@ -7,13 +7,16 @@
     </div>
     <div id="blocklyDiv" style=" height: 800px; width: 1200px;"></div>
     <textarea id="textarea" style="height: 800px; width: 300px;"></textarea>
+    <SimDialog />
   </v-layout>
 </template>
 
 <script>
 import * as Blockly from "blockly-xdronedsl";
+import SimDialog from "./SimDialog";
 
 export default {
+  components: { SimDialog },
   mounted() {
     // Actually run blockly
     var workspace = Blockly.inject("blocklyDiv", {
