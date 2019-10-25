@@ -4,10 +4,13 @@ ENV workdir $HOME/src/
 RUN mkdir $workdir
 
 WORKDIR $workdir
-
 COPY . .
+RUN rm -rf dist
 
-RUN rm -rf dist; cd frontend; npm install; npm run build; mv dist ../dist
-RUN cd backend; npm install
+WORKDIR $workdir/frontend/
+RUN npm install; npm run build; mv dist ../dist
 
-CMD [ "node", "backend/app.js" ]
+WORKDIR $workdir/backend/
+RUN npm install
+
+CMD [ "node", "app.js" ]
