@@ -5,7 +5,7 @@ module.exports = app => {
 
   app.get("/api/adv", (req, res) => {
     const advId = req.query.advId;
-    res.json(courses["courses"].find( adv  => adv.key === advId));
+    res.json(courses["courses"].find(adv => adv.key === advId));
   });
 
   app.get("/api/explore", (req, res) => {

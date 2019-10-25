@@ -1,5 +1,7 @@
 const axios = require("axios");
 
+// Set to 0.0.0.0 when both the WebApp and Flask server
+// are running on the some machine
 const FLASK_HOST = "http://0.0.0.0:8081";
 
 module.exports = app => {
