@@ -3,7 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = 8081;
+const port = 8080;
 
 app.use(bodyParser.json());
 
@@ -15,6 +15,9 @@ app.use(
 
 // COURSES
 const courses = require("./courses/courses.js")(app);
+
+// DRONE
+const drone = require("./drone/drone.js")(app);
 
 app.use("/", express.static(path.resolve("../dist")));
 

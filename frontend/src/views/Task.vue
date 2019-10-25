@@ -35,11 +35,6 @@ export default {
     drawer: false,
     courses: []
   }),
-  methods: {
-    input(event) {
-      console.log(event);
-    }
-  },
   computed: {
     level() {
       return `${this.advId} - ${this.taskId}`;

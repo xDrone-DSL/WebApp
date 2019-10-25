@@ -15,3 +15,19 @@ export function getAllTasksInAdventure(advId) {
     })
     .then(res => res.data);
 }
+
+export function fly(prog) {
+  return axios.post(`/api/fly`, {
+    body: {
+      program: prog
+    }
+  });
+}
+
+export function simulate(prog) {
+  return axios.post(`/api/simulate`, {
+    body: {
+      program: prog
+    }
+  });
+}
