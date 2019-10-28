@@ -15,11 +15,10 @@ jobs:
       script: cd backend; npm install; npm run test
     - stage: deploy
       if: branch = master
-      script: skip
+      script: docker build -t xdronedsl/webapp:latest .
       deploy:
         provider: script
         skip_cleanup: true
-        script: docker build -t xdronedsl/webapp:latest .
         script: bash docker_push.sh
         on:
           branch: master
