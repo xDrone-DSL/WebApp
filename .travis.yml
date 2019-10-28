@@ -6,9 +6,13 @@ services:
   - docker
 
 before_install:
+  - cd frontend
+  - npm install
+  - cd ../backend
+  - npm install
+  - cd ..
   - docker build -t xdronedsl/webapp:latest .
-  - cd frontend; npm install
-  - cd ../backend; npm install
+
 
 
 jobs:
