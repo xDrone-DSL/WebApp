@@ -17,9 +17,9 @@ jobs:
     - stage: test frontend
       skip_cleanup: true
       script: "cd frontend; npm run test"
-    # - stage: test backend
-    #   skip_cleanup: true
-    #   script: "cd backend; npm run test"
+    - stage: test backend
+      skip_cleanup: true
+      script: "cd backend; npm run test"
     - stage: publish
       if: branch = master
       deploy:
