@@ -5,28 +5,24 @@ node_js:
 services:
   - docker
 
-before_install:
-  - cd frontend
-  - npm install
-  - cd ../backend
-  - npm install
-  - cd ..
-
 jobs:
   include:
     - stage: test frontend
       skip_cleanup: true
-      script: "cd frontend; npm run test"
+      script: cd frontend
+      script: npm install
+      script: npm run test
     - stage: test backend
       skip_cleanup: true
-      script: "cd backend; npm run test"
+      script: cd backend
+      script: npm install
+      script: npm run test
 
-
-      
 deploy:
   provider: script
   skip_cleanup: true
-  script: bash docker_deploy.sh
+  script: docker build -t xdronedsl/webapp:latest .
+  script: bash docker_push.sh
   on:
     branch: master
 
