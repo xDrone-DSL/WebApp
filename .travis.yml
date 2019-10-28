@@ -9,22 +9,20 @@ jobs:
   include:
     - stage: test frontend
       skip_cleanup: true
-      script: cd frontend
-      script: npm install
-      script: npm run test
+      script: cd frontend; npm install; npm run test
     - stage: test backend
       skip_cleanup: true
-      script: cd backend
-      script: npm install
-      script: npm run test
-
-deploy:
-  provider: script
-  skip_cleanup: true
-  script: docker build -t xdronedsl/webapp:latest .
-  script: bash docker_push.sh
-  on:
-    branch: master
+      script: cd backend; npm install; npm run test
+    - stage: deploy
+      if: branch = master
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: docker build -t xdronedsl/webapp:latest .
+        script: bash docker_push.sh
+        on:
+          branch: master
 
 
 
