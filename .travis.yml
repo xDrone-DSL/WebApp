@@ -17,9 +17,9 @@ before_install:
 
 jobs:
   include:
-    # - stage: test frontend
-    #   skip_cleanup: true
-    #   script: "cd frontend; npm run test"
+    - stage: test frontend
+      skip_cleanup: true
+      script: "cd frontend; npm run test"
     # - stage: test backend
     #   skip_cleanup: true
     #   script: "cd backend; npm run test"
