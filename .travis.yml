@@ -11,9 +11,6 @@ before_install:
   - cd ../backend
   - npm install
   - cd ..
-  - docker build -t xdronedsl/webapp:latest .
-
-
 
 jobs:
   include:
@@ -28,7 +25,7 @@ jobs:
       deploy:
         provider: script
         skip_cleanup: true
-        script: bash docker_push.sh
+        script: bash docker_deploy.sh
         on:
           branch: master
 
