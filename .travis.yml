@@ -26,6 +26,8 @@ jobs:
         provider: script
         skip_cleanup: true
         script: bash docker_deploy.sh
+        on:
+          branch: master
 
 
 
