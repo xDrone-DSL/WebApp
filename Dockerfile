@@ -14,3 +14,4 @@ WORKDIR $workdir/backend/
 RUN npm install
 
 CMD [ "node", "app.js" ]
+

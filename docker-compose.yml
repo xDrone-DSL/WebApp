@@ -6,3 +6,4 @@ services:
     image: xdronedsl/webapp:latest
     ports:
       - "80:8080"
+
