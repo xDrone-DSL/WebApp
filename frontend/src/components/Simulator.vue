@@ -92,17 +92,17 @@ export default {
           obj.animations.forEach(clip => {
             this.mixer.clipAction(clip).play();
           });
-        },
-
-        // onProgress callback
-        function(xhr) {
-          console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-        },
-
-        // onError callback
-        function(err) {
-          console.error("An error happened: " + err);
         }
+
+        // // onProgress callback
+        // function(xhr) {
+        //   console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+        // },
+
+        // // onError callback
+        // function(err) {
+        //   console.error("An error happened: " + err);
+        // }
       );
 
       // Controls

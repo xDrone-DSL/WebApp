@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - "12.12"
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: test frontend
+      skip_cleanup: true
+      script: cd frontend; npm install; npm run test
+    - stage: test backend
+      skip_cleanup: true
+      script: cd backend; npm install; npm run test
+    - stage: deploy
+      if: branch = master
+      script: docker build -t xdronedsl/webapp:latest .
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: bash docker_push.sh
+        on:
+          branch: master
+
+
+
