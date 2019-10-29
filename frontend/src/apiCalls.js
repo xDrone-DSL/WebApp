@@ -1,14 +1,17 @@
 import axios from "axios";
 
-// const DEV_BASE_URL = "http://localhost:8081";
+var BASE_URL = "";
+if (process.env.NODE_ENV === "development") {
+  BASE_URL = "http://localhost:8080";
+}
 
 export function getAllAdventures() {
-  return axios.get(`/api/explore`).then(res => res.data);
+  return axios.get(`${BASE_URL}/api/explore`).then(res => res.data);
 }
 
 export function getAllTasksInAdventure(advId) {
   return axios
-    .get(`/api/adv`, {
+    .get(`${BASE_URL}/api/adv`, {
       params: {
         advId: advId
       }
@@ -17,7 +20,7 @@ export function getAllTasksInAdventure(advId) {
 }
 
 export function fly(prog) {
-  return axios.post(`/api/fly`, {
+  return axios.post(`${BASE_URL}/api/fly`, {
     body: {
       program: prog
     }
@@ -25,7 +28,7 @@ export function fly(prog) {
 }
 
 export function simulate(prog) {
-  return axios.post(`/api/simulate`, {
+  return axios.post(`${BASE_URL}/api/simulate`, {
     body: {
       program: prog
     }

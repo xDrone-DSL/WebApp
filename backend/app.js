@@ -1,11 +1,17 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
 const port = 8080;
 
 app.use(bodyParser.json());
+
+if (process.env.MODE === "dev") {
+  const cors = require("cors");
+  app.use(cors());
+}
 
 app.use(
   bodyParser.urlencoded({
