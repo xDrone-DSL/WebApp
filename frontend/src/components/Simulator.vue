@@ -159,7 +159,7 @@ export default {
             this.group.translateZ(this.speed);
             this.animation[0].value -= 1 / this.framesPerSecond;
             break;
-          case "backwards":
+          case "backward":
             this.group.translateZ(-this.speed);
             this.animation[0].value -= 1 / this.framesPerSecond;
             break;
