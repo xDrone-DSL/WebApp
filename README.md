@@ -1,4 +1,4 @@
-# WebApp
+# WebApp [![Build Status](https://travis-ci.com/xDrone-DSL/WebApp.svg?branch=master)](https://travis-ci.com/xDrone-DSL/WebApp)
 
 The WebApp that provides kids a new experience of learning coding
 with drones.
