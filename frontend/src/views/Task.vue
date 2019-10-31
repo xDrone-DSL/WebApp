@@ -41,12 +41,20 @@ export default {
     },
     currTask() {
       const currAdv = this.currAdv;
-      return currAdv["tasks"].find(task => task.key === this.taskId);
+      if (currAdv) {
+        return currAdv["tasks"].find(task => task.key === this.taskId);
+      } else {
+        return {};
+      }
     },
     level() {
       const currAdv = this.currAdv;
       const currTask = this.currTask;
-      return `${currAdv["title"]} - ${currTask["title"]}`;
+      if (currAdv && currTask) {
+        return `${currAdv["title"]} - ${currTask["title"]}`;
+      } else {
+        return "";
+      }
     },
     title() {
       if (this.courses.length > 0) {

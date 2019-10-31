@@ -34,7 +34,9 @@ export default {
     const toolbox2 = document.getElementById("toolbox2");
     // Actually run blockly
     const workspace = Blockly.inject("blocklyDiv", {
-      toolbox: document.getElementById("toolbox")
+      toolbox: document.getElementById("toolbox"),
+      scrollbars: false,
+      trashcan: true
     });
     const myUpdateFunction = () => {
       this.code = Blockly.JavaScript.workspaceToCode(workspace);
