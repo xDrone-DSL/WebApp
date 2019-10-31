@@ -1,18 +1,14 @@
 <template>
   <v-layout>
     <div id="toolbox" style="display: none">
-      <category name="xDrone">
-        <block type="fly"></block>
-        <block type="move"></block>
-        <block type="rotate"></block>
-      </category>
+      <block type="fly"></block>
+      <block type="move"></block>
+      <block type="rotate"></block>
     </div>
     <div id="toolbox2" style="display: none">
-      <category name="xDrone">
-        <block type="fly" disabled="true"></block>
-        <block type="move"></block>
-        <block type="rotate"></block>
-      </category>
+      <block type="fly" disabled="true"></block>
+      <block type="move"></block>
+      <block type="rotate"></block>
     </div>
     <div id="blocklyDiv" style=" height: 800px; width: 1200px;"></div>
     <textarea id="textarea" style="height: 800px; width: 300px;"></textarea>
@@ -38,7 +34,9 @@ export default {
     const toolbox2 = document.getElementById("toolbox2");
     // Actually run blockly
     const workspace = Blockly.inject("blocklyDiv", {
-      toolbox: document.getElementById("toolbox")
+      toolbox: document.getElementById("toolbox"),
+      scrollbars: false,
+      trashcan: true
     });
     const myUpdateFunction = () => {
       this.code = Blockly.JavaScript.workspaceToCode(workspace);
