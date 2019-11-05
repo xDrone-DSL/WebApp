@@ -4,7 +4,7 @@
       Simulate
     </v-btn>
 
-    <v-dialog v-model="dialog" max-width="800">
+    <v-dialog v-model="dialog" max-width="800" style="z-index: 999999">
       <v-card>
         <Simulator v-if="dialog" :animation="animation" />
         <v-card-actions>

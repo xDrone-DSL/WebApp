@@ -93,16 +93,6 @@ export default {
             this.mixer.clipAction(clip).play();
           });
         }
-
-        // // onProgress callback
-        // function(xhr) {
-        //   console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-        // },
-
-        // // onError callback
-        // function(err) {
-        //   console.error("An error happened: " + err);
-        // }
       );
 
       // Controls
@@ -118,6 +108,9 @@ export default {
       this.camera.updateProjectionMatrix();
 
       this.controls.update();
+
+      // Add takeoff
+      this.animation.unshift({ action: "up", value: "2" });
     },
     animate: function() {
       setTimeout(() => {
@@ -137,7 +130,7 @@ export default {
       if (this.start) {
         this.camera.zoom *= 0.97;
         this.camera.updateProjectionMatrix();
-        if (this.camera.position.z < -40) {
+        if (this.camera.zoom < 1.24) {
           this.controls.autoRotate = false;
           this.start = false;
         }
@@ -149,6 +142,10 @@ export default {
       this.renderer.render(this.scene, this.camera);
     },
     move: function() {
+      if (this.group.position.y < 0) {
+        this.play = false;
+        return;
+      }
       if (this.animation.length > 0) {
         if (this.animation[0].value <= 0) {
           this.animation.shift();
@@ -192,7 +189,11 @@ export default {
             break;
         }
       } else {
-        this.play = false;
+        if (this.group.position.y > 0.4) {
+          this.group.translateY(-this.speed);
+        } else {
+          this.play = false;
+        }
       }
     }
   },
