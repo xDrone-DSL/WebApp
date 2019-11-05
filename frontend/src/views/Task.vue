@@ -7,7 +7,6 @@
       <v-toolbar-title>{{ level }}</v-toolbar-title>
       <v-divider class="ml-5 mr-10" inset vertical></v-divider>
       <v-toolbar-title>{{ title }}</v-toolbar-title>
-
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-content>
