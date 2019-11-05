@@ -36,7 +36,7 @@ export default {
     const toolbox2 = document.getElementById("toolbox2");
     // Actually run blockly
     const workspace = Blockly.inject("blocklyDiv", {
-      toolbox: document.getElementById("toolbox"),
+      toolbox: toolbox,
       scrollbars: false,
       trashcan: true
     });
@@ -58,3 +58,10 @@ export default {
   }
 };
 </script>
+
+
+<style>
+input {
+  background-color: white;
+}
+</style>
