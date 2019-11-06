@@ -1,0 +1,23 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "The WebApp that provides kids a new experience of learning coding with drones.",
+  "main": "none",
+  "scripts": {
+    "dev": "concurrently \"cd backend; node app.js\" \"cd frontend; npm run serve\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xDrone-DSL/frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xDrone-DSL/frontend/issues"
+  },
+  "homepage": "https://github.com/xDrone-DSL/frontend#readme",
+  "dependencies": {
+    "concurrently": "^5.0.0"
+  }
+}

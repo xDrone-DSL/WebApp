@@ -8,6 +8,21 @@ with drones.
 The following instructions will run the backend and frontend with
 hot-reloads enabled at the same time.
 
+### Dev quickstart
+
+Make sure you have a `.env.local`, which will enable the dev mode in your backend folder.
+You can make a copy from the `.env.local.sample`.
+
+```
+cp backend/.env.local.sample backend/.env.local
+```
+
+To start dev backend and serve frontend at the same time
+```
+npm run dev
+```
+
+
 ### Backend
 
 To run the backend, go to `backend` directory.
