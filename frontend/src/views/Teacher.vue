@@ -1,7 +1,122 @@
 <template>
-  <div></div>
+  <v-app>
+    <v-app-bar app dark color="deep-purple accent-4">
+      <v-toolbar-title>Teacher</v-toolbar-title>
+    </v-app-bar>
+
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout>
+          <v-flex xs2 pa-1>
+            <Queue :teams="teamsSub1"></Queue>
+          </v-flex>
+          <v-flex xs6 pa-1>
+            <Approve
+              :team="teams[0]"
+              :approve="approve"
+              :rejecta="reject1"
+              :rejectb="reject1"
+            ></Approve>
+          </v-flex>
+          <v-flex xs4 pa-1>
+            <!-- <Drones :drones="drones"></Drones> -->
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-export default {};
+import Queue from "../components/teacher/Queue";
+import Approve from "../components/teacher/Approve";
+
+export default {
+  components: {
+    Queue,
+    Approve
+  },
+  methods: {
+    approve() {
+      if (this.teams.length > 1) {
+        this.teams[0].hide = true;
+        this.teams[1].hide = true;
+      }
+      setTimeout(() => {
+        this.teams.shift(1);
+        if (this.teams.length > 0) {
+          this.teams[0].hide = false;
+        }
+      }, 300);
+    },
+    reject1() {
+      if (this.teams.length > 1) {
+        this.teams[0].hide = true;
+        this.teams[1].hide = true;
+      }
+      setTimeout(() => {
+        this.teams.shift(1);
+        if (this.teams.length > 0) {
+          this.teams[0].hide = false;
+        }
+      }, 300);
+    },
+    reject2() {
+      if (this.teams.length > 1) {
+        this.teams[0].hide = true;
+        this.teams[1].hide = true;
+      }
+      setTimeout(() => {
+        this.teams.shift(1);
+        if (this.teams.length > 0) {
+          this.teams[0].hide = false;
+        }
+      }, 300);
+    }
+  },
+  computed: {
+    teamsSub1() {
+      return this.teams.slice(1);
+    }
+  },
+  data() {
+    return {
+      teams: [
+        {
+          name: "Team 1",
+          id: 1,
+          hide: false,
+          task: {
+            name: "Adv1-Task1",
+            summary: "This is a short description of task 1 adventure 1"
+          },
+          code:
+            "fly() {\n  TAKEOFF()\n  ROTATERIGHT(300)\n  ROTATELEFT(270)\n  LAND()\n}"
+        },
+        {
+          name: "Team 2",
+          id: 2,
+          hide: false,
+          task: {
+            name: "Adv1-Task2",
+            summary: "This is a short description of task 2 adventure 1"
+          },
+          code:
+            "fly() {\n  TAKEOFF()\n  ROTATERIGHT(300)\n  ROTATELEFT(270)\n  LAND()\n}"
+        },
+        {
+          name: "Team 3",
+          id: 3,
+          hide: false,
+          task: {
+            name: "Adv1-Task3",
+            summary: "This is a short description of task 3 adventure 1"
+          },
+          code:
+            "fly() {\n  TAKEOFF()\n  ROTATERIGHT(300)\n  ROTATELEFT(270)\n  LAND()\n}"
+        }
+      ]
+    };
+  }
+};
 </script>
