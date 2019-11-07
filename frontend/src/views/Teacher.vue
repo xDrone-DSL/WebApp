@@ -30,7 +30,7 @@
 <script>
 import Queue from "../components/teacher/Queue";
 import Approve from "../components/teacher/Approve";
-import Drones from "../components/teacher/Drone";
+import Drones from "../components/teacher/Drones";
 import { socket } from "../apiCalls";
 
 export default {
