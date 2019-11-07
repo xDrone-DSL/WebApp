@@ -15,14 +15,14 @@
     <div id="blocklyDiv" style="height: 800px; width: 1200px;"></div>
     <textarea id="textarea" style="height: 800px; width: 300px;"></textarea>
     <SimDialog :code="code" />
-    <v-btn big @click="flyWrapper">Fly</v-btn>
+    <v-btn big @click="flyWrapper">Request Flight</v-btn>
   </v-layout>
 </template>
 
 <script>
 import * as Blockly from "blockly-xdronedsl";
 import SimDialog from "./SimDialog";
-import { fly } from "../apiCalls";
+import { socket } from "../apiCalls";
 
 export default {
   components: { SimDialog },
@@ -53,7 +53,15 @@ export default {
   },
   methods: {
     flyWrapper() {
-      fly(this.code);
+      socket.emit("REQUESTFLIGHT", {
+        name: "Team 2",
+        id: 2,
+        task: {
+          name: "Adv1-Task2",
+          summary: "This is a short description of task 2 adventure 1"
+        },
+        code: this.code
+      });
     }
   }
 };

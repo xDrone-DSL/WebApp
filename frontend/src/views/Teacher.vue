@@ -56,7 +56,7 @@ export default {
         this.teams[1].hide = true;
       }
       setTimeout(() => {
-        this.teams.shift(1);
+        this.socket.emit("REJECT1");
         if (this.teams.length > 0) {
           this.teams[0].hide = false;
         }
@@ -68,7 +68,7 @@ export default {
         this.teams[1].hide = true;
       }
       setTimeout(() => {
-        this.teams.shift(1);
+        this.socket.emit("REJECT2");
         if (this.teams.length > 0) {
           this.teams[0].hide = false;
         }
@@ -83,9 +83,7 @@ export default {
   data() {
     return {
       socket: socket,
-      state: {
-        queue: []
-      },
+      state: {},
       teams: []
     };
   },
@@ -93,9 +91,6 @@ export default {
     this.socket.on("UPDATE", state => {
       this.state = state;
       if (this.state.queue) {
-        this.state.queue.forEach(element => {
-          element.hide = false;
-        });
         this.teams = this.state.queue;
       }
     });
