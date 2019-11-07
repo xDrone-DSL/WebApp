@@ -81,6 +81,9 @@ export default {
     },
     teams() {
       if (this.state.queue) {
+        this.state.queue.forEach(element => {
+          element.hide = false;
+        });
         return this.state.queue;
       } else {
         return [];
