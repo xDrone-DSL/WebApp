@@ -19,7 +19,7 @@
             ></Approve>
           </v-flex>
           <v-flex xs4 pa-1>
-            <!-- <Drones :drones="drones"></Drones> -->
+            <Drones :drones="drones"></Drones>
           </v-flex>
         </v-layout>
       </v-container>
@@ -30,12 +30,14 @@
 <script>
 import Queue from "../components/teacher/Queue";
 import Approve from "../components/teacher/Approve";
+import Drones from "../components/teacher/Drone";
 import { socket } from "../apiCalls";
 
 export default {
   components: {
     Queue,
-    Approve
+    Approve,
+    Drones
   },
   methods: {
     approve() {
@@ -84,7 +86,8 @@ export default {
     return {
       socket: socket,
       state: {},
-      teams: []
+      teams: [],
+      drones: []
     };
   },
   mounted() {
@@ -92,6 +95,9 @@ export default {
       this.state = state;
       if (this.state.queue) {
         this.teams = this.state.queue;
+      }
+      if (this.state.drones) {
+        this.drones = this.state.drones;
       }
     });
   }

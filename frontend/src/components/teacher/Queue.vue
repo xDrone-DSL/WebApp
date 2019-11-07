@@ -1,8 +1,10 @@
 <template>
   <v-card height="100%" outlined>
-    <v-card-title primary-title class="pa-1 mt-1">Approval Queue</v-card-title>
+    <v-card-title primary-title class="pa-1 mt-1 justify-center">
+      Approval Queue
+    </v-card-title>
     <v-container fluid class="pa-2" v-if="teams.length > 0">
-      <v-flex v-for="team in teams" :key="team.id" my-2>
+      <v-flex v-for="team in teams" :key="team.name" my-2>
         <v-scroll-y-reverse-transition>
           <v-card v-if="!team.hide" class="mx-auto">
             <v-card-title>

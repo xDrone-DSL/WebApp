@@ -22,10 +22,11 @@ export function getAllTasksInAdventure(advId) {
     .then(res => res.data);
 }
 
-export function fly(prog) {
+export function fly(prog, mac) {
   return axios.post(`${BASE_URL}/api/fly`, {
     body: {
-      program: prog
+      program: prog,
+      address: mac
     }
   });
 }
