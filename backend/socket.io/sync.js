@@ -7,10 +7,6 @@ module.exports = io => {
     console.log(socket.id);
     io.emit("UPDATE", state);
 
-    socket.on("LOGIN", data => {
-      id = data.id;
-    });
-
     socket.on("APPROVE", () => {
       console.log("APPROVE");
 
