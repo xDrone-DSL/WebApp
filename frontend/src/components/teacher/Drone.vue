@@ -30,7 +30,7 @@
           </div>
         </v-expand-transition>
       </v-card>
-      <v-btn class="ma-2" color="success">Fly</v-btn>
+      <v-btn class="ma-2" color="success" @click="flyWrapper">Fly</v-btn>
     </v-flex>
     <v-flex v-else>
       Nothing in fly queue
@@ -39,12 +39,22 @@
 </template>
 
 <script>
+import { socket, fly } from "@/apiCalls";
+
 export default {
   props: ["drone"],
   data() {
     return {
       show: false
     };
+  },
+  methods: {
+    flyWrapper() {
+      fly(this.drone.queue[0].code, this.drone.mac);
+      socket.emit("FLY", {
+        mac: this.drone.mac
+      });
+    }
   }
 };
 </script>

@@ -27,6 +27,12 @@ module.exports = io => {
       io.emit("UPDATE", state);
     });
 
+    socket.on("FLY", data => {
+      console.log("FLY DRONE " + data.mac);
+      state.drones.filter(d => d.mac === data.mac)[0].queue.shift(1);
+      io.emit("UPDATE", state);
+    });
+
     socket.on("REJECT1", () => {
       console.log("REJECT1");
       state.queue.shift(1);
