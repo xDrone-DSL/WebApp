@@ -54,7 +54,13 @@ export default {
   methods: {
     flyWrapper() {
       socket.emit("REQUESTFLIGHT", {
-        name: "Team 2",
+        name:
+          Math.random()
+            .toString(36)
+            .substring(2, 15) +
+          Math.random()
+            .toString(36)
+            .substring(2, 15),
         id: 2,
         task: {
           name: "Adv1-Task2",

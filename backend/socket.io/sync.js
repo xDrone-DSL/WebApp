@@ -9,7 +9,23 @@ module.exports = io => {
 
     socket.on("APPROVE", () => {
       console.log("APPROVE");
+
+      var mindrone = state.drones[0];
+      state.drones.forEach(drone => {
+        if (drone.queue.length < mindrone.queue.length) {
+          mindrone = drone;
+        }
+      });
+
+      mindrone.queue.push(state.queue[0]);
+
       state.queue.shift(1);
+      io.emit("UPDATE", state);
+    });
+
+    socket.on("FLY", data => {
+      console.log("FLY DRONE " + data.mac);
+      state.drones.filter(d => d.mac === data.mac)[0].queue.shift(1);
       io.emit("UPDATE", state);
     });
 
