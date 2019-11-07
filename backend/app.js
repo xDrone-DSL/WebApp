@@ -19,6 +19,12 @@ app.use(
   })
 );
 
+const server = app.listen(port, () =>
+  console.log(`Example app listening on port ${port}!`)
+);
+
+const io = require("socket.io")(server);
+
 // COURSES
 const courses = require("./courses/courses.js")(app);
 
@@ -31,4 +37,4 @@ app.get("/*", (req, res) => {
   res.sendFile(path.resolve("../dist/index.html"));
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const sync = require("./socket.io/sync.js")(io);

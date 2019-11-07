@@ -30,6 +30,7 @@
 <script>
 import Queue from "../components/teacher/Queue";
 import Approve from "../components/teacher/Approve";
+import { socket } from "../apiCalls";
 
 export default {
   components: {
@@ -43,7 +44,7 @@ export default {
         this.teams[1].hide = true;
       }
       setTimeout(() => {
-        this.teams.shift(1);
+        this.socket.emit("APPROVE");
         if (this.teams.length > 0) {
           this.teams[0].hide = false;
         }
@@ -77,46 +78,27 @@ export default {
   computed: {
     teamsSub1() {
       return this.teams.slice(1);
+    },
+    teams() {
+      if (this.state.queue) {
+        return this.state.queue;
+      } else {
+        return [];
+      }
     }
   },
   data() {
     return {
-      teams: [
-        {
-          name: "Team 1",
-          id: 1,
-          hide: false,
-          task: {
-            name: "Adv1-Task1",
-            summary: "This is a short description of task 1 adventure 1"
-          },
-          code:
-            "fly() {\n  TAKEOFF()\n  ROTATERIGHT(300)\n  ROTATELEFT(270)\n  LAND()\n}"
-        },
-        {
-          name: "Team 2",
-          id: 2,
-          hide: false,
-          task: {
-            name: "Adv1-Task2",
-            summary: "This is a short description of task 2 adventure 1"
-          },
-          code:
-            "fly() {\n  TAKEOFF()\n  ROTATERIGHT(300)\n  ROTATELEFT(270)\n  LAND()\n}"
-        },
-        {
-          name: "Team 3",
-          id: 3,
-          hide: false,
-          task: {
-            name: "Adv1-Task3",
-            summary: "This is a short description of task 3 adventure 1"
-          },
-          code:
-            "fly() {\n  TAKEOFF()\n  ROTATERIGHT(300)\n  ROTATELEFT(270)\n  LAND()\n}"
-        }
-      ]
+      socket: socket,
+      state: {
+        queue: []
+      }
     };
+  },
+  mounted() {
+    this.socket.on("UPDATE", state => {
+      this.state = state;
+    });
   }
 };
 </script>

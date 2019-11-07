@@ -1,0 +1,31 @@
+{
+  "queue": [
+    {
+      "name": "Team 1",
+      "id": 1,
+      "task": {
+        "name": "Adv1-Task1",
+        "summary": "This is a short description of task 1 adventure 1"
+      },
+      "code": "fly() {\n  TAKEOFF()\n  ROTATERIGHT(300)\n  ROTATELEFT(270)\n  LAND()\n}"
+    },
+    {
+      "name": "Team 2",
+      "id": 2,
+      "task": {
+        "name": "Adv1-Task2",
+        "summary": "This is a short description of task 2 adventure 1"
+      },
+      "code": "fly() {\n  TAKEOFF()\n  ROTATERIGHT(300)\n  ROTATELEFT(270)\n  LAND()\n}"
+    },
+    {
+      "name": "Team 3",
+      "id": 3,
+      "task": {
+        "name": "Adv1-Task3",
+        "summary": "This is a short description of task 3 adventure 1"
+      },
+      "code": "fly() {\n  TAKEOFF()\n  ROTATERIGHT(300)\n  ROTATELEFT(270)\n  LAND()\n}"
+    }
+  ]
+}
