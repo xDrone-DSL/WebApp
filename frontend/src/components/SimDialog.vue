@@ -1,6 +1,13 @@
 <template>
-  <v-row justify="center">
-    <v-btn color="primary" dark @click="getAnimation">
+  <div>
+    <v-btn
+      class="my-2"
+      width="90%"
+      color="primary"
+      dark
+      large
+      @click="getAnimation"
+    >
       Simulate
     </v-btn>
 
@@ -14,7 +21,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-row>
+  </div>
 </template>
 
 <script>
