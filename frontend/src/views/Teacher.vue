@@ -78,16 +78,6 @@ export default {
   computed: {
     teamsSub1() {
       return this.teams.slice(1);
-    },
-    teams() {
-      if (this.state.queue) {
-        this.state.queue.forEach(element => {
-          element.hide = false;
-        });
-        return this.state.queue;
-      } else {
-        return [];
-      }
     }
   },
   data() {
@@ -95,12 +85,19 @@ export default {
       socket: socket,
       state: {
         queue: []
-      }
+      },
+      teams: []
     };
   },
   mounted() {
     this.socket.on("UPDATE", state => {
       this.state = state;
+      if (this.state.queue) {
+        this.state.queue.forEach(element => {
+          element.hide = false;
+        });
+        this.teams = this.state.queue;
+      }
     });
   }
 };
