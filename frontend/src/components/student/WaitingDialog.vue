@@ -36,7 +36,7 @@ export default {
     return {
       socket: socket,
       dialog: false,
-      disabled: false
+      disabled: true
     };
   },
   props: {
@@ -47,23 +47,18 @@ export default {
     flyWrapper() {
       this.dialog = true;
       this.disabled = true;
-      socket.emit("REQUESTFLIGHT", {
-        name:
-          Math.random()
-            .toString(36)
-            .substring(2, 15) +
-          Math.random()
-            .toString(36)
-            .substring(2, 15),
-        id: 2,
+      socket.emit("REQUEST_FLIGHT", {
+        name: localStorage.uid,
+        uid: localStorage.uid,
         task: this.task,
         code: this.code
       });
     }
   },
   mounted() {
-    this.socket.on("FEEDBACK", () => {
-      this.disabled = false;
+    this.socket.emit("REQUEST_FLIGHT_PERMISSION", { uid: localStorage.uid });
+    this.socket.on("REQUEST_FLIGHT_STATUS", data => {
+      this.disabled = data.status;
     });
   }
 };
