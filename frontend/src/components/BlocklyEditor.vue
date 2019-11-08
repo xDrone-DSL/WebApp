@@ -29,6 +29,7 @@
       <v-col><SimDialog :code="code"/></v-col>
       <v-col><WaitingDialog :code="code" :task="task"/></v-col>
     </v-row>
+    <FeedbackDialog />
   </div>
 </template>
 
@@ -36,9 +37,10 @@
 import * as Blockly from "blockly-xdronedsl";
 import SimDialog from "./SimDialog";
 import WaitingDialog from "./student/WaitingDialog";
+import FeedbackDialog from "./student/FeedbackDialog";
 
 export default {
-  components: { WaitingDialog, SimDialog },
+  components: { FeedbackDialog, WaitingDialog, SimDialog },
   props: {
     taskName: { type: String, required: true },
     taskTitle: { type: String, required: true },

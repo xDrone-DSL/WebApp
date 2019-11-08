@@ -15,7 +15,7 @@
               :team="teams[0]"
               :approve="approve"
               :rejecta="reject1"
-              :rejectb="reject1"
+              :rejectb="reject2"
             ></Approve>
           </v-flex>
           <v-flex xs4 pa-1>

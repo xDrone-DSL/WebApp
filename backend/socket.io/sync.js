@@ -1,5 +1,13 @@
 var state = require("./state.json");
 
+const feedbackOptions = {
+  APPROVE: "Your code is approved! 👍 Now it's waiting for a drone to fly...",
+  ALMOST_THERE:
+    "Your code is pretty good but there's still something small that you need to change. Have a look! 😃 ",
+  NEEDS_MORE_WORK:
+    "Good work, but more work is needed for this task. Think about your code again. 🤔 The teacher will come over soon to help you!"
+};
+
 module.exports = io => {
   console.log("Sync module ready");
 
@@ -21,6 +29,7 @@ module.exports = io => {
 
       state.queue.shift(1);
       io.emit("UPDATE", state);
+      io.emit("FEEDBACK", feedbackOptions.APPROVE);
     });
 
     socket.on("FLY", data => {
@@ -33,12 +42,14 @@ module.exports = io => {
       console.log("REJECT1");
       state.queue.shift(1);
       io.emit("UPDATE", state);
+      io.emit("FEEDBACK", feedbackOptions.ALMOST_THERE);
     });
 
     socket.on("REJECT2", () => {
       console.log("REJECT2");
       state.queue.shift(1);
       io.emit("UPDATE", state);
+      io.emit("FEEDBACK", feedbackOptions.NEEDS_MORE_WORK);
     });
 
     socket.on("REQUESTFLIGHT", data => {
