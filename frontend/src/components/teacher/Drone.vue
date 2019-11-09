@@ -52,7 +52,8 @@ export default {
     flyWrapper() {
       fly(this.drone.queue[0].code, this.drone.mac);
       socket.emit("FLY", {
-        mac: this.drone.mac
+        mac: this.drone.mac,
+        uid: this.drone.queue[0].uid
       });
     }
   }

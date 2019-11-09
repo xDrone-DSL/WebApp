@@ -1,15 +1,20 @@
 import Vue from "vue";
 import Router from "vue-router";
+import { socket } from "./apiCalls";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
     {
       path: "/",
-      name: "login",
+      name: "Root"
+    },
+    {
+      path: "/login",
+      name: "Login",
       component: () => import("./views/Login.vue")
     },
     {
@@ -41,4 +46,18 @@ export default new Router({
       component: () => import("./components/Simulator.vue")
     }
   ]
+});
+
+export default router;
+router.beforeEach((to, from, next) => {
+  if (to.name === "Teacher") {
+    next();
+  } else if (!localStorage.uid && to.name !== "Login") {
+    next("/login");
+  } else if (to.name === "Root") {
+    next("/explore");
+  } else {
+    socket.emit("IAM", { uid: localStorage.uid });
+    next();
+  }
 });

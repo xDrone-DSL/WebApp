@@ -37,4 +37,5 @@ app.get("/*", (req, res) => {
   res.sendFile(path.resolve("../dist/index.html"));
 });
 
+// SOCKET.IO
 const sync = require("./socket.io/sync.js")(io);

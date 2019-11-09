@@ -1,31 +1,51 @@
 <template>
-  <v-layout>
-    <div id="toolbox" style="display: none">
-      <block type="fly"></block>
-      <block type="move"></block>
-      <block type="rotateRight"></block>
-      <block type="rotateLeft"></block>
-    </div>
-    <div id="toolbox2" style="display: none">
-      <block type="fly" disabled="true"></block>
-      <block type="move"></block>
-      <block type="rotateRight"></block>
-      <block type="rotateLeft"></block>
-    </div>
-    <div id="blocklyDiv" style="height: 800px; width: 1200px;"></div>
-    <textarea id="textarea" style="height: 800px; width: 300px;"></textarea>
-    <SimDialog :code="code" />
-    <v-btn big @click="flyWrapper">Request Flight</v-btn>
-  </v-layout>
+  <div>
+    <v-layout>
+      <div id="toolbox" style="display: none">
+        <block type="fly"></block>
+        <block type="move"></block>
+        <block type="rotateRight"></block>
+        <block type="rotateLeft"></block>
+      </div>
+      <div id="toolbox2" style="display: none">
+        <block type="fly" disabled="true"></block>
+        <block type="move"></block>
+        <block type="rotateRight"></block>
+        <block type="rotateLeft"></block>
+      </div>
+      <div
+        id="blocklyDiv"
+        style="height: 75vh; width: 1200px; z-index: 10"
+      ></div>
+      <v-card
+        outlined
+        tile
+        style="height: 75vh; width: 300px; text-align: left;"
+      >
+        <textarea id="textarea" disabled style="height: 100%; width: 100%;" />
+      </v-card>
+    </v-layout>
+    <v-row height="5vh">
+      <v-col><SimDialog :code="code"/></v-col>
+      <v-col><WaitingDialog :code="code" :task="task"/></v-col>
+    </v-row>
+    <FeedbackDialog />
+  </div>
 </template>
 
 <script>
 import * as Blockly from "blockly-xdronedsl";
 import SimDialog from "./SimDialog";
-import { socket } from "../apiCalls";
+import WaitingDialog from "./student/WaitingDialog";
+import FeedbackDialog from "./student/FeedbackDialog";
 
 export default {
-  components: { SimDialog },
+  components: { FeedbackDialog, WaitingDialog, SimDialog },
+  props: {
+    taskName: { type: String, required: true },
+    taskTitle: { type: String, required: true },
+    taskSummary: { type: String, default: "No summary for this task" }
+  },
   data() {
     return {
       code: ""
@@ -51,23 +71,13 @@ export default {
     };
     workspace.addChangeListener(myUpdateFunction);
   },
-  methods: {
-    flyWrapper() {
-      socket.emit("REQUESTFLIGHT", {
-        name:
-          Math.random()
-            .toString(36)
-            .substring(2, 15) +
-          Math.random()
-            .toString(36)
-            .substring(2, 15),
-        id: 2,
-        task: {
-          name: "Adv1-Task2",
-          summary: "This is a short description of task 2 adventure 1"
-        },
-        code: this.code
-      });
+  computed: {
+    task() {
+      return {
+        name: this.taskName,
+        title: this.taskTitle,
+        summary: this.taskSummary
+      };
     }
   }
 };

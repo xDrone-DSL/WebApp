@@ -15,7 +15,7 @@
               :team="teams[0]"
               :approve="approve"
               :rejecta="reject1"
-              :rejectb="reject1"
+              :rejectb="reject2"
             ></Approve>
           </v-flex>
           <v-flex xs4 pa-1>
@@ -46,7 +46,7 @@ export default {
         this.teams[1].hide = true;
       }
       setTimeout(() => {
-        this.socket.emit("APPROVE");
+        this.socket.emit("APPROVE", { uid: this.teams[0].uid });
         if (this.teams.length > 0) {
           this.teams[0].hide = false;
         }
@@ -58,7 +58,7 @@ export default {
         this.teams[1].hide = true;
       }
       setTimeout(() => {
-        this.socket.emit("REJECT1");
+        this.socket.emit("REJECT1", { uid: this.teams[0].uid });
         if (this.teams.length > 0) {
           this.teams[0].hide = false;
         }
@@ -70,7 +70,7 @@ export default {
         this.teams[1].hide = true;
       }
       setTimeout(() => {
-        this.socket.emit("REJECT2");
+        this.socket.emit("REJECT2", { uid: this.teams[0].uid });
         if (this.teams.length > 0) {
           this.teams[0].hide = false;
         }
@@ -91,6 +91,7 @@ export default {
     };
   },
   mounted() {
+    this.socket.emit("TEACHER");
     this.socket.on("UPDATE", state => {
       this.state = state;
       if (this.state.queue) {

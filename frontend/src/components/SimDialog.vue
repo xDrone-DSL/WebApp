@@ -5,7 +5,7 @@
       width="90%"
       color="primary"
       dark
-      large
+      x-large
       @click="getAnimation"
     >
       Simulate
