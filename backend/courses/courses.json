@@ -1,27 +1,28 @@
 {
   "courses": [
-     {
+    {
       "key": "adventure1",
-      "title": "Adventure I - Stretch your wings",
+      "level": "Adventure I",
+      "title": "Stretch your wings",
       "tasks": [
         {
-          "title": "Task 1 - Moving around",
+          "level": "Task 1",
           "key": "task1",
-          "subtitle": "Your first flight",
+          "title": "Your first flight",
           "summary": "Single movement command",
           "description": "We'll start with the most basic movement, drag in a \"fly\" clause and add a movement command to it. See how you can move in different directions, for different amounts of time. Try it out in the simulator to see how it makes the drone fly!"
         },
         {
-          "title": "Task 2 - Linking commands",
+          "level": "Task 2",
           "key": "task2",
-          "subtitle": "Flying further",
+          "title": "Flying further",
           "summary": "Multiple movement commands",
           "description": "Try to click together multiple movement commands within the fly clause. Each command has its own direction and duration. You'll notice that when your program gets run on the simulator, the commands are run one after another, starting at the top. For a challenge try to make the drone fly in a square, finishing at the same position it starts."
         },
         {
-          "title": "Task 3 - Twisting and turning",
+          "level": "Task 3",
           "key": "task3",
-          "subtitle": "Full control of the drone",
+          "title": "Twisting and turning",
           "summary": "Movement AND rotation commands",
           "description": "Now we're comfortable with moving the drone, we've added some rotation commands. There's seperate commands for rotating left and right, and we can see the angle that we rotate relative to the front of the drone. Try flying in a square again, but this time using only forward movement and rotation commands"
         }
@@ -29,12 +30,13 @@
     },
     {
       "key": "adventure2",
-      "title": "Adventure II - Flying with purpose",
+      "level": "Adventure II",
+      "title": "Flying with purpose",
       "tasks": [
         {
-          "title": "Task 1 - Plotting a path",
+          "level": "Task 1",
           "key": "task1",
-          "subtitle": "Don't fly free",
+          "title": "Don't fly free",
           "summary": "Aiming to land at (x, y) (1m, 2m)",
           "description": "Let's use our commands to fly the drone so that it lands at the point 2 metres in front of us, and 1 metre left. Remember that you give the drone commands using seconds, not metres, so you'll need to work out roughly how far it moves in 1 or 2 seconds. Also try using different paths to get to the same point."
         }
@@ -42,4 +44,3 @@
     }
   ]
 }
-

@@ -8,9 +8,9 @@
     app
   >
     <v-list-item>
-      <v-subheader>Group number</v-subheader>
+      <v-subheader>Group Name</v-subheader>
       <v-list-item-content>
-        <v-list-item-title>{{ groupNumber }}</v-list-item-title>
+        <v-list-item-title>{{ groupName }}</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
 
@@ -25,23 +25,23 @@
       >
         <template v-slot:activator>
           <v-list-item-content class="text-left">
-            <v-list-item-title v-text="item.title"></v-list-item-title>
+            <v-list-item-title v-text="item.level"></v-list-item-title>
           </v-list-item-content>
         </template>
 
         <v-list-item
           v-for="subItem in item.tasks"
-          :key="subItem.title"
+          :key="subItem.key"
           style="margin-left: -50px"
           link
           @click="redirect(item.key, subItem.key)"
         >
           <v-list-item-content>
             <v-list-item-subtitle
-              v-text="subItem.title"
+              v-text="subItem.level"
               class="text-left"
             ></v-list-item-subtitle>
-            <v-list-item-title v-text="subItem.subtitle"></v-list-item-title>
+            <v-list-item-title v-text="subItem.title"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list-group>
@@ -56,8 +56,12 @@ export default {
   name: "NavigationDrawer",
   props: {
     value: { type: Boolean, default: false },
-    groupNumber: { type: Number, default: 1 },
     items: { type: Array, required: true }
+  },
+  computed: {
+    groupName() {
+      return localStorage.getItem("uid");
+    }
   },
   methods: {
     redirect(advId, taskId) {
