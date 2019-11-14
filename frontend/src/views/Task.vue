@@ -10,7 +10,7 @@
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-content>
-      <BlocklyEditor :task-name="level" :task-title="title" />
+      <BlocklyEditor :adv="currAdv" :task="currTask" />
     </v-content>
   </v-app>
 </template>

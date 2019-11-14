@@ -27,7 +27,7 @@
     </v-layout>
     <v-row height="5vh">
       <v-col><SimDialog :code="code"/></v-col>
-      <v-col><WaitingDialog :code="code" :task="task"/></v-col>
+      <v-col><WaitingDialog :code="code" :level="level"/></v-col>
     </v-row>
     <FeedbackDialog />
   </div>
@@ -42,9 +42,8 @@ import FeedbackDialog from "./student/FeedbackDialog";
 export default {
   components: { FeedbackDialog, WaitingDialog, SimDialog },
   props: {
-    taskName: { type: String, required: true },
-    taskTitle: { type: String, required: true },
-    taskSummary: { type: String, default: "No summary for this task" }
+    adv: { type: Object, required: true },
+    task: { type: Object, required: true }
   },
   data() {
     return {
@@ -72,11 +71,10 @@ export default {
     workspace.addChangeListener(myUpdateFunction);
   },
   computed: {
-    task() {
+    level() {
       return {
-        name: this.taskName,
-        title: this.taskTitle,
-        summary: this.taskSummary
+        adv: this.adv,
+        task: this.task
       };
     }
   }

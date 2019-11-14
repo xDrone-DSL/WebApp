@@ -18,7 +18,14 @@ module.exports = app => {
       .post(`${FLASK_HOST}/fly`, {
         body: req.body
       })
-      .then(res.send("Drone flew"));
+      .then(() => {
+        console.log("drone finished flying");
+        res.send("Drone flew");
+      })
+      .catch(() => {
+        console.log("failed to fly drone");
+        res.status(500).send("failed to fly");
+      });
   });
 
   app.post("/api/simulate", (req, res) => {
