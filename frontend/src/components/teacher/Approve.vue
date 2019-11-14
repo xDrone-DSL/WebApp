@@ -13,10 +13,11 @@
               </v-card-title>
               <v-card-subtitle class="text-left">
                 <h3>Team Name: {{ team.name }}</h3>
-                <div>{{ team.level.adv.title }}</div>
-                <div>{{ team.level.task.title }}</div>
+                <div>{{ team.level.adv.level }}</div>
+                <div>{{ team.level.task.level }}</div>
               </v-card-subtitle>
               <v-card-text class="text-left">
+                <h4>{{ team.level.task.title }}</h4>
                 <div>{{ team.level.task.summary }}</div>
               </v-card-text>
             </v-card>
