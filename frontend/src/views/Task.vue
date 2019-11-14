@@ -50,7 +50,7 @@ export default {
       const currAdv = this.currAdv;
       const currTask = this.currTask;
       if (currAdv && currTask) {
-        return `${currAdv["title"]} - ${currTask["title"]}`;
+        return `${currAdv["level"]} - ${currTask["level"]}`;
       } else {
         return "";
       }
@@ -59,7 +59,7 @@ export default {
       if (this.courses.length > 0) {
         return this.courses
           .find(adv => adv.key === this.advId)
-          ["tasks"].find(task => task.key === this.taskId)["subtitle"];
+          ["tasks"].find(task => task.key === this.taskId)["title"];
       }
       return "";
     }

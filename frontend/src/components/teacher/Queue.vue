@@ -11,8 +11,8 @@
               {{ team.name }}
             </v-card-title>
             <v-card-subtitle class="text-left">
-              <div>{{ team.level.adv.title }}</div>
-              <div>{{ team.level.task.title }}</div>
+              <div>{{ team.level.adv.level }}</div>
+              <div>{{ team.level.task.level }}</div>
             </v-card-subtitle>
           </v-card>
         </v-scroll-y-reverse-transition>

@@ -4,8 +4,8 @@
       <div>Team: {{ item.name }}</div>
     </v-card-title>
     <v-card-text>
-      <div>{{ item.level.adv.title }}</div>
-      <div>{{ item.level.task.title }}</div>
+      <div>{{ item.level.adv.level }}</div>
+      <div>{{ item.level.task.level }}</div>
       <div>Drone: {{ drone.name }}</div>
     </v-card-text>
     <div v-if="success">
