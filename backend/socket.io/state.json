@@ -3,13 +3,8 @@
   "drones": [
     {
       "queue": [],
-      "name": "Drone Boi 1",
+      "name": "Drone 1 (RED)",
       "mac": "d0:3a:86:9d:e6:5a"
-    },
-    {
-      "queue": [],
-      "name": "Drone Boi 2",
-      "mac": "d0:3a:86:9d:e6:5b"
     }
   ]
 }

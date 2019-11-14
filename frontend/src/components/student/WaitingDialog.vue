@@ -41,7 +41,7 @@ export default {
   },
   props: {
     code: { type: String, required: true },
-    task: { type: Object, required: true }
+    level: { type: Object, required: true }
   },
   methods: {
     flyWrapper() {
@@ -50,7 +50,7 @@ export default {
       socket.emit("REQUEST_FLIGHT", {
         name: localStorage.uid,
         uid: localStorage.uid,
-        task: this.task,
+        level: this.level,
         code: this.code
       });
     }

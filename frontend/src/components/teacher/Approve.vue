@@ -9,13 +9,16 @@
           <v-flex pa-1 xs12>
             <v-card>
               <v-card-title primary-title>
-                Info
+                <h4>Team and level information</h4>
               </v-card-title>
               <v-card-subtitle class="text-left">
-                <div>Team Name: {{ team.name }}</div>
-                <div>Task Name: {{ team.task.name }}</div>
-                <div>Task Summary: {{ team.task.summary }}</div>
+                <h3>Team Name: {{ team.name }}</h3>
+                <div>{{ team.level.adv.title }}</div>
+                <div>{{ team.level.task.title }}</div>
               </v-card-subtitle>
+              <v-card-text class="text-left">
+                <div>{{ team.level.task.summary }}</div>
+              </v-card-text>
             </v-card>
           </v-flex>
           <v-flex pa-1 xs8>
