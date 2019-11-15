@@ -3,7 +3,7 @@
     <v-menu
       v-model="menu"
       :close-on-content-click="false"
-      :nudge-width="200"
+      :nudge-width="100"
       offset-y
       slide-y
     >
@@ -16,7 +16,7 @@
       <v-card elevation="24">
         <v-list>
           <v-list-item>
-            <v-list-item-avatar :color="color">
+            <v-list-item-avatar :color="color" class="mr-3">
               <span class="white--text headline">{{ teamName[0] }}</span>
             </v-list-item-avatar>
 
