@@ -7,6 +7,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-title>Adventures</v-toolbar-title>
       <v-spacer></v-spacer>
+      <TeamDetailMenu :logout-color="'teal darken-1'" />
     </v-app-bar>
     <v-content>
       <div v-if="tasks.length > 0">
@@ -39,13 +40,15 @@
 
 <script>
 import router from "@/router.js";
+import TeamDetailMenu from "../components/TeamDetailMenu";
 import { getAllTasksInAdventure } from "@/apiCalls";
 import { Carousel3d, Slide } from "vue-carousel-3d";
 
 export default {
   components: {
     Carousel3d,
-    Slide
+    Slide,
+    TeamDetailMenu
   },
   mounted() {
     getAllTasksInAdventure(this.advId)

@@ -1,4 +1,4 @@
-var state = require("./state.json");
+let state = require("./state.json");
 
 const feedbackOptions = {
   APPROVE: "Your code is approved! 👍 Now it's waiting for a drone to fly...",
@@ -32,6 +32,11 @@ module.exports = io => {
     socket.on("IAM", data => {
       const uid = data.uid;
       uidToSocketId[uid] = socket.id;
+    });
+
+    socket.on("USER_LOGOUT", data => {
+      const uid = data.uid;
+      delete uidToSocketId[uid];
     });
 
     socket.on("REQUEST_FLIGHT", data => {
