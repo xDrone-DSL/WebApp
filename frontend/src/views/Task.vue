@@ -7,7 +7,14 @@
       <v-toolbar-title>{{ level }}</v-toolbar-title>
       <v-divider class="ml-5 mr-10" inset vertical></v-divider>
       <v-toolbar-title>{{ title }}</v-toolbar-title>
+
       <v-spacer></v-spacer>
+
+      <v-btn icon dark @click="router.push('/explore')">
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
+
+      <TeamDetailMenu />
     </v-app-bar>
     <v-content>
       <BlocklyEditor :adv="currAdv" :task="currTask" />
@@ -16,12 +23,14 @@
 </template>
 
 <script>
-import NavigationDrawer from "../components/NavigationDrawer";
-import BlocklyEditor from "../components/BlocklyEditor";
-import { getAllAdventures } from "../apiCalls";
+import NavigationDrawer from "@/components/NavigationDrawer";
+import BlocklyEditor from "@/components/BlocklyEditor";
+import TeamDetailMenu from "@/components/TeamDetailMenu";
+import { getAllAdventures } from "@/apiCalls";
+import router from "@/router.js";
 
 export default {
-  components: { NavigationDrawer, BlocklyEditor },
+  components: { NavigationDrawer, BlocklyEditor, TeamDetailMenu },
   props: {
     advId: { type: String, required: true },
     taskId: { type: String, required: true }
@@ -32,11 +41,16 @@ export default {
       task: 0
     },
     drawer: false,
-    courses: []
+    courses: [],
+    router: router
   }),
   computed: {
     currAdv() {
-      return this.courses.find(adv => adv.key === this.advId);
+      if (this.courses) {
+        return this.courses.find(adv => adv.key === this.advId);
+      } else {
+        return {};
+      }
     },
     currTask() {
       const currAdv = this.currAdv;

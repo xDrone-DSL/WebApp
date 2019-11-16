@@ -4,6 +4,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-title>Explore</v-toolbar-title>
       <v-spacer></v-spacer>
+      <TeamDetailMenu :logout-color="'blue darken-2'" />
     </v-app-bar>
     <v-content>
       <div v-if="advs.length > 0">
@@ -37,11 +38,13 @@
 <script>
 import { getAllAdventures } from "@/apiCalls";
 import { Carousel3d, Slide } from "vue-carousel-3d";
+import TeamDetailMenu from "../components/TeamDetailMenu";
 
 export default {
   components: {
     Carousel3d,
-    Slide
+    Slide,
+    TeamDetailMenu
   },
   mounted() {
     getAllAdventures()

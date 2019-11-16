@@ -13,10 +13,7 @@
         <block type="rotateRight"></block>
         <block type="rotateLeft"></block>
       </div>
-      <div
-        id="blocklyDiv"
-        style="height: 75vh; width: 1200px; z-index: 10"
-      ></div>
+      <div id="blocklyDiv" style="height: 75vh; width: 1200px;"></div>
       <v-card
         outlined
         tile
@@ -42,8 +39,8 @@ import FeedbackDialog from "./student/FeedbackDialog";
 export default {
   components: { FeedbackDialog, WaitingDialog, SimDialog },
   props: {
-    adv: { type: Object, required: true },
-    task: { type: Object, required: true }
+    adv: { required: true },
+    task: { required: true }
   },
   data() {
     return {
