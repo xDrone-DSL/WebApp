@@ -8,9 +8,7 @@
         :drone="drone"
       />
     </v-flex>
-    <v-flex v-else>
-      Nothing in fly queue
-    </v-flex>
+    <v-flex v-else> Nothing in fly queue of {{ drone.name }} </v-flex>
   </v-card>
 </template>
 
