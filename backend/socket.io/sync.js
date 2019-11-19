@@ -31,6 +31,10 @@ module.exports = io => {
 
     socket.on("IAM", data => {
       const uid = data.uid;
+      if (!(uid in uidToSocketId)) {
+        socket.emit("INVALID_I_AM");
+        return;
+      }
       uidToSocketId[uid] = socket.id;
     });
 
