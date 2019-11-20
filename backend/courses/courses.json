@@ -24,21 +24,35 @@
           "key": "task3",
           "title": "Twisting and turning",
           "summary": "Movement AND rotation commands",
-          "description": "Now we're comfortable with moving the drone, we've added some rotation commands. There's seperate commands for rotating left and right, and we can see the angle that we rotate relative to the front of the drone. Try flying in a square again, but this time using only forward movement and rotation commands"
+          "description": "Now we're comfortable with moving the drone, we've added some rotation commands. There's seperate commands for rotating left and right, and we can see the angle that we rotate relative to the front of the drone. Try flying in a square again, but this time using only forward movement and rotation commands."
         }
       ]
     },
     {
       "key": "adventure2",
       "level": "Adventure II",
-      "title": "Flying with purpose",
+      "title": "Flying into action",
       "tasks": [
         {
-          "level": "Task 1",
           "key": "task1",
-          "title": "Don't fly free",
-          "summary": "Aiming to land at (x, y) (1m, 2m)",
-          "description": "Let's use our commands to fly the drone so that it lands at the point 2 metres in front of us, and 1 metre left. Remember that you give the drone commands using seconds, not metres, so you'll need to work out roughly how far it moves in 1 or 2 seconds. Also try using different paths to get to the same point."
+          "level": "Task 1",
+          "title": "🔥FIRE!!🔥",
+          "summary": "Fly to fire station at (3m, 2m).",
+          "description": "A wildfire has started nearby! All the fire and rescue helicopters are being repaired so the local fire department have asked for our help. First things first, we need to fly to the fire station that`s 3 miles north, 2 miles east. Remember the drone starts facing northwards, and 1 metre in our scale model is 1 mile in the real world."
+        },
+        {
+          "key": "task2",
+          "level": "Task 2",
+          "title": "🆘 Help!",
+          "summary": "Fly to the farms at (3, -1), (-1, 2) and (-2, -2).",
+          "description": "The firefighters tell us that there are 3 farms where people need help. The drone has been loaded with 3 rescue packages which can be dropped by making the drone do a full turn on the spot in either direction. First farm is 3 miles east, 1 mile south. The second is 1 mile west, 2 miles north, and the final farm is 2 miles south, 2 miles west. The order that the farms are visited doesn`t matter, as long as they get the help they need. Good luck!"
+        },
+        {
+          "key": "task3",
+          "level": "Task 3",
+          "title": "Save the warehouse!",
+          "summary": "Fly along 2 `fires`, (-1, -1) to (-1, 1) and (-4, -2) to (-4, 2).",
+          "description": "The firefighters have modified the drone so that it can release water to combat the fire. And just in time too, as there are 2 fires approaching the warehouse to the west. The first is 1 mile east of it and is 2 miles long, while the second is 2 miles west and is 4 miles long (look in your simulator for more details). The warehouse itself is 2 miles west of the fire station (where the drone starts)."
         }
       ]
     }
