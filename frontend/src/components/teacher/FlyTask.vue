@@ -5,7 +5,7 @@
     :dark="color === 'error'"
     class="mb-2"
   >
-    <v-card-title primary-title class="justify-center ma-n4 pt-1">
+    <v-card-title primary-title class="justify-center">
       <div>Team: {{ item.name }}</div>
     </v-card-title>
     <v-card-text class="ma-n2">
@@ -14,10 +14,10 @@
       <div>Drone: {{ drone.name }}</div>
     </v-card-text>
     <div v-if="success">
-      <v-btn class="mb-2" color="warning" @click="flyWrapper">
+      <v-btn class="mb-2 mx-1" color="warning" @click="flyWrapper">
         Retry<v-icon dark right>mdi-reload</v-icon>
       </v-btn>
-      <v-btn class="mb-2" color="success" @click="approve">
+      <v-btn class="mb-2 mx-1" color="success" @click="approve">
         Approve<v-icon dark right>mdi-check-all</v-icon>
       </v-btn>
       <v-btn class="mb-2 mx-1" color="error" @click="cancel">
@@ -25,7 +25,7 @@
       </v-btn>
     </div>
     <div v-else-if="fail">
-      <v-btn class="mb-2" color="warning" @click="flyWrapper">
+      <v-btn class="mb-2 mx-1" color="warning" @click="flyWrapper">
         Retry<v-icon dark right>mdi-reload</v-icon>
       </v-btn>
       <v-btn class="mb-2 mx-1" color="error" @click="cancel">
@@ -33,7 +33,7 @@
       </v-btn>
     </div>
     <div v-else>
-      <v-btn class="mb-2" color="success" @click="flyWrapper">
+      <v-btn class="mb-2  mx-1" color="success" @click="flyWrapper">
         Fly<v-icon dark right>mdi-helicopter</v-icon>
       </v-btn>
       <v-btn class="mb-2 mx-1" color="error" @click="cancel">
