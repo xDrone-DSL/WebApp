@@ -92,7 +92,20 @@ module.exports = io => {
         }
       });
 
-      socket.on("FLY", data => {
+      socket.on("APPROVE_FINISH_TASK", data => {
+        const mac = data.mac;
+        const uid = data.uid;
+        const socketId = uidToSocketId[uid];
+        console.log(`"FLY DRONE uid:${uid} ${mac}`);
+        if (socketId) {
+          io.to(socketId).emit("REQUEST_FLIGHT_STATUS", { status: false });
+          io.to(socketId).emit("NEXT_TASK");
+        }
+        state.drones.filter(d => d.mac === mac)[0].queue.shift(1);
+        io.emit("UPDATE", state);
+      });
+
+      socket.on("CANCEL_FLIGHT_REQUEST", data => {
         const mac = data.mac;
         const uid = data.uid;
         const socketId = uidToSocketId[uid];

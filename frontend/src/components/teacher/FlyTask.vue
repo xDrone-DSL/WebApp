@@ -1,21 +1,45 @@
 <template>
-  <v-card :loading="loading" :color="color" class="mb-2">
-    <v-card-title primary-title class="justify-center">
+  <v-card
+    :loading="loading"
+    :color="color"
+    :dark="color === 'error'"
+    class="mb-2"
+  >
+    <v-card-title primary-title class="justify-center ma-n4 pt-1">
       <div>Team: {{ item.name }}</div>
     </v-card-title>
-    <v-card-text>
+    <v-card-text class="ma-n2">
       <div>{{ item.level.adv.level }}</div>
       <div>{{ item.level.task.level }}</div>
       <div>Drone: {{ drone.name }}</div>
     </v-card-text>
     <div v-if="success">
-      <v-btn class="ma-2" color="warning" @click="flyWrapper">Fly Again</v-btn>
-      <v-btn class="ma-2" color="success" @click="approve">Approve</v-btn>
+      <v-btn class="mb-2" color="warning" @click="flyWrapper">
+        Retry<v-icon dark right>mdi-reload</v-icon>
+      </v-btn>
+      <v-btn class="mb-2" color="success" @click="approve">
+        Approve<v-icon dark right>mdi-check-all</v-icon>
+      </v-btn>
+      <v-btn class="mb-2 mx-1" color="error" @click="cancel">
+        Cancel<v-icon dark right>mdi-cancel</v-icon>
+      </v-btn>
     </div>
     <div v-else-if="fail">
-      <v-btn class="ma-2" color="warning" @click="flyWrapper">Fly Again</v-btn>
+      <v-btn class="mb-2" color="warning" @click="flyWrapper">
+        Retry<v-icon dark right>mdi-reload</v-icon>
+      </v-btn>
+      <v-btn class="mb-2 mx-1" color="error" @click="cancel">
+        Cancel<v-icon dark right>mdi-cancel</v-icon>
+      </v-btn>
     </div>
-    <v-btn v-else class="ma-2" color="success" @click="flyWrapper">Fly</v-btn>
+    <div v-else>
+      <v-btn class="mb-2" color="success" @click="flyWrapper">
+        Fly<v-icon dark right>mdi-helicopter</v-icon>
+      </v-btn>
+      <v-btn class="mb-2 mx-1" color="error" @click="cancel">
+        Cancel<v-icon dark right>mdi-cancel</v-icon>
+      </v-btn>
+    </div>
   </v-card>
 </template>
 
@@ -38,7 +62,7 @@ export default {
       this.color = "";
       this.success = false;
       this.fail = false;
-      fly(this.drone.queue[0].code, this.drone.mac)
+      fly(this.item.code, this.drone.mac)
         .then(() => {
           this.color = "success";
           this.loading = false;
@@ -51,9 +75,15 @@ export default {
         });
     },
     approve() {
-      socket.emit("FLY", {
+      socket.emit("APPROVE_FINISH_TASK", {
         mac: this.drone.mac,
-        uid: this.drone.queue[0].uid
+        uid: this.item.uid
+      });
+    },
+    cancel() {
+      socket.emit("CANCEL_FLIGHT_REQUEST", {
+        mac: this.drone.mac,
+        uid: this.item.uid
       });
     }
   }

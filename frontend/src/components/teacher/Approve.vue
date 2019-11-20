@@ -22,7 +22,7 @@
               </v-card-text>
             </v-card>
           </v-flex>
-          <v-flex pa-1 xs8>
+          <v-flex pa-1 xs6>
             <v-card>
               <v-card-title primary-title>
                 Code
@@ -32,7 +32,7 @@
               </v-card-text>
             </v-card>
           </v-flex>
-          <v-flex pa-1 xs4>
+          <v-flex pa-1 xs6>
             <v-card>
               <v-card-title class="justify-center pb-1">
                 Tools
@@ -40,33 +40,33 @@
               <SimDialog :code="team.code" />
               <v-btn
                 class="my-2"
-                width="90%"
                 color="success"
                 dark
-                large
+                x-large
+                width="90%"
                 @click="approve"
               >
                 Approve
               </v-btn>
               <v-btn
                 class="my-2"
-                width="90%"
                 color="warning"
                 dark
-                large
+                x-large
+                width="90%"
                 @click="rejecta"
               >
-                Almost<br />there!
+                Almost there!
               </v-btn>
               <v-btn
                 class="my-2 mb-4"
-                width="90%"
                 color="error"
+                width="90%"
                 dark
-                large
+                x-large
                 @click="rejectb"
               >
-                Needs more<br />work
+                Needs more work
               </v-btn>
             </v-card>
           </v-flex>
