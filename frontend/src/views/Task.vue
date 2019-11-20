@@ -16,8 +16,16 @@
 
       <TeamDetailMenu />
     </v-app-bar>
-    <v-content>
+    <v-content v-if="showTask">
       <BlocklyEditor :adv="currAdv" :task="currTask" />
+    </v-content>
+    <v-content v-else class="justify-center">
+      <v-img
+        width="50%"
+        class="mx-auto my-5"
+        :src="require('../assets/next.gif')"
+      ></v-img>
+      <h1 class="display-2">Congrats! Moving you to the next task</h1>
     </v-content>
   </v-app>
 </template>
@@ -28,6 +36,7 @@ import BlocklyEditor from "@/components/BlocklyEditor";
 import TeamDetailMenu from "@/components/TeamDetailMenu";
 import { getAllAdventures } from "@/apiCalls";
 import router from "@/router.js";
+import { socket } from "@/apiCalls";
 
 export default {
   components: { NavigationDrawer, BlocklyEditor, TeamDetailMenu },
@@ -42,7 +51,8 @@ export default {
     },
     drawer: false,
     courses: [],
-    router: router
+    router: router,
+    showTask: true
   }),
   computed: {
     currAdv() {
@@ -82,6 +92,45 @@ export default {
     getAllAdventures()
       .then(advs => (this.courses = advs))
       .catch(err => alert(err));
+
+    socket.on("NEXT_TASK", () => {
+      const nextTaskIndex =
+        this.currAdv["tasks"].findIndex(task => task.key === this.taskId) + 1;
+      if (this.currAdv["tasks"].length > nextTaskIndex) {
+        this.showTask = false;
+        setTimeout(() => {
+          this.showTask = true;
+          this.$router.push(
+            "/explore/" +
+              this.currAdv.key +
+              "/" +
+              this.currAdv["tasks"][nextTaskIndex].key
+          );
+        }, 2000);
+      } else {
+        const nextAdvIndex =
+          this.courses.findIndex(adv => adv.key === this.advId) + 1;
+        if (this.courses.length > nextAdvIndex) {
+          this.showTask = false;
+          setTimeout(() => {
+            this.showTask = true;
+            this.$router.push(
+              "/explore/" +
+                this.courses[nextAdvIndex].key +
+                "/" +
+                this.courses[nextAdvIndex]["tasks"][0].key
+            );
+          }, 2000);
+        } else {
+          // TODO: CONGRATS PAGE
+          this.showTask = false;
+          setTimeout(() => {
+            this.showTask = true;
+            this.$router.push("/explore");
+          }, 2000);
+        }
+      }
+    });
   }
 };
 </script>
