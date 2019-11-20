@@ -25,7 +25,9 @@ export default {
   components: { Drone },
   props: ["drones"],
   data() {
-    return {};
+    return {
+      flying: false
+    };
   }
 };
 </script>

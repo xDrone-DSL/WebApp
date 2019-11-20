@@ -4,6 +4,7 @@
     :color="color"
     :dark="color === 'error'"
     class="mb-2"
+    :disabled="flying"
   >
     <v-card-title primary-title class="justify-center">
       <div>Team: {{ item.name }}</div>
@@ -47,7 +48,7 @@
 import { socket, fly } from "@/apiCalls";
 
 export default {
-  props: ["item", "drone"],
+  props: ["item", "drone", "flying", "toggleFlying"],
   data() {
     return {
       loading: false,
@@ -62,16 +63,19 @@ export default {
       this.color = "";
       this.success = false;
       this.fail = false;
+      this.toggleFlying();
       fly(this.item.code, this.drone.mac)
         .then(() => {
           this.color = "success";
           this.loading = false;
           this.success = true;
+          this.toggleFlying();
         })
         .catch(() => {
           this.color = "error";
           this.loading = false;
           this.fail = true;
+          this.toggleFlying();
         });
     },
     approve() {

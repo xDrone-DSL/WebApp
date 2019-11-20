@@ -6,6 +6,8 @@
         :key="item.name"
         :item="item"
         :drone="drone"
+        :flying="flying"
+        :toggleFlying="toggleFlying"
       />
     </v-flex>
     <v-flex v-else> Nothing in fly queue of {{ drone.name }} </v-flex>
@@ -20,8 +22,14 @@ export default {
   props: ["drone"],
   data() {
     return {
-      show: false
+      show: false,
+      flying: false
     };
+  },
+  methods: {
+    toggleFlying() {
+      this.flying = !this.flying;
+    }
   }
 };
 </script>
