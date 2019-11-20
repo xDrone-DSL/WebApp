@@ -16,7 +16,9 @@
 
       <TeamDetailMenu />
     </v-app-bar>
+
     <v-content v-if="showTask">
+      <TaskDescriptionSheet class="my-2" :advId="advId" :taskId="taskId" />
       <BlocklyEditor :adv="currAdv" :task="currTask" />
     </v-content>
     <v-content v-else class="justify-center">
@@ -34,12 +36,18 @@
 import NavigationDrawer from "@/components/NavigationDrawer";
 import BlocklyEditor from "@/components/BlocklyEditor";
 import TeamDetailMenu from "@/components/TeamDetailMenu";
+import TaskDescriptionSheet from "@/components/student/TaskDescriptionSheet";
 import { getAllAdventures } from "@/apiCalls";
 import router from "@/router.js";
 import { socket } from "@/apiCalls";
 
 export default {
-  components: { NavigationDrawer, BlocklyEditor, TeamDetailMenu },
+  components: {
+    NavigationDrawer,
+    BlocklyEditor,
+    TeamDetailMenu,
+    TaskDescriptionSheet
+  },
   props: {
     advId: { type: String, required: true },
     taskId: { type: String, required: true }
