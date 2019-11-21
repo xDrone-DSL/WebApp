@@ -1,6 +1,10 @@
 <template>
   <v-app>
-    <NavigationDrawer :items="courses" v-model="drawer" />
+    <NavigationDrawer
+      :items="courses"
+      v-model="drawer"
+      :reshow-task="reshowTask"
+    />
     <v-app-bar app flat absolute color="deep-purple" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
@@ -27,7 +31,7 @@
         class="mx-auto my-5"
         :src="require('../assets/next.gif')"
       ></v-img>
-      <h1 class="display-2">Congrats! Moving you to the next task</h1>
+      <h1 class="display-2">{{ congratsText }}</h1>
     </v-content>
   </v-app>
 </template>
@@ -60,7 +64,8 @@ export default {
     drawer: false,
     courses: [],
     router: router,
-    showTask: true
+    showTask: true,
+    congratsText: "Congrats! Moving you to the next task"
   }),
   computed: {
     currAdv() {
@@ -94,6 +99,16 @@ export default {
           ["tasks"].find(task => task.key === this.taskId)["title"];
       }
       return "";
+    }
+  },
+  methods: {
+    reshowTask() {
+      this.congratsText = "Taking you to the task...";
+      this.showTask = false;
+      setTimeout(() => {
+        this.showTask = true;
+        this.congratsText = "Congrats! Moving you to the next task";
+      }, 2000);
     }
   },
   mounted() {

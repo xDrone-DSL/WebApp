@@ -56,7 +56,8 @@ export default {
   name: "NavigationDrawer",
   props: {
     value: { type: Boolean, default: false },
-    items: { type: Array, required: true }
+    items: { type: Array, required: true },
+    reshowTask: { type: Function, required: true }
   },
   computed: {
     groupName() {
@@ -66,6 +67,7 @@ export default {
   methods: {
     redirect(advId, taskId) {
       router.push(`/explore/${advId}/${taskId}`);
+      this.reshowTask();
     }
   }
 };
