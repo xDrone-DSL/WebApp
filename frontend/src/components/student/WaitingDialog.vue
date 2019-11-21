@@ -1,6 +1,17 @@
 <template>
   <div>
     <v-btn
+      v-if="disabled"
+      class="my-2 pink darken-2 white--text"
+      width="90%"
+      x-large
+      @click="cancelRequest"
+      :loading="waitingCancel"
+    >
+      Cancel
+    </v-btn>
+    <v-btn
+      v-else
       class="my-2 light-blue white--text"
       width="90%"
       x-large
@@ -9,6 +20,7 @@
     >
       Request Flight
     </v-btn>
+
     <v-dialog v-model="dialog" max-width="800" style="z-index: 999999">
       <v-card>
         <v-card-title>Your code is submitted!</v-card-title>
@@ -25,6 +37,13 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <v-snackbar v-model="snackbar" :timeout="3500">
+      Request Cancelled
+      <v-btn color="pink" text @click="snackbar = false">
+        Close
+      </v-btn>
+    </v-snackbar>
   </div>
 </template>
 
@@ -34,9 +53,10 @@ export default {
   name: "WaitingDialog",
   data() {
     return {
-      socket: socket,
       dialog: false,
-      disabled: true
+      disabled: false,
+      snackbar: false,
+      waitingCancel: false
     };
   },
   props: {
@@ -53,12 +73,21 @@ export default {
         level: this.level,
         code: this.code
       });
+    },
+    cancelRequest() {
+      this.waitingCancel = true;
+      socket.emit("STUDENT_CANCEL_FLIGHT_REQUEST", { uid: localStorage.uid });
     }
   },
   mounted() {
-    this.socket.emit("REQUEST_FLIGHT_PERMISSION", { uid: localStorage.uid });
-    this.socket.on("REQUEST_FLIGHT_STATUS", data => {
+    socket.emit("REQUEST_FLIGHT_PERMISSION", { uid: localStorage.uid });
+    socket.on("REQUEST_FLIGHT_STATUS", data => {
       this.disabled = data.status;
+    });
+    socket.on("REQUEST_CANCELLED", () => {
+      this.disabled = false;
+      this.waitingCancel = false;
+      this.snackbar = true;
     });
   }
 };
