@@ -85,7 +85,7 @@ export default {
       });
     },
     cancel() {
-      socket.emit("CANCEL_FLIGHT_REQUEST", {
+      socket.emit("TEACHER_CANCEL_FLIGHT_REQUEST", {
         mac: this.drone.mac,
         uid: this.item.uid
       });
