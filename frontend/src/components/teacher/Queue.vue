@@ -6,7 +6,11 @@
     <v-container fluid class="pa-2" v-if="teams.length > 0">
       <v-flex v-for="team in teams" :key="team.name" my-2>
         <v-scroll-y-reverse-transition>
-          <v-card v-if="!team.hide" class="mx-auto">
+          <v-card
+            v-if="!team.hide"
+            class="mx-auto"
+            @click="setCurrTeamUID(team.uid)"
+          >
             <v-card-title>
               {{ team.name }}
             </v-card-title>
@@ -26,6 +30,6 @@
 
 <script>
 export default {
-  props: ["teams"]
+  props: ["teams", "setCurrTeamUID"]
 };
 </script>

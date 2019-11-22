@@ -97,7 +97,7 @@ module.exports = io => {
 
         mindrone.queue.push(state.queue[0]);
 
-        state.queue.shift(1);
+        state.queue = state.queue.filter(team => team.uid != uid);
         io.emit("UPDATE", state);
 
         if (uidToSocketId[uid]) {
@@ -144,7 +144,7 @@ module.exports = io => {
 
       console.log(`REJECT ${rejectionType}: ${uid}`);
 
-      state.queue.shift(1);
+      state.queue = state.queue.filter(team => team.uid != uid);
 
       io.emit("UPDATE", state);
 
