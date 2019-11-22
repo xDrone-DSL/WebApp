@@ -1,8 +1,19 @@
 <template>
   <div id="app">
     <router-view />
+    <LoggedOutDialog />
   </div>
 </template>
+
+<script>
+import LoggedOutDialog from "@/components/student/LoggedOutDialog";
+
+export default {
+  components: {
+    LoggedOutDialog
+  }
+};
+</script>
 
 <style>
 #app {
