@@ -2,6 +2,8 @@
   <v-app>
     <v-app-bar app dark color="deep-purple accent-4">
       <v-toolbar-title>Teacher</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <SettingMenu />
     </v-app-bar>
 
     <v-content>
@@ -28,16 +30,18 @@
 </template>
 
 <script>
-import Queue from "../components/teacher/Queue";
-import Approve from "../components/teacher/Approve";
-import Drones from "../components/teacher/Drones";
+import Queue from "@/components/teacher/Queue";
+import Approve from "@/components/teacher/Approve";
+import Drones from "@/components/teacher/Drones";
+import SettingMenu from "@/components/teacher/SettingMenu";
 import { socket } from "../apiCalls";
 
 export default {
   components: {
     Queue,
     Approve,
-    Drones
+    Drones,
+    SettingMenu
   },
   methods: {
     approve() {

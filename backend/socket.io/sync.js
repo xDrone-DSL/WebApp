@@ -8,7 +8,7 @@ const feedbackOptions = {
     "Good work, but more work is needed for this task. Think about your code again 🤔. The teacher will come over soon to help you!"
 };
 
-const uidToSocketId = {};
+let uidToSocketId = {};
 
 module.exports = io => {
   console.log("Sync module ready");
@@ -137,6 +137,19 @@ module.exports = io => {
 
       socket.on("REJECT2", data => {
         rejection(data, "NEEDS_MORE_WORK");
+      });
+
+      socket.on("LOGOUT_ALL_STUDENTS", () => {
+        for (const uid in uidToSocketId) {
+          const socketId = uidToSocketId[uid];
+          io.to(socketId).emit("FORCED_LOGOUT");
+        }
+        uidToSocketId = {};
+        state.queue = [];
+        state.drones.forEach(drone => {
+          drone.queue = [];
+        });
+        io.emit("UPDATE", state);
       });
     });
 

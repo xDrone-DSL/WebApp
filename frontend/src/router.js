@@ -58,10 +58,6 @@ router.beforeEach((to, from, next) => {
     next("/explore");
   } else {
     socket.emit("IAM", { uid: localStorage.uid });
-    socket.on("INVALID_I_AM", () => {
-      localStorage.removeItem("uid");
-      next("/login");
-    });
     next();
   }
 });
