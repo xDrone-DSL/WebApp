@@ -45,6 +45,7 @@ module.exports = io => {
 
     socket.on("REQUEST_FLIGHT", data => {
       data["hide"] = false;
+      data["time"] = new Date();
       state.queue.push(data);
       io.emit("UPDATE", state);
     });
