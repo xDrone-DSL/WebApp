@@ -17,7 +17,7 @@
 export default {
   props: ["team", "setCurrTeamUID"],
   data: () => ({
-    time: ""
+    time: "loading..."
   }),
   mounted() {
     setInterval(() => {
@@ -29,8 +29,13 @@ export default {
 
       let mm = Math.floor(msec / 1000 / 60);
       msec -= mm * 1000 * 60;
-
-      this.time = `${mm} mins ago`;
+      if (mm === 0) {
+        let ss = Math.floor(msec / 1000);
+        msec -= ss * 1000;
+        this.time = `${ss} secs ago`;
+      } else {
+        this.time = `${mm} mins ago`;
+      }
     }, 1000);
   }
 };
