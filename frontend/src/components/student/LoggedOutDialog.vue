@@ -7,7 +7,14 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn color="green darken-1" text @click="dialog = false">
+        <v-btn
+          color="green darken-1"
+          text
+          @click="
+            dialog = false;
+            $router.push('/login');
+          "
+        >
           Close
         </v-btn>
       </v-card-actions>
@@ -17,7 +24,6 @@
 
 <script>
 import { socket } from "@/apiCalls";
-import router from "@/router.js";
 
 export default {
   name: "LoggedOutDialog",
@@ -30,7 +36,6 @@ export default {
     socket.on("FORCED_LOGOUT", () => {
       this.dialog = true;
       localStorage.removeItem("uid");
-      router.push("/login");
     });
   }
 };

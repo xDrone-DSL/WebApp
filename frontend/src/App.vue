@@ -6,11 +6,17 @@
 </template>
 
 <script>
+import { socket } from "@/apiCalls";
 import LoggedOutDialog from "@/components/student/LoggedOutDialog";
 
 export default {
   components: {
     LoggedOutDialog
+  },
+  mounted() {
+    socket.on("INVALID_I_AM", () => {
+      localStorage.removeItem("uid");
+    });
   }
 };
 </script>
