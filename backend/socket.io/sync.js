@@ -19,7 +19,9 @@ module.exports = io => {
     socket.on("NEW_USER", data => {
       const uid = data.teamName;
       console.log(uid);
-      if (uid in uidToSocketId) {
+      const pattern = /^[\w|\s]*$/;
+
+      if (uid in uidToSocketId || !pattern.test(uid)) {
         socket.emit("LOGIN_FAILED");
       } else {
         uidToSocketId[uid] = socket.id;
