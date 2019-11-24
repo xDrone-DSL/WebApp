@@ -4,18 +4,8 @@
       Approval Queue
     </v-card-title>
     <v-container fluid class="pa-2" v-if="teams.length > 0">
-      <v-flex v-for="team in teams" :key="team.name" my-2>
-        <v-scroll-y-reverse-transition>
-          <v-card v-if="!team.hide" class="mx-auto">
-            <v-card-title>
-              {{ team.name }}
-            </v-card-title>
-            <v-card-subtitle class="text-left">
-              <div>{{ team.level.adv.level }}</div>
-              <div>{{ team.level.task.level }}</div>
-            </v-card-subtitle>
-          </v-card>
-        </v-scroll-y-reverse-transition>
+      <v-flex v-for="team in teams" :key="team.uid" my-2>
+        <QueueTask :team="team" :setCurrTeamUID="setCurrTeamUID" />
       </v-flex>
     </v-container>
     <v-card-text v-else>
@@ -25,7 +15,10 @@
 </template>
 
 <script>
+import QueueTask from "./QueueTask";
+
 export default {
-  props: ["teams"]
+  props: ["teams", "setCurrTeamUID"],
+  components: { QueueTask }
 };
 </script>

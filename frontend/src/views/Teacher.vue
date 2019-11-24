@@ -10,11 +10,11 @@
       <v-container fluid fill-height>
         <v-layout>
           <v-flex xs2 pa-1>
-            <Queue :teams="teamsSub1"></Queue>
+            <Queue :teams="otherTeams" :setCurrTeamUID="setCurrTeamUID"></Queue>
           </v-flex>
           <v-flex xs6 pa-1>
             <Approve
-              :team="teams[0]"
+              :team="currTeam"
               :approve="approve"
               :rejecta="reject1"
               :rejectb="reject2"
@@ -46,44 +46,59 @@ export default {
   methods: {
     approve() {
       if (this.teams.length > 1) {
-        this.teams[0].hide = true;
-        this.teams[1].hide = true;
+        this.currTeam.hide = true;
+        this.otherTeams[0].hide = true;
       }
       setTimeout(() => {
-        this.socket.emit("APPROVE", { uid: this.teams[0].uid });
+        this.socket.emit("APPROVE", { uid: this.currTeamUID });
         if (this.teams.length > 0) {
-          this.teams[0].hide = false;
+          this.currTeam.hide = false;
         }
       }, 300);
     },
     reject1() {
       if (this.teams.length > 1) {
-        this.teams[0].hide = true;
-        this.teams[1].hide = true;
+        this.currTeam.hide = true;
+        this.otherTeams[0].hide = true;
       }
       setTimeout(() => {
-        this.socket.emit("REJECT1", { uid: this.teams[0].uid });
+        this.socket.emit("REJECT1", { uid: this.currTeamUID });
         if (this.teams.length > 0) {
-          this.teams[0].hide = false;
+          this.currTeam.hide = false;
         }
       }, 300);
     },
     reject2() {
       if (this.teams.length > 1) {
-        this.teams[0].hide = true;
-        this.teams[1].hide = true;
+        this.currTeam.hide = true;
+        this.otherTeams[0].hide = true;
       }
       setTimeout(() => {
-        this.socket.emit("REJECT2", { uid: this.teams[0].uid });
+        this.socket.emit("REJECT2", { uid: this.currTeamUID });
         if (this.teams.length > 0) {
-          this.teams[0].hide = false;
+          this.currTeam.hide = false;
+        }
+      }, 300);
+    },
+    setCurrTeamUID(uid) {
+      const oldTeam = this.currTeam;
+      oldTeam.hide = true;
+      this.currTeamUID = uid;
+      this.currTeam.hide = true;
+      setTimeout(() => {
+        if (this.teams.length > 0) {
+          oldTeam.hide = false;
+          this.currTeam.hide = false;
         }
       }, 300);
     }
   },
   computed: {
-    teamsSub1() {
-      return this.teams.slice(1);
+    otherTeams() {
+      return this.teams.filter(item => item.uid != this.currTeamUID);
+    },
+    currTeam() {
+      return this.teams.find(item => item.uid === this.currTeamUID);
     }
   },
   data() {
@@ -91,7 +106,8 @@ export default {
       socket: socket,
       state: {},
       teams: [],
-      drones: []
+      drones: [],
+      currTeamUID: ""
     };
   },
   mounted() {
@@ -100,6 +116,12 @@ export default {
       this.state = state;
       if (this.state.queue) {
         this.teams = this.state.queue;
+        if (
+          this.teams.length > 0 &&
+          !this.teams.some(task => task.uid === this.currTeamUID)
+        ) {
+          this.currTeamUID = this.teams[0].uid;
+        }
       }
       if (this.state.drones) {
         this.drones = this.state.drones;

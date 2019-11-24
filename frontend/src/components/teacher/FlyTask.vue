@@ -6,9 +6,14 @@
     class="mb-2"
     :disabled="flying"
   >
-    <v-card-title primary-title class="justify-center">
+    <v-card-title primary-title class="justify-center pa-2">
       <div>Team: {{ item.name }}</div>
     </v-card-title>
+    <v-btn icon @click="showCode = true" class="code-popup-button">
+      <v-icon>
+        mdi-code-braces
+      </v-icon>
+    </v-btn>
     <v-card-text class="ma-n2">
       <div>{{ item.level.adv.level }}</div>
       <div>{{ item.level.task.level }}</div>
@@ -41,6 +46,20 @@
         Cancel<v-icon dark right>mdi-cancel</v-icon>
       </v-btn>
     </div>
+    <v-dialog v-model="showCode" width="300">
+      <v-card>
+        <v-card-title primary-title>
+          Code
+        </v-card-title>
+        <v-card-text class="text-left">
+          <code>{{ item.code }}</code>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn flat color="success" @click="showCode = false">close</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-card>
 </template>
 
@@ -54,7 +73,8 @@ export default {
       loading: false,
       color: "",
       success: false,
-      fail: false
+      fail: false,
+      showCode: false
     };
   },
   methods: {
@@ -93,3 +113,16 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.code-popup-button {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+}
+code {
+  background-color: white !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+</style>

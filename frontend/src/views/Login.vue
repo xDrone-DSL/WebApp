@@ -17,6 +17,7 @@
                 clearable
                 v-model="teamName"
                 :rules="[rules.required, rules.alphanumeric]"
+                v-on:keyup.enter="login"
               />
             </v-card-text>
             <v-card-actions>
@@ -65,7 +66,7 @@ export default {
       if (this.teamName === "") {
         return "Team name can't be nothing.";
       }
-      return `Sorry, the name ${this.unavailableName} is taken. Please pick another one.`;
+      return `Sorry, the name ${this.unavailableName} is taken or invalid. Please pick another one.`;
     }
   },
   mounted() {

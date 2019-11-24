@@ -19,7 +19,9 @@ module.exports = io => {
     socket.on("NEW_USER", data => {
       const uid = data.teamName;
       console.log(uid);
-      if (uid in uidToSocketId) {
+      const pattern = /^[\w|\s]*$/;
+
+      if (uid in uidToSocketId || !pattern.test(uid)) {
         socket.emit("LOGIN_FAILED");
       } else {
         uidToSocketId[uid] = socket.id;
@@ -45,6 +47,7 @@ module.exports = io => {
 
     socket.on("REQUEST_FLIGHT", data => {
       data["hide"] = false;
+      data["time"] = new Date();
       state.queue.push(data);
       io.emit("UPDATE", state);
     });
@@ -97,7 +100,7 @@ module.exports = io => {
 
         mindrone.queue.push(state.queue[0]);
 
-        state.queue.shift(1);
+        state.queue = state.queue.filter(team => team.uid != uid);
         io.emit("UPDATE", state);
 
         if (uidToSocketId[uid]) {
@@ -157,7 +160,7 @@ module.exports = io => {
 
       console.log(`REJECT ${rejectionType}: ${uid}`);
 
-      state.queue.shift(1);
+      state.queue = state.queue.filter(team => team.uid != uid);
 
       io.emit("UPDATE", state);
 
