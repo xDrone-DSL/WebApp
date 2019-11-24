@@ -69,11 +69,6 @@ export default {
       return `Sorry, the name ${this.unavailableName} is taken or invalid. Please pick another one.`;
     }
   },
-  watch: {
-    teamName() {
-      this.error = false;
-    }
-  },
   mounted() {
     socket.on("LOGIN_APPROVED", data => {
       const uid = data.uid;
