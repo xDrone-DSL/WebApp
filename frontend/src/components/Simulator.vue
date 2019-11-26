@@ -10,7 +10,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 export default {
   props: {
     animation: { type: Array, required: true },
-    environments: { type: Array }
+    environments: { required: true }
   },
   data() {
     return {

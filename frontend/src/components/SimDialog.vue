@@ -3,10 +3,10 @@
     <v-btn
       class="my-2"
       width="90%"
-      color="primary"
-      dark
+      color="primary white--text"
       x-large
       @click="getAnimation"
+      :disabled="code === ''"
     >
       Simulate
     </v-btn>
