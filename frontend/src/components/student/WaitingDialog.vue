@@ -16,7 +16,7 @@
       width="90%"
       x-large
       @click="flyWrapper"
-      :disabled="disabled"
+      :disabled="code === '' || disabled"
     >
       Request Flight
     </v-btn>
