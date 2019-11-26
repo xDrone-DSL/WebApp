@@ -13,7 +13,11 @@
 
     <v-dialog v-model="dialog" max-width="800" style="z-index: 999999">
       <v-card>
-        <Simulator v-if="dialog" :animation="animation" />
+        <Simulator
+          v-if="dialog"
+          :animation="animation"
+          :environments="environments"
+        />
         <v-card-actions>
           <v-btn color="green darken-1" text @click="dialog = false">
             Close
@@ -31,7 +35,8 @@ import { simulate } from "../apiCalls";
 export default {
   components: { Simulator },
   props: {
-    code: { type: String, required: true }
+    code: { type: String, required: true },
+    environments: { type: Array, required: true }
   },
   methods: {
     getAnimation: function() {

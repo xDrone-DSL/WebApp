@@ -23,7 +23,7 @@
       </v-card>
     </v-layout>
     <v-row height="5vh">
-      <v-col><SimDialog :code="code"/></v-col>
+      <v-col><SimDialog :code="code" :environments="task.environments"/></v-col>
       <v-col><WaitingDialog :code="code" :level="level"/></v-col>
     </v-row>
     <FeedbackDialog />

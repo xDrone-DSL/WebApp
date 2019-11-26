@@ -8,7 +8,10 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 export default {
-  props: ["animation"],
+  props: {
+    animation: { type: Array, required: true },
+    environments: { type: Array }
+  },
   data() {
     return {
       group: null,
@@ -35,38 +38,22 @@ export default {
   },
   methods: {
     init: function() {
-      var container = document.getElementById("container");
+      let container = document.getElementById("container");
       this.scene = new THREE.Scene();
       this.camera = new THREE.PerspectiveCamera(70, 8 / 6, 1, 1000);
       this.scene.background = new THREE.Color("#cccccc");
 
-      this.group = new THREE.Group();
-
-      //Light
-      var light1 = new THREE.PointLight("#ffffff", 1);
-      light1.position.set(4, 4, -4);
-      this.group.add(light1);
-
-      var light2 = new THREE.PointLight("#ffffff", 1);
-      light2.position.set(-4, 4, 4);
-      this.group.add(light2);
-
-      var light3 = new THREE.PointLight("#ffffff", 1);
-      light3.position.set(-4, 4, -4);
-      this.group.add(light3);
-
-      var light4 = new THREE.PointLight("#ffffff", 1);
-      light4.position.set(4, 4, 4);
-      this.group.add(light4);
+      let light = new THREE.AmbientLight("#ffffff"); // soft white light
+      this.scene.add(light);
 
       //Helper
-      this.axis10cm = new THREE.GridHelper(2000, 500);
+      this.axis10cm = new THREE.GridHelper(2000, 1000);
       this.axis10cm.position.y = 0;
       this.axis10cm.material.opacity = 0.5;
       this.axis10cm.material.transparent = true;
       this.scene.add(this.axis10cm);
 
-      this.axis1m = new THREE.GridHelper(2000, 50);
+      this.axis1m = new THREE.GridHelper(2000, 100);
       this.axis1m.position.y = 0;
       this.axis1m.material.opacity = 1;
       this.axis1m.material.transparent = true;
@@ -79,21 +66,61 @@ export default {
 
       //object 2
 
-      var loader = new GLTFLoader();
-      loader.load(
-        "/drone/scene.gltf",
-        // Here the loaded data is assumed to be an object
-        obj => {
-          obj.scene.children[0].children[0].children[0].children.pop(12);
-          obj.scene.position.y += 1.5;
-          this.group.add(obj.scene);
-          this.scene.add(this.group);
-          this.mixer = new THREE.AnimationMixer(this.group);
-          obj.animations.forEach(clip => {
-            this.mixer.clipAction(clip).play();
-          });
+      let loader = new GLTFLoader();
+      // Load Drone
+      loader.load("/models/drone/scene.gltf", obj => {
+        this.group = new THREE.Group();
+
+        //Light
+        let light1 = new THREE.PointLight("#ffffff", 1);
+        light1.position.set(4, 4, -4);
+        this.group.add(light1);
+
+        let light2 = new THREE.PointLight("#ffffff", 1);
+        light2.position.set(-4, 4, 4);
+        this.group.add(light2);
+
+        let light3 = new THREE.PointLight("#ffffff", 1);
+        light3.position.set(-4, 4, -4);
+        this.group.add(light3);
+
+        let light4 = new THREE.PointLight("#ffffff", 1);
+        light4.position.set(4, 4, 4);
+        this.group.add(light4);
+
+        // remove bad shadow
+        obj.scene.children[0].children[0].children[0].children.pop(12);
+        obj.scene.position.y += 1.5;
+        this.group.add(obj.scene);
+        this.scene.add(this.group);
+        this.mixer = new THREE.AnimationMixer(this.group);
+        obj.animations.forEach(clip => {
+          this.mixer.clipAction(clip).play();
+        });
+      });
+      for (let i in this.environments) {
+        const environment = this.environments[i];
+        switch (environment.object) {
+          case "house":
+            // Load House
+            loader.load("/models/house/scene.gltf", obj => {
+              obj.scene.translateX(environment.position.x * 0.2);
+              obj.scene.translateZ(environment.position.y * 0.2);
+              this.scene.add(obj.scene);
+            });
+            break;
+          case "fireStation":
+            // Load FireStation
+            loader.load("/models/fireStation/scene.gltf", obj => {
+              obj.scene.scale.set(0.05, 0.05, 0.05);
+              // 40 in sim == 1 m
+              obj.scene.translateX(environment.position.x * 0.2);
+              obj.scene.translateZ(environment.position.y * 0.2);
+              this.scene.add(obj.scene);
+            });
+            break;
         }
-      );
+      }
 
       // Controls
       this.controls = new OrbitControls(this.camera, this.renderer.domElement);
