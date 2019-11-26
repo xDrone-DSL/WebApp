@@ -9,6 +9,7 @@ const feedbackOptions = {
 };
 
 let uidToSocketId = {};
+let loginEnabled = true;
 
 module.exports = io => {
   console.log("Sync module ready");
@@ -43,6 +44,14 @@ module.exports = io => {
     socket.on("USER_LOGOUT", data => {
       const uid = data.uid;
       delete uidToSocketId[uid];
+    });
+
+    socket.on("LOGIN_STATUS", () => {
+      if (loginEnabled) {
+        socket.emit("LOGIN_ENABLED");
+      } else {
+        socket.emit("LOGIN_DISABLED");
+      }
     });
 
     socket.on("REQUEST_FLIGHT", data => {
@@ -152,6 +161,16 @@ module.exports = io => {
           drone.queue = [];
         });
         io.emit("UPDATE", state);
+      });
+
+      socket.on("DISABLE_LOGIN", () => {
+        io.emit("LOGIN_DISABLED");
+        loginEnabled = false;
+      });
+
+      socket.on("ENABLE_LOGIN", () => {
+        io.emit("LOGIN_ENABLED");
+        loginEnabled = true;
       });
     });
 

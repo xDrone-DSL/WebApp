@@ -22,9 +22,15 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="deep-purple darken-3" dark @click="login">
+              <v-btn
+                v-if="loginEnabled"
+                color="deep-purple darken-3"
+                dark
+                @click="login"
+              >
                 Login
               </v-btn>
+              <v-btn v-else disabled>Login Disabled</v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -42,6 +48,7 @@ export default {
     error: false,
     teamName: "",
     unavailableName: "",
+    loginEnabled: "",
     rules: {
       required: name => !!name || "Required",
       alphanumeric: name => {
@@ -70,6 +77,13 @@ export default {
     }
   },
   mounted() {
+    socket.emit("LOGIN_STATUS");
+    socket.on("LOGIN_ENABLED", () => {
+      this.loginEnabled = true;
+    });
+    socket.on("LOGIN_DISABLED", () => {
+      this.loginEnabled = false;
+    });
     socket.on("LOGIN_APPROVED", data => {
       const uid = data.uid;
       localStorage.uid = uid;
