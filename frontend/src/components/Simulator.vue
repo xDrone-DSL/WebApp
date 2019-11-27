@@ -181,19 +181,19 @@ export default {
         switch (this.animation[0].action) {
           case "forward":
             this.group.translateZ(this.speed);
-            this.animation[0].value -= 1 / this.framesPerSecond;
+            this.animation[0].value -= 2 / this.framesPerSecond;
             break;
           case "backward":
             this.group.translateZ(-this.speed);
-            this.animation[0].value -= 1 / this.framesPerSecond;
+            this.animation[0].value -= 2 / this.framesPerSecond;
             break;
           case "right":
             this.group.translateX(-this.speed);
-            this.animation[0].value -= 1 / this.framesPerSecond;
+            this.animation[0].value -= 2 / this.framesPerSecond;
             break;
           case "left":
             this.group.translateX(this.speed);
-            this.animation[0].value -= 1 / this.framesPerSecond;
+            this.animation[0].value -= 2 / this.framesPerSecond;
             break;
           case "up":
             this.group.translateY(this.speed);
