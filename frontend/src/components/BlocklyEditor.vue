@@ -39,8 +39,8 @@ import FeedbackDialog from "./student/FeedbackDialog";
 export default {
   components: { FeedbackDialog, WaitingDialog, SimDialog },
   props: {
-    adv: { required: true },
-    task: { required: true }
+    adv: { type: Object, required: true },
+    task: { type: Object, required: true }
   },
   data() {
     return {

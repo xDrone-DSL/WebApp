@@ -23,7 +23,14 @@
 
     <v-content v-if="showTask">
       <TaskDescriptionSheet class="my-2" :advId="advId" :taskId="taskId" />
-      <BlocklyEditor :adv="currAdv" :task="currTask" />
+      <v-progress-circular
+        v-if="!(currAdv && currTask)"
+        :size="70"
+        :width="7"
+        color="purple"
+        indeterminate
+      />
+      <BlocklyEditor v-else :adv="currAdv" :task="currTask" />
     </v-content>
     <v-content v-else class="justify-center">
       <v-img
