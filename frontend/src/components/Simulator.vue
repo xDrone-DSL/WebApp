@@ -131,32 +131,42 @@ export default {
               this.scene.add(obj.scene);
             });
             break;
+          case "forest":
+            // Load Forest
+            loader.load("/models/forest/scene.gltf", obj => {
+              obj.scene.scale.set(0.175, 0.175, 0.175);
+              obj.scene.translateX(2 + environment.position.x * 0.2);
+              obj.scene.translateZ(2 + environment.position.y * 0.2);
+              this.scene.add(obj.scene);
+            });
+            break;
           case "fireStation":
             // Load FireStation
             loader.load("/models/fireStation/scene.gltf", obj => {
-              obj.scene.scale.set(0.05, 0.05, 0.05);
+              obj.scene.scale.set(0.1, 0.1, 0.1);
               // 40 in sim == 1 m
-              obj.scene.translateX(-5 + environment.position.x * 0.2);
-              obj.scene.translateZ(5 + environment.position.y * 0.2);
+              obj.scene.translateX(-10 + environment.position.x * 0.2);
+              obj.scene.translateZ(10 + environment.position.y * 0.2);
               this.scene.add(obj.scene);
             });
             break;
           case "fire":
-            const fireRadius = 10;
-            const fireHeight = 15;
-            const particleCount = 800;
+            // This has to be "var" because case block cannot have "let" or "const"
+            var fireRadius = 10;
+            var fireHeight = 15;
+            var particleCount = 800;
 
-            const geometry = new particleFire.Geometry(
+            var geometry = new particleFire.Geometry(
               fireRadius,
               fireHeight,
               particleCount
             );
-            const material = new particleFire.Material({
+            var material = new particleFire.Material({
               size: 5,
               color: 0xff2200
             });
             material.setPerspective(this.camera.fov, 600);
-            const particleFireMesh = new THREE.Points(geometry, material);
+            var particleFireMesh = new THREE.Points(geometry, material);
             particleFireMesh.translateX(environment.position.x * 0.2);
             particleFireMesh.translateZ(environment.position.y * 0.2);
 
