@@ -79,6 +79,34 @@
                 "x": -200,
                 "y": -200
               }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": 200,
+                "y": 200
+              }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": 300,
+                "y": 200
+              }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": -200,
+                "y": 0
+              }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": -100,
+                "y": 0
+              }
             }
           ]
         },
@@ -100,14 +128,91 @@
               "object": "forest",
               "position": {
                 "x": -100,
-                "y": 200
+                "y": 100
+              }
+            },
+            {
+              "object": "forest",
+              "position": {
+                "x": -100,
+                "y": 0
               }
             },
             {
               "object": "fire",
               "position": {
                 "x": -100,
+                "y": 100
+              }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": -100,
+                "y": 0
+              }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": -100,
+                "y": -100
+              }
+            },
+            {
+              "object": "forest",
+              "position": {
+                "x": -400,
                 "y": 200
+              }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": -400,
+                "y": 200
+              }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": -400,
+                "y": 100
+              }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": -400,
+                "y": 0
+              }
+            },
+            {
+              "object": "forest",
+              "position": {
+                "x": -400,
+                "y": -100
+              }
+            },
+            {
+              "object": "forest",
+              "position": {
+                "x": -400,
+                "y": -200
+              }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": -400,
+                "y": -100
+              }
+            },
+            {
+              "object": "fire",
+              "position": {
+                "x": -400,
+                "y": -200
               }
             }
           ]
