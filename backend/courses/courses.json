@@ -97,7 +97,7 @@
               }
             },
             {
-              "object": "fire",
+              "object": "forest",
               "position": {
                 "x": -100,
                 "y": 200
@@ -106,8 +106,8 @@
             {
               "object": "fire",
               "position": {
-                "x": -200,
-                "y": -200
+                "x": -100,
+                "y": 200
               }
             }
           ]
