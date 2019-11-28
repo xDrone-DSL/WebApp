@@ -126,7 +126,7 @@ export default {
           case "house":
             // Load House
             loader.load("/models/house/scene.gltf", obj => {
-              obj.scene.translateX(environment.position.x * 0.2);
+              obj.scene.translateX(-environment.position.x * 0.2);
               obj.scene.translateZ(environment.position.y * 0.2);
               this.scene.add(obj.scene);
             });
@@ -135,7 +135,7 @@ export default {
             // Load Forest
             loader.load("/models/forest/scene.gltf", obj => {
               obj.scene.scale.set(0.175, 0.175, 0.175);
-              obj.scene.translateX(2 + environment.position.x * 0.2);
+              obj.scene.translateX(2 - environment.position.x * 0.2);
               obj.scene.translateZ(2 + environment.position.y * 0.2);
               this.scene.add(obj.scene);
             });
@@ -143,7 +143,33 @@ export default {
           case "fireStation":
             // Load FireStation
             loader.load("/models/fireStation/scene.gltf", obj => {
+              obj.scene.rotation.y = THREE.Math.degToRad(180);
               obj.scene.scale.set(0.1, 0.1, 0.1);
+
+              // 40 in sim == 1 m
+              obj.scene.translateX(-10 + environment.position.x * 0.2);
+              obj.scene.translateZ(10 + environment.position.y * 0.2);
+              this.scene.add(obj.scene);
+            });
+            break;
+          case "barn":
+            // Load FireStation
+            loader.load("/models/barn/scene.gltf", obj => {
+              obj.scene.rotation.y = THREE.Math.degToRad(180);
+              obj.scene.scale.set(20, 20, 20);
+              // 40 in sim == 1 m
+              obj.scene.translateY(10);
+              obj.scene.translateX(environment.position.x * 0.2);
+              obj.scene.translateZ(environment.position.y * 0.2);
+              this.scene.add(obj.scene);
+            });
+            break;
+          case "warehouse":
+            // Load warehouse
+            loader.load("/models/warehouse/scene.gltf", obj => {
+              obj.scene.rotation.y = THREE.Math.degToRad(180);
+
+              obj.scene.scale.set(0.04, 0.04, 0.04);
               // 40 in sim == 1 m
               obj.scene.translateX(-10 + environment.position.x * 0.2);
               obj.scene.translateZ(10 + environment.position.y * 0.2);
@@ -167,7 +193,7 @@ export default {
             });
             material.setPerspective(this.camera.fov, 600);
             var particleFireMesh = new THREE.Points(geometry, material);
-            particleFireMesh.translateX(environment.position.x * 0.2);
+            particleFireMesh.translateX(-environment.position.x * 0.2);
             particleFireMesh.translateZ(environment.position.y * 0.2);
 
             this.scene.add(particleFireMesh);
