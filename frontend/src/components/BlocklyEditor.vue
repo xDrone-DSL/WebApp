@@ -23,7 +23,7 @@
       </v-card>
     </v-layout>
     <v-row height="5vh">
-      <v-col><SimDialog :code="code"/></v-col>
+      <v-col><SimDialog :code="code" :environments="task.environments"/></v-col>
       <v-col><WaitingDialog :code="code" :level="level"/></v-col>
     </v-row>
     <FeedbackDialog />
@@ -39,8 +39,8 @@ import FeedbackDialog from "./student/FeedbackDialog";
 export default {
   components: { FeedbackDialog, WaitingDialog, SimDialog },
   props: {
-    adv: { required: true },
-    task: { required: true }
+    adv: { type: Object, required: true },
+    task: { type: Object, required: true }
   },
   data() {
     return {
