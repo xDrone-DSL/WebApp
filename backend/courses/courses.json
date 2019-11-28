@@ -90,7 +90,7 @@
           "description": "The firefighters have modified the drone so that it can release water to combat the fire. And just in time too, as there are 2 fires approaching the warehouse to the west. The first is 1 mile east of it and is 2 miles long, while the second is 2 miles west and is 4 miles long (look in your simulator for more details). The warehouse itself is 2 miles west of the fire station (where the drone starts).",
           "environments": [
             {
-              "object": "house",
+              "object": "fireStation",
               "position": {
                 "x": -200,
                 "y": 0

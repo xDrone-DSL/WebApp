@@ -16,6 +16,7 @@
     "register-service-worker": "^1.6.2",
     "socket.io-client": "^2.3.0",
     "three": "^0.109.0",
+    "three-particle-fire": "0.0.0",
     "vue": "^2.6.10",
     "vue-carousel-3d": "^0.2.0",
     "vue-router": "^3.0.3",
