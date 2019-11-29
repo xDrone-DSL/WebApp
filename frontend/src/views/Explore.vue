@@ -53,7 +53,11 @@ export default {
   },
   data: () => ({
     advs: [],
-    pics: [require("../assets/drone_1.png"), require("../assets/drone_2.png")]
+    pics: [
+      require("../assets/drone_1.png"),
+      require("../assets/drone_2.png"),
+      require("../assets/drone_3.png")
+    ]
   })
 };
 </script>

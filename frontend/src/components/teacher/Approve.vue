@@ -38,7 +38,10 @@
               <v-card-title class="justify-center pb-1">
                 Tools
               </v-card-title>
-              <SimDialog :code="team.code" />
+              <SimDialog
+                :code="team.code"
+                :environments="team.level.task.environments"
+              />
               <v-btn
                 class="my-2"
                 color="success"
