@@ -11,7 +11,15 @@
           "title": "Your first flight",
           "summary": "Single movement command",
           "description": "We'll start with the most basic movement, drag in a \"fly\" clause and add a movement command to it. See how you can move in different directions, for different amounts of time. Try it out in the simulator to see how it makes the drone fly!",
-          "environments": []
+          "environments": [
+            {
+              "object": "barn",
+              "position": {
+                "x": 0,
+                "y": 0
+              }
+            }
+          ]
         },
         {
           "level": "Task 2",
@@ -19,7 +27,15 @@
           "title": "Flying further",
           "summary": "Multiple movement commands",
           "description": "Try to click together multiple movement commands within the fly clause. Each command has its own direction and duration. You'll notice that when your program gets run on the simulator, the commands are run one after another, starting at the top. For a challenge try to make the drone fly in a square, finishing at the same position it starts.",
-          "environments": []
+          "environments": [
+            {
+              "object": "warehouse",
+              "position": {
+                "x": 0,
+                "y": 0
+              }
+            }
+          ]
         },
         {
           "level": "Task 3",
