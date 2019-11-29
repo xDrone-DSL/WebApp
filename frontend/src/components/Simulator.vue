@@ -156,7 +156,7 @@ export default {
             // Load FireStation
             loader.load("/models/barn/scene.gltf", obj => {
               obj.scene.rotation.y = THREE.Math.degToRad(180);
-              obj.scene.scale.set(20, 20, 20);
+              obj.scene.scale.set(15, 15, 15);
               // 40 in sim == 1 m
               obj.scene.translateY(10);
               obj.scene.translateX(environment.position.x * 0.2);
