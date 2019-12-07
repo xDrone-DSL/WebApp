@@ -95,6 +95,12 @@ module.exports = io => {
     socket.on("TEACHER", () => {
       socket.emit("UPDATE", state);
 
+      socket.on("SET_DRONE", data => {
+        const mac = data.mac;
+        const state = data.state;
+        state.drones.find(drone => drone.mac === mac).enabled = state;
+      });
+
       socket.on("APPROVE", data => {
         const uid = data.uid;
 
@@ -102,7 +108,7 @@ module.exports = io => {
 
         let mindrone = state.drones[0];
         state.drones.forEach(drone => {
-          if (drone.queue.length < mindrone.queue.length) {
+          if (drone.enabled && drone.queue.length < mindrone.queue.length) {
             mindrone = drone;
           }
         });
