@@ -61,6 +61,9 @@ export default {
   }),
   methods: {
     login() {
+      if (!this.loginEnabled) {
+        return;
+      }
       if (this.teamName === "") {
         this.error = true;
       } else {
