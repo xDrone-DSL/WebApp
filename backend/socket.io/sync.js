@@ -95,10 +95,27 @@ module.exports = io => {
     socket.on("TEACHER", () => {
       socket.emit("UPDATE", state);
 
+      socket.on("GET_DRONES", () => {
+        socket.emit("DRONES", state.drones);
+      });
+
       socket.on("SET_DRONE", data => {
         const mac = data.mac;
-        const state = data.state;
-        state.drones.find(drone => drone.mac === mac).enabled = state;
+        const newValue = data.state;
+        const drone = state.drones.find(drone => drone.mac === mac);
+        if (drone) {
+          drone.enabled = newValue;
+        } else {
+          const name = data.name;
+          state.drones.push({
+            queue: [],
+            name: name,
+            mac: mac,
+            enabled: true
+          });
+        }
+        socket.emit("DRONES", state.drones);
+        socket.emit("UPDATE", state);
       });
 
       socket.on("APPROVE", data => {

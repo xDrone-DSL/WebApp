@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" flat>
+  <v-card v-if="drone.enabled" class="mx-auto" flat>
     <v-flex v-if="drone.queue.length > 0">
       <FlyTask
         v-for="item in drone.queue"
