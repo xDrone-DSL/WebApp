@@ -100,13 +100,14 @@ export default {
           "Name already exists"
       ],
       macRules: [
-        v => !!v || "MAC is required",
+        v => !!v || "MAC address is required",
         mac => {
           const macRegex = /^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/;
-          return macRegex.test(mac) || "please enter a valid MAC address";
+          return macRegex.test(mac) || "MAC address not in valid format";
         },
         mac =>
-          !this.drones.find(drone => drone.mac === mac) || "Mac already exists"
+          !this.drones.find(drone => drone.mac === mac) ||
+          "MAC address already exists"
       ]
     };
   },
