@@ -36,6 +36,8 @@
             </v-list-item-icon>
             <v-list-item-content>Enable Login</v-list-item-content>
           </v-list-item>
+
+          <DroneSettings></DroneSettings>
         </v-list>
       </v-card>
     </v-menu>
@@ -44,9 +46,13 @@
 
 <script>
 import { socket } from "@/apiCalls";
+import DroneSettings from "@/components/teacher/DroneSettings";
 
 export default {
   name: "SettingMenu",
+  components: {
+    DroneSettings
+  },
   data: () => ({
     on: true,
     menu: false,
@@ -73,7 +79,6 @@ export default {
     socket.on("LOGIN_DISABLED", () => {
       this.loginEnabled = false;
     });
-    console.log(this.loginEnabled);
   }
 };
 </script>

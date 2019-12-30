@@ -4,12 +4,14 @@
     {
       "queue": [],
       "name": "BLU",
-      "mac": "d0:3a:86:9d:e6:5a"
+      "mac": "d0:3a:86:9d:e6:5a",
+      "enabled": true
     },
     {
       "queue": [],
       "name": "JEWEL",
-      "mac": "d0:3a:86:4c:e6:5a"
+      "mac": "d0:3a:86:4c:e6:5a",
+      "enabled": true
     }
   ]
 }
