@@ -10,6 +10,7 @@ const feedbackOptions = {
 
 let uidToSocketId = {};
 let loginEnabled = true;
+let attentionOn = false;
 
 module.exports = io => {
   console.log("Sync module ready");
@@ -39,6 +40,12 @@ module.exports = io => {
         return;
       }
       uidToSocketId[uid] = socket.id;
+
+      if (attentionOn) {
+        socket.emit("ATTENTION_ON");
+      } else {
+        socket.emit("ATTENTION_OFF");
+      }
     });
 
     socket.on("USER_LOGOUT", data => {
@@ -194,6 +201,22 @@ module.exports = io => {
       socket.on("ENABLE_LOGIN", () => {
         io.emit("LOGIN_ENABLED");
         loginEnabled = true;
+      });
+
+      socket.on("ATTENTION_TURN_ON", () => {
+        attentionOn = true;
+        for (const uid in uidToSocketId) {
+          const socketId = uidToSocketId[uid];
+          io.to(socketId).emit("ATTENTION_ON");
+        }
+      });
+
+      socket.on("ATTENTION_TURN_OFF", () => {
+        attentionOn = false;
+        for (const uid in uidToSocketId) {
+          const socketId = uidToSocketId[uid];
+          io.to(socketId).emit("ATTENTION_OFF");
+        }
       });
     });
 
