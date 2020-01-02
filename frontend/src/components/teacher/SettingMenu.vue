@@ -37,6 +37,14 @@
             <v-list-item-content>Enable Login</v-list-item-content>
           </v-list-item>
 
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon style="margin-top: 6px;">mdi-account-alert</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>Attention</v-list-item-content>
+            <v-switch v-model="attentionOn" inset @change="updateAttention" />
+          </v-list-item>
+
           <DroneSettings></DroneSettings>
         </v-list>
       </v-card>
@@ -56,7 +64,8 @@ export default {
   data: () => ({
     on: true,
     menu: false,
-    loginEnabled: true
+    loginEnabled: true,
+    attentionOn: false
   }),
   methods: {
     logoutAllStudents() {
@@ -69,6 +78,13 @@ export default {
     enableLogin() {
       socket.emit("ENABLE_LOGIN");
       this.loginEnabled = true;
+    },
+    updateAttention() {
+      if (this.attentionOn) {
+        socket.emit("ATTENTION_TURN_ON");
+      } else {
+        socket.emit("ATTENTION_TURN_OFF");
+      }
     }
   },
   mounted() {

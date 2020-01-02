@@ -14,7 +14,6 @@
           @click="
             dialog = false;
             $router.push('/login');
-            setLoggedOutDialog();
           "
         >
           Close
@@ -25,15 +24,20 @@
 </template>
 
 <script>
+import { socket } from "@/apiCalls";
+
 export default {
   name: "LoggedOutDialog",
-  props: {
-    setLoggedOutDialog: { type: Function, required: true }
-  },
   data() {
     return {
-      dialog: true
+      dialog: false
     };
+  },
+  mounted() {
+    socket.on("FORCED_LOGOUT", () => {
+      localStorage.removeItem("uid");
+      this.dialog = true;
+    });
   }
 };
 </script>
