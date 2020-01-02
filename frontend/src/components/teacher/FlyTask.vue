@@ -84,7 +84,7 @@ export default {
       this.success = false;
       this.fail = false;
       this.toggleFlying();
-      fly(this.item.code, this.drone.mac)
+      fly(this.item.code, this.drone.mac, this.item.requirements)
         .then(() => {
           this.color = "success";
           this.loading = false;

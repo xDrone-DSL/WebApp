@@ -57,14 +57,14 @@
           "requirements": [
             {
               "id": 1,
-              "class": "ACTION",
+              "class": "LANDING",
               "area": {
-                  "x_low": 150,
-                  "x_high": 250,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -250,
-                  "z_high": -150
+                "x_low": 150,
+                "x_high": 250,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -250,
+                "z_high": -150
               }
             }
           ]
@@ -131,34 +131,36 @@
               "id": 1,
               "class": "ACTION",
               "area": {
-                  "x_low": 250,
-                  "x_high": 350,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": 50,
-                  "z_high": 150
+                "x_low": 250,
+                "x_high": 350,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": 50,
+                "z_high": 150
               }
-            }, {
+            },
+            {
               "id": 2,
               "class": "ACTION",
               "area": {
-                  "x_low": -150,
-                  "x_high": -50,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -250,
-                  "z_high": -150
+                "x_low": -150,
+                "x_high": -50,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -250,
+                "z_high": -150
               }
-            }, {
+            },
+            {
               "id": 3,
               "class": "ACTION",
               "area": {
-                  "x_low": -250,
-                  "x_high": -150,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": 150,
-                  "z_high": 250
+                "x_low": -250,
+                "x_high": -150,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": 150,
+                "z_high": 250
               }
             }
           ]
@@ -274,39 +276,40 @@
               "id": 1,
               "class": "CONT_ACTION",
               "area_1": {
-                  "x_low": -150,
-                  "x_high": -50,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": 50,
-                  "z_high": 150
+                "x_low": -150,
+                "x_high": -50,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": 50,
+                "z_high": 150
               },
               "area_2": {
-                  "x_low": -150,
-                  "x_high": -50,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -150,
-                  "z_high": -50
+                "x_low": -150,
+                "x_high": -50,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -150,
+                "z_high": -50
               }
-            }, {
+            },
+            {
               "id": 2,
               "class": "CONT_ACTION",
               "area_1": {
-                  "x_low": 150,
-                  "x_high": 250,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": 150,
-                  "z_high": 250
+                "x_low": 150,
+                "x_high": 250,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": 150,
+                "z_high": 250
               },
               "area_2": {
-                  "x_low": 150,
-                  "x_high": 250,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -250,
-                  "z_high": -150
+                "x_low": 150,
+                "x_high": 250,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -250,
+                "z_high": -150
               }
             }
           ]
@@ -359,45 +362,48 @@
               "id": 1,
               "class": "ACTION",
               "area": {
-                  "x_low": 150,
-                  "x_high": 250,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -250,
-                  "z_high": -150
+                "x_low": 150,
+                "x_high": 250,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -250,
+                "z_high": -150
               }
-            }, {
+            },
+            {
               "id": 2,
               "class": "ACTION",
               "area": {
-                  "x_low": -50,
-                  "x_high": 50,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -150,
-                  "z_high": -50
+                "x_low": -50,
+                "x_high": 50,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -150,
+                "z_high": -50
               }
-            }, {
+            },
+            {
               "id": 3,
               "class": "ACTION",
               "area": {
-                  "x_low": -250,
-                  "x_high": -150,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -150,
-                  "z_high": -50
+                "x_low": -250,
+                "x_high": -150,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -150,
+                "z_high": -50
               }
-            }, {
+            },
+            {
               "id": 4,
               "class": "ACTION",
               "area": {
-                  "x_low": -150,
-                  "x_high": -50,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": 150,
-                  "z_high": -50
+                "x_low": -150,
+                "x_high": -50,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": 150,
+                "z_high": -50
               }
             }
           ]
@@ -408,7 +414,7 @@
           "title": "I am speed",
           "summary": "Delivey to all houses, aim for speed, must return to ware house every 3 deliveries (as can only hold 3 parcels at a time).",
           "description": "",
-          "environments": [ 
+          "environments": [
             {
               "object": "warehouse",
               "position": {
@@ -478,100 +484,108 @@
               "id": 1,
               "class": "ACTION",
               "area": {
-                  "x_low": -50,
-                  "x_high": 50,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -150,
-                  "z_high": -50
+                "x_low": -50,
+                "x_high": 50,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -150,
+                "z_high": -50
               }
-            }, {
+            },
+            {
               "id": 2,
               "class": "ACTION",
               "area": {
-                  "x_low": 150,
-                  "x_high": 250,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -250,
-                  "z_high": -150
+                "x_low": 150,
+                "x_high": 250,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -250,
+                "z_high": -150
               }
-            }, {
+            },
+            {
               "id": 3,
               "class": "ACTION",
               "area": {
-                  "x_low": 150,
-                  "x_high": 250,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -150,
-                  "z_high": -50
+                "x_low": 150,
+                "x_high": 250,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -150,
+                "z_high": -50
               }
-            }, {
+            },
+            {
               "id": 4,
               "class": "ACTION",
               "area": {
-                  "x_low": 150,
-                  "x_high": 250,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -50,
-                  "z_high": 50
+                "x_low": 150,
+                "x_high": 250,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -50,
+                "z_high": 50
               }
-            }, {
+            },
+            {
               "id": 5,
               "class": "ACTION",
               "area": {
-                  "x_low": 50,
-                  "x_high": 150,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": 150,
-                  "z_high": 250
+                "x_low": 50,
+                "x_high": 150,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": 150,
+                "z_high": 250
               }
-            }, {
+            },
+            {
               "id": 6,
               "class": "ACTION",
               "area": {
-                  "x_low": -250,
-                  "x_high": -150,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": 150,
-                  "z_high": 250
+                "x_low": -250,
+                "x_high": -150,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": 150,
+                "z_high": 250
               }
-            }, {
+            },
+            {
               "id": 7,
               "class": "ACTION",
               "area": {
-                  "x_low": -250,
-                  "x_high": -150,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -50,
-                  "z_high": 50
+                "x_low": -250,
+                "x_high": -150,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -50,
+                "z_high": 50
               }
-            }, {
+            },
+            {
               "id": 8,
               "class": "ACTION",
               "area": {
-                  "x_low": -250,
-                  "x_high": -150,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -250,
-                  "z_high": -150
+                "x_low": -250,
+                "x_high": -150,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -250,
+                "z_high": -150
               }
-            }, {
+            },
+            {
               "id": 9,
               "class": "ACTION",
               "area": {
-                  "x_low": -150,
-                  "x_high": -50,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -250,
-                  "z_high": -150
+                "x_low": -150,
+                "x_high": -50,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -250,
+                "z_high": -150
               }
             }
           ]
@@ -652,100 +666,108 @@
               "id": 1,
               "class": "ACTION",
               "area": {
-                  "x_low": -50,
-                  "x_high": 50,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -150,
-                  "z_high": -50
+                "x_low": -50,
+                "x_high": 50,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -150,
+                "z_high": -50
               }
-            }, {
+            },
+            {
               "id": 2,
               "class": "ACTION",
               "area": {
-                  "x_low": 150,
-                  "x_high": 250,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -250,
-                  "z_high": -150
+                "x_low": 150,
+                "x_high": 250,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -250,
+                "z_high": -150
               }
-            }, {
+            },
+            {
               "id": 3,
               "class": "ACTION",
               "area": {
-                  "x_low": 150,
-                  "x_high": 250,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -150,
-                  "z_high": -50
+                "x_low": 150,
+                "x_high": 250,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -150,
+                "z_high": -50
               }
-            }, {
+            },
+            {
               "id": 4,
               "class": "ACTION",
               "area": {
-                  "x_low": 150,
-                  "x_high": 250,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -50,
-                  "z_high": 50
+                "x_low": 150,
+                "x_high": 250,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -50,
+                "z_high": 50
               }
-            }, {
+            },
+            {
               "id": 5,
               "class": "ACTION",
               "area": {
-                  "x_low": 50,
-                  "x_high": 150,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": 150,
-                  "z_high": 250
+                "x_low": 50,
+                "x_high": 150,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": 150,
+                "z_high": 250
               }
-            }, {
+            },
+            {
               "id": 6,
               "class": "ACTION",
               "area": {
-                  "x_low": -250,
-                  "x_high": -150,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": 150,
-                  "z_high": 250
+                "x_low": -250,
+                "x_high": -150,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": 150,
+                "z_high": 250
               }
-            }, {
+            },
+            {
               "id": 7,
               "class": "ACTION",
               "area": {
-                  "x_low": -250,
-                  "x_high": -150,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -50,
-                  "z_high": 50
+                "x_low": -250,
+                "x_high": -150,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -50,
+                "z_high": 50
               }
-            }, {
+            },
+            {
               "id": 8,
               "class": "ACTION",
               "area": {
-                  "x_low": -250,
-                  "x_high": -150,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -250,
-                  "z_high": -150
+                "x_low": -250,
+                "x_high": -150,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -250,
+                "z_high": -150
               }
-            }, {
+            },
+            {
               "id": 9,
               "class": "ACTION",
               "area": {
-                  "x_low": -150,
-                  "x_high": -50,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -250,
-                  "z_high": -150
+                "x_low": -150,
+                "x_high": -50,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -250,
+                "z_high": -150
               }
             }
           ]
