@@ -582,7 +582,7 @@
           "title": "Heavy lifting",
           "summary": "Same as before, but now barns at (2,2) and (-1,2) require 'heavy' packages. Drone can only hold 1 normal and 1 heavy package at a time.",
           "description": "",
-          "environments": [ 
+          "environments": [
             {
               "object": "warehouse",
               "position": {
