@@ -11,15 +11,8 @@
           "title": "Your first flight",
           "summary": "Single movement command",
           "description": "We'll start with the most basic movement, drag in a \"fly\" clause and add a movement command to it. See how you can move in different directions, for different amounts of time. Try it out in the simulator to see how it makes the drone fly!",
-          "environments": [
-            {
-              "object": "barn",
-              "position": {
-                "x": 0,
-                "y": 0
-              }
-            }
-          ]
+          "environments": [],
+	  "requirements": []
         },
         {
           "level": "Task 2",
@@ -27,15 +20,8 @@
           "title": "Flying further",
           "summary": "Multiple movement commands",
           "description": "Try to click together multiple movement commands within the fly clause. Each command has its own direction and duration. You'll notice that when your program gets run on the simulator, the commands are run one after another, starting at the top. For a challenge try to make the drone fly in a square, finishing at the same position it starts.",
-          "environments": [
-            {
-              "object": "warehouse",
-              "position": {
-                "x": 0,
-                "y": 0
-              }
-            }
-          ]
+          "environments": [],
+	  "requirements": []
         },
         {
           "level": "Task 3",
@@ -43,7 +29,8 @@
           "title": "Twisting and turning",
           "summary": "Movement AND rotation commands",
           "description": "Now we're comfortable with moving the drone, we've added some rotation commands. There's seperate commands for rotating left and right, and we can see the angle that we rotate relative to the front of the drone. Try flying in a square again, but this time using only forward movement and rotation commands.",
-          "environments": []
+          "environments": [],
+	  "requirements": []
         }
       ]
     },
@@ -56,30 +43,44 @@
           "key": "task1",
           "level": "Task 1",
           "title": "🔥FIRE!!🔥",
-          "summary": "Fly to fire station at (3m, 2m).",
-          "description": "A wildfire has started nearby! All the fire and rescue helicopters are being repaired so the local fire department have asked for our help. First things first, we need to fly to the fire station that`s 3 miles north, 2 miles east. Remember the drone starts facing northwards, and 1 metre in our scale model is 1 mile in the real world.",
+          "summary": "Fly to fire station at (2m, 2m).",
+          "description": "A wildfire has started nearby! All the fire and rescue helicopters are being repaired so the local fire department have asked for our help. First things first, we need to fly to the fire station that`s 2 miles north, 2 miles east. Remember the drone starts facing northwards, and 1 metre in our scale model is 1 mile in the real world.",
           "environments": [
             {
-              "object": "house",
+              "object": "fireStation",
               "position": {
-                "x": 300,
+                "x": 200,
                 "y": 200
               }
             }
-          ]
+          ],
+	  "requirements": [
+	    {
+	      "id": 1,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 150,
+	          "x_high": 250,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -250,
+		  "z_high": -150
+	      }
+	    }
+	  ]
         },
         {
           "key": "task2",
           "level": "Task 2",
           "title": "🆘 Help!",
-          "summary": "Fly to the farms at (3, -1), (-1, 2) and (-2, -2).",
-          "description": "The firefighters tell us that there are 3 farms where people need help. The drone has been loaded with 3 rescue packages which can be dropped by making the drone do a full turn on the spot in either direction. First farm is 3 miles east, 1 mile south. The second is 1 mile west, 2 miles north, and the final farm is 2 miles south, 2 miles west. The order that the farms are visited doesn`t matter, as long as they get the help they need. Good luck!",
+          "summary": "Fly to the farms at (2, 0), (-1, 2) and (-2, -2).",
+          "description": "The firefighters tell us that there are 3 farms where people need help. The drone has been loaded with 3 rescue packages which can be dropped by making the drone do a full turn on the spot in either direction. First farm is 2 miles east. The second is 1 mile west, 2 miles north, and the final farm is 2 miles south, 2 miles west. The order that the farms are visited doesn`t matter, as long as they get the help they need. Good luck!",
           "environments": [
             {
               "object": "house",
               "position": {
-                "x": 300,
-                "y": -100
+                "x": 200,
+                "y": 0
               }
             },
             {
@@ -124,20 +125,56 @@
                 "y": 0
               }
             }
-          ]
+          ],
+	  "requirements": [
+	    {
+	      "id": 1,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 250,
+	          "x_high": 350,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": 50,
+		  "z_high": 150
+	      }
+	    }, {
+	      "id": 2,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -150,
+	          "x_high": -50,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -250,
+		  "z_high": -150
+	      }
+	    }, {
+	      "id": 3,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -250,
+	          "x_high": -150,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": 150,
+		  "z_high": 250
+	      }
+	    }
+	  ]
         },
         {
           "key": "task3",
           "level": "Task 3",
           "title": "Save the warehouse!",
-          "summary": "Fly along 2 `fires`, (-1, -1) to (-1, 1) and (-4, -2) to (-4, 2).",
-          "description": "The firefighters have modified the drone so that it can release water to combat the fire. And just in time too, as there are 2 fires approaching the warehouse to the west. The first is 1 mile east of it and is 2 miles long, while the second is 2 miles west and is 4 miles long (look in your simulator for more details). The warehouse itself is 2 miles west of the fire station (where the drone starts).",
+          "summary": "Fly along 2 `fires`, (-1, -1) to (-1, 1) and (2, -2) to (2, 2).",
+          "description": "The firefighters have modified the drone so that it can release water to combat the fire. And just in time too, as there are 2 fires approaching the warehouse to the north. The first is 1 mile west of it and is 2 miles long, while the second is 1 miles east and is 4 miles long (look in your simulator for more details). The warehouse itself is 1 mile north of the fire station (where the drone starts).",
           "environments": [
             {
-              "object": "fireStation",
+              "object": "barn",
               "position": {
-                "x": -200,
-                "y": 0
+                "x": 0,
+                "y": 100
               }
             },
             {
@@ -178,60 +215,101 @@
             {
               "object": "forest",
               "position": {
-                "x": -400,
+                "x": 200,
                 "y": 200
               }
             },
             {
               "object": "fire",
               "position": {
-                "x": -400,
+                "x": 200,
                 "y": 200
               }
             },
             {
               "object": "fire",
               "position": {
-                "x": -400,
+                "x": 200,
                 "y": 100
               }
             },
             {
               "object": "fire",
               "position": {
-                "x": -400,
+                "x": 200,
                 "y": 0
               }
             },
             {
               "object": "forest",
               "position": {
-                "x": -400,
+                "x": 200,
                 "y": -100
               }
             },
             {
               "object": "forest",
               "position": {
-                "x": -400,
+                "x": 200,
                 "y": -200
               }
             },
             {
               "object": "fire",
               "position": {
-                "x": -400,
+                "x": 200,
                 "y": -100
               }
             },
             {
               "object": "fire",
               "position": {
-                "x": -400,
+                "x": 200,
                 "y": -200
               }
             }
-          ]
+          ],
+	  "requirements": [
+	    {
+	      "id": 1,
+	      "class": "CONT_ACTION",
+	      "area_1": {
+	          "x_low": -150,
+	          "x_high": -50,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": 50,
+		  "z_high": 150
+	      },
+	      "area_2": {
+	          "x_low": -150,
+	          "x_high": -50,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -150,
+		  "z_high": -50
+	      }
+	    }, {
+	      "id": 2,
+	      "class": "CONT_ACTION",
+	      "area_1": {
+	          "x_low": 150,
+	          "x_high": 250,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": 150,
+		  "z_high": 250
+	      },
+	      "area_2": {
+	          "x_low": 150,
+	          "x_high": 250,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -250,
+		  "z_high": -150
+	      }
+	    }
+	  ]
         }
       ]
     },
@@ -244,27 +322,20 @@
           "key": "task1",
           "level": "Task 1",
           "title": "First delivery of the day",
-          "summary": "Fly to warehouse at (1,3) then to houses at (0,4), (-3,1) and (-2,-4).",
+          "summary": "Fly to warehouse at (2,2) then to houses at (0,1), (-2,1) and (-1,-2).",
           "description": "",
           "environments": [
             {
               "object": "warehouse",
               "position": {
-                "x": 100,
-                "y": -300
+                "x": 200,
+                "y": 200
               }
             },
             {
               "object": "house",
               "position": {
                 "x": 0,
-                "y": 400
-              }
-            },
-            {
-              "object": "house",
-              "position": {
-                "x": -300,
                 "y": 100
               }
             },
@@ -272,10 +343,64 @@
               "object": "house",
               "position": {
                 "x": -200,
-                "y": -400
+                "y": 100
+              }
+            },
+            {
+              "object": "house",
+              "position": {
+                "x": -100,
+                "y": -200
               }
             }
-          ]
+          ],
+	  "requirements": [
+	    {
+	      "id": 1,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 150,
+	          "x_high": 250,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -250,
+		  "z_high": -150
+	      }
+	    }, {
+	      "id": 2,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -50,
+	          "x_high": 50,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -150,
+		  "z_high": -50
+	      }
+	    }, {
+	      "id": 3,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -250,
+	          "x_high": -150,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -150,
+		  "z_high": -50
+	      }
+	    }, {
+	      "id": 4,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -150,
+	          "x_high": -50,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": 150,
+		  "z_high": -50
+	      }
+	    }
+	  ]
         },
         {
           "key": "task2",
@@ -287,139 +412,343 @@
             {
               "object": "warehouse",
               "position": {
-                "x": -100,
+                "x": 0,
                 "y": 100
               }
             },
             {
               "object": "house",
               "position": {
-                "x": 400,
-                "y": 300
-              }
-            },
-            {
-              "object": "house",
-              "position": {
-                "x": 400,
+                "x": 200,
                 "y": 200
               }
             },
             {
               "object": "house",
               "position": {
-                "x": 400,
+                "x": 200,
                 "y": 100
+              }
+            },
+            {
+              "object": "house",
+              "position": {
+                "x": 200,
+                "y": 0
               }
             },
             {
               "object": "house",
               "position": {
                 "x": 100,
-                "y": -400
+                "y": -200
               }
             },
             {
               "object": "house",
               "position": {
-                "x": -300,
-                "y": -300
+                "x": -200,
+                "y": -200
               }
             },
             {
               "object": "house",
               "position": {
-                "x": -400,
-                "y": 100
+                "x": -200,
+                "y": 0
               }
             },
             {
               "object": "house",
               "position": {
-                "x": -400,
-                "y": 400
+                "x": -200,
+                "y": 200
               }
             },
             {
               "object": "house",
               "position": {
-                "x": -300,
-                "y": 400
+                "x": -100,
+                "y": 200
               }
             }
-          ]
+          ],
+	  "requirements": [
+	    {
+	      "id": 1,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -50,
+	          "x_high": 50,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -150,
+		  "z_high": -50
+	      }
+	    }, {
+	      "id": 2,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 150,
+	          "x_high": 250,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -250,
+		  "z_high": -150
+	      }
+	    }, {
+	      "id": 3,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 150,
+	          "x_high": 250,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -150,
+		  "z_high": -50
+	      }
+	    }, {
+	      "id": 4,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 150,
+	          "x_high": 250,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -50,
+		  "z_high": 50
+	      }
+	    }, {
+	      "id": 5,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 50,
+	          "x_high": 150,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": 150,
+		  "z_high": 250
+	      }
+	    }, {
+	      "id": 6,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -250,
+	          "x_high": -150,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": 150,
+		  "z_high": 250
+	      }
+	    }, {
+	      "id": 7,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -250,
+	          "x_high": -150,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -50,
+		  "z_high": 50
+	      }
+	    }, {
+	      "id": 8,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -250,
+	          "x_high": -150,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -250,
+		  "z_high": -150
+	      }
+	    }, {
+	      "id": 9,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -150,
+	          "x_high": -50,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -250,
+		  "z_high": -150
+	      }
+	    }
+	  ]
         },
         {
           "key": "task3",
           "level": "Task 3",
           "title": "Heavy lifting",
-          "summary": "Same as before, but now barns at (4,2) and (-3,4) require 'heavy' packages. Drone can only hold 1 normal and 1 heavy package at a time.",
+          "summary": "Same as before, but now barns at (2,2) and (-1,2) require 'heavy' packages. Drone can only hold 1 normal and 1 heavy package at a time.",
           "description": "",
-          "environments": [
+          "environments": [ 
             {
               "object": "warehouse",
               "position": {
-                "x": -100,
+                "x": 0,
                 "y": 100
               }
             },
             {
               "object": "house",
               "position": {
-                "x": 400,
-                "y": 300
+                "x": 200,
+                "y": 200
               }
             },
             {
               "object": "barn",
               "position": {
-                "x": 400,
-                "y": 200
+                "x": 200,
+                "y": 100
               }
             },
             {
               "object": "house",
               "position": {
-                "x": 400,
-                "y": 100
+                "x": 200,
+                "y": 0
               }
             },
             {
               "object": "house",
               "position": {
                 "x": 100,
-                "y": -400
+                "y": -200
               }
             },
             {
               "object": "house",
               "position": {
-                "x": -300,
-                "y": -300
+                "x": -200,
+                "y": -200
               }
             },
             {
               "object": "house",
               "position": {
-                "x": -400,
-                "y": 100
+                "x": -200,
+                "y": 0
               }
             },
             {
               "object": "house",
               "position": {
-                "x": -400,
-                "y": 400
+                "x": -200,
+                "y": 200
               }
             },
             {
               "object": "barn",
               "position": {
-                "x": -300,
-                "y": 400
+                "x": -100,
+                "y": 200
               }
             }
-          ]
+          ],
+	  "requirements": [
+	    {
+	      "id": 1,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -50,
+	          "x_high": 50,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -150,
+		  "z_high": -50
+	      }
+	    }, {
+	      "id": 2,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 150,
+	          "x_high": 250,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -250,
+		  "z_high": -150
+	      }
+	    }, {
+	      "id": 3,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 150,
+	          "x_high": 250,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -150,
+		  "z_high": -50
+	      }
+	    }, {
+	      "id": 4,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 150,
+	          "x_high": 250,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -50,
+		  "z_high": 50
+	      }
+	    }, {
+	      "id": 5,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": 50,
+	          "x_high": 150,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": 150,
+		  "z_high": 250
+	      }
+	    }, {
+	      "id": 6,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -250,
+	          "x_high": -150,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": 150,
+		  "z_high": 250
+	      }
+	    }, {
+	      "id": 7,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -250,
+	          "x_high": -150,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -50,
+		  "z_high": 50
+	      }
+	    }, {
+	      "id": 8,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -250,
+	          "x_high": -150,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -250,
+		  "z_high": -150
+	      }
+	    }, {
+	      "id": 9,
+	      "class": "ACTION",
+	      "area": {
+	          "x_low": -150,
+	          "x_high": -50,
+		  "y_low": 0,
+		  "y_high": 200,
+		  "z_low": -250,
+		  "z_high": -150
+	      }
+	    }
+	  ]
         }
       ]
     }
