@@ -8,7 +8,7 @@
       </template>
       <v-sheet style="height: 85vh">
         <v-list class="text-left mx-5">
-          <v-list-item>
+          <v-list-item style="padding-left: 2px">
             <div class="overline">{{ advTitle }}</div>
           </v-list-item>
           <v-list-item-subtitle class="subtitle-1">
@@ -17,10 +17,7 @@
           <v-list-item-title class="display-1 mb-1">
             {{ taskTitle }}
           </v-list-item-title>
-          <v-list-item-subtitle>
-            {{ summary }}
-          </v-list-item-subtitle>
-          <v-list-item-content class="text-left">
+          <v-list-item-content class="text-left" style="font-size: 23px">
             {{ description }}
           </v-list-item-content>
         </v-list>
@@ -110,3 +107,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.overline {
+  font-size: 14px !important;
+}
+.subtitle-1 {
+  font-size: 23px !important;
+}
+</style>
