@@ -12,7 +12,7 @@
           "summary": "Single movement command",
           "description": "We'll start with the most basic movement, drag in a \"fly\" clause and add a movement command to it. See how you can move in different directions, for different amounts of time. Try it out in the simulator to see how it makes the drone fly!",
           "environments": [],
-	  "requirements": []
+          "requirements": []
         },
         {
           "level": "Task 2",
@@ -21,7 +21,7 @@
           "summary": "Multiple movement commands",
           "description": "Try to click together multiple movement commands within the fly clause. Each command has its own direction and duration. You'll notice that when your program gets run on the simulator, the commands are run one after another, starting at the top. For a challenge try to make the drone fly in a square, finishing at the same position it starts.",
           "environments": [],
-	  "requirements": []
+          "requirements": []
         },
         {
           "level": "Task 3",
@@ -30,7 +30,7 @@
           "summary": "Movement AND rotation commands",
           "description": "Now we're comfortable with moving the drone, we've added some rotation commands. There's seperate commands for rotating left and right, and we can see the angle that we rotate relative to the front of the drone. Try flying in a square again, but this time using only forward movement and rotation commands.",
           "environments": [],
-	  "requirements": []
+          "requirements": []
         }
       ]
     },
@@ -54,20 +54,20 @@
               }
             }
           ],
-	  "requirements": [
-	    {
-	      "id": 1,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 150,
-	          "x_high": 250,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -250,
-		  "z_high": -150
-	      }
-	    }
-	  ]
+          "requirements": [
+            {
+              "id": 1,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 150,
+                  "x_high": 250,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -250,
+                  "z_high": -150
+              }
+            }
+          ]
         },
         {
           "key": "task2",
@@ -126,42 +126,42 @@
               }
             }
           ],
-	  "requirements": [
-	    {
-	      "id": 1,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 250,
-	          "x_high": 350,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": 50,
-		  "z_high": 150
-	      }
-	    }, {
-	      "id": 2,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -150,
-	          "x_high": -50,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -250,
-		  "z_high": -150
-	      }
-	    }, {
-	      "id": 3,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -250,
-	          "x_high": -150,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": 150,
-		  "z_high": 250
-	      }
-	    }
-	  ]
+          "requirements": [
+            {
+              "id": 1,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 250,
+                  "x_high": 350,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": 50,
+                  "z_high": 150
+              }
+            }, {
+              "id": 2,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -150,
+                  "x_high": -50,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -250,
+                  "z_high": -150
+              }
+            }, {
+              "id": 3,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -250,
+                  "x_high": -150,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": 150,
+                  "z_high": 250
+              }
+            }
+          ]
         },
         {
           "key": "task3",
@@ -269,47 +269,47 @@
               }
             }
           ],
-	  "requirements": [
-	    {
-	      "id": 1,
-	      "class": "CONT_ACTION",
-	      "area_1": {
-	          "x_low": -150,
-	          "x_high": -50,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": 50,
-		  "z_high": 150
-	      },
-	      "area_2": {
-	          "x_low": -150,
-	          "x_high": -50,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -150,
-		  "z_high": -50
-	      }
-	    }, {
-	      "id": 2,
-	      "class": "CONT_ACTION",
-	      "area_1": {
-	          "x_low": 150,
-	          "x_high": 250,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": 150,
-		  "z_high": 250
-	      },
-	      "area_2": {
-	          "x_low": 150,
-	          "x_high": 250,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -250,
-		  "z_high": -150
-	      }
-	    }
-	  ]
+          "requirements": [
+            {
+              "id": 1,
+              "class": "CONT_ACTION",
+              "area_1": {
+                  "x_low": -150,
+                  "x_high": -50,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": 50,
+                  "z_high": 150
+              },
+              "area_2": {
+                  "x_low": -150,
+                  "x_high": -50,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -150,
+                  "z_high": -50
+              }
+            }, {
+              "id": 2,
+              "class": "CONT_ACTION",
+              "area_1": {
+                  "x_low": 150,
+                  "x_high": 250,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": 150,
+                  "z_high": 250
+              },
+              "area_2": {
+                  "x_low": 150,
+                  "x_high": 250,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -250,
+                  "z_high": -150
+              }
+            }
+          ]
         }
       ]
     },
@@ -354,53 +354,53 @@
               }
             }
           ],
-	  "requirements": [
-	    {
-	      "id": 1,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 150,
-	          "x_high": 250,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -250,
-		  "z_high": -150
-	      }
-	    }, {
-	      "id": 2,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -50,
-	          "x_high": 50,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -150,
-		  "z_high": -50
-	      }
-	    }, {
-	      "id": 3,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -250,
-	          "x_high": -150,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -150,
-		  "z_high": -50
-	      }
-	    }, {
-	      "id": 4,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -150,
-	          "x_high": -50,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": 150,
-		  "z_high": -50
-	      }
-	    }
-	  ]
+          "requirements": [
+            {
+              "id": 1,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 150,
+                  "x_high": 250,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -250,
+                  "z_high": -150
+              }
+            }, {
+              "id": 2,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -50,
+                  "x_high": 50,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -150,
+                  "z_high": -50
+              }
+            }, {
+              "id": 3,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -250,
+                  "x_high": -150,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -150,
+                  "z_high": -50
+              }
+            }, {
+              "id": 4,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -150,
+                  "x_high": -50,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": 150,
+                  "z_high": -50
+              }
+            }
+          ]
         },
         {
           "key": "task2",
@@ -473,108 +473,108 @@
               }
             }
           ],
-	  "requirements": [
-	    {
-	      "id": 1,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -50,
-	          "x_high": 50,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -150,
-		  "z_high": -50
-	      }
-	    }, {
-	      "id": 2,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 150,
-	          "x_high": 250,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -250,
-		  "z_high": -150
-	      }
-	    }, {
-	      "id": 3,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 150,
-	          "x_high": 250,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -150,
-		  "z_high": -50
-	      }
-	    }, {
-	      "id": 4,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 150,
-	          "x_high": 250,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -50,
-		  "z_high": 50
-	      }
-	    }, {
-	      "id": 5,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 50,
-	          "x_high": 150,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": 150,
-		  "z_high": 250
-	      }
-	    }, {
-	      "id": 6,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -250,
-	          "x_high": -150,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": 150,
-		  "z_high": 250
-	      }
-	    }, {
-	      "id": 7,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -250,
-	          "x_high": -150,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -50,
-		  "z_high": 50
-	      }
-	    }, {
-	      "id": 8,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -250,
-	          "x_high": -150,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -250,
-		  "z_high": -150
-	      }
-	    }, {
-	      "id": 9,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -150,
-	          "x_high": -50,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -250,
-		  "z_high": -150
-	      }
-	    }
-	  ]
+          "requirements": [
+            {
+              "id": 1,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -50,
+                  "x_high": 50,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -150,
+                  "z_high": -50
+              }
+            }, {
+              "id": 2,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 150,
+                  "x_high": 250,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -250,
+                  "z_high": -150
+              }
+            }, {
+              "id": 3,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 150,
+                  "x_high": 250,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -150,
+                  "z_high": -50
+              }
+            }, {
+              "id": 4,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 150,
+                  "x_high": 250,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -50,
+                  "z_high": 50
+              }
+            }, {
+              "id": 5,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 50,
+                  "x_high": 150,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": 150,
+                  "z_high": 250
+              }
+            }, {
+              "id": 6,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -250,
+                  "x_high": -150,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": 150,
+                  "z_high": 250
+              }
+            }, {
+              "id": 7,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -250,
+                  "x_high": -150,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -50,
+                  "z_high": 50
+              }
+            }, {
+              "id": 8,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -250,
+                  "x_high": -150,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -250,
+                  "z_high": -150
+              }
+            }, {
+              "id": 9,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -150,
+                  "x_high": -50,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -250,
+                  "z_high": -150
+              }
+            }
+          ]
         },
         {
           "key": "task3",
@@ -647,108 +647,108 @@
               }
             }
           ],
-	  "requirements": [
-	    {
-	      "id": 1,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -50,
-	          "x_high": 50,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -150,
-		  "z_high": -50
-	      }
-	    }, {
-	      "id": 2,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 150,
-	          "x_high": 250,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -250,
-		  "z_high": -150
-	      }
-	    }, {
-	      "id": 3,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 150,
-	          "x_high": 250,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -150,
-		  "z_high": -50
-	      }
-	    }, {
-	      "id": 4,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 150,
-	          "x_high": 250,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -50,
-		  "z_high": 50
-	      }
-	    }, {
-	      "id": 5,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": 50,
-	          "x_high": 150,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": 150,
-		  "z_high": 250
-	      }
-	    }, {
-	      "id": 6,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -250,
-	          "x_high": -150,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": 150,
-		  "z_high": 250
-	      }
-	    }, {
-	      "id": 7,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -250,
-	          "x_high": -150,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -50,
-		  "z_high": 50
-	      }
-	    }, {
-	      "id": 8,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -250,
-	          "x_high": -150,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -250,
-		  "z_high": -150
-	      }
-	    }, {
-	      "id": 9,
-	      "class": "ACTION",
-	      "area": {
-	          "x_low": -150,
-	          "x_high": -50,
-		  "y_low": 0,
-		  "y_high": 200,
-		  "z_low": -250,
-		  "z_high": -150
-	      }
-	    }
-	  ]
+          "requirements": [
+            {
+              "id": 1,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -50,
+                  "x_high": 50,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -150,
+                  "z_high": -50
+              }
+            }, {
+              "id": 2,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 150,
+                  "x_high": 250,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -250,
+                  "z_high": -150
+              }
+            }, {
+              "id": 3,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 150,
+                  "x_high": 250,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -150,
+                  "z_high": -50
+              }
+            }, {
+              "id": 4,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 150,
+                  "x_high": 250,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -50,
+                  "z_high": 50
+              }
+            }, {
+              "id": 5,
+              "class": "ACTION",
+              "area": {
+                  "x_low": 50,
+                  "x_high": 150,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": 150,
+                  "z_high": 250
+              }
+            }, {
+              "id": 6,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -250,
+                  "x_high": -150,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": 150,
+                  "z_high": 250
+              }
+            }, {
+              "id": 7,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -250,
+                  "x_high": -150,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -50,
+                  "z_high": 50
+              }
+            }, {
+              "id": 8,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -250,
+                  "x_high": -150,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -250,
+                  "z_high": -150
+              }
+            }, {
+              "id": 9,
+              "class": "ACTION",
+              "area": {
+                  "x_low": -150,
+                  "x_high": -50,
+                  "y_low": 0,
+                  "y_high": 200,
+                  "z_low": -250,
+                  "z_high": -150
+              }
+            }
+          ]
         }
       ]
     }
