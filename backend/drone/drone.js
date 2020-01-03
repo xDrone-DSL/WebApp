@@ -2,7 +2,7 @@ const axios = require("axios");
 
 // Set to 0.0.0.0 when both the WebApp and Flask server
 // are running on the some machine
-var FLASK_HOST;
+let FLASK_HOST;
 
 if (process.env.MODE === "dev") {
   FLASK_HOST = "http://0.0.0.0:8081";
@@ -18,9 +18,9 @@ module.exports = app => {
       .post(`${FLASK_HOST}/fly`, {
         body: req.body
       })
-      .then(() => {
+      .then(response => {
         console.log("drone finished flying");
-        res.send("Drone flew");
+        res.send(response.data);
       })
       .catch(() => {
         console.log("failed to fly drone");

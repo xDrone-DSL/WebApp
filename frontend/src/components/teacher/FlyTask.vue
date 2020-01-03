@@ -9,17 +9,26 @@
     <v-card-title primary-title class="justify-center pa-2">
       <div>Team: {{ item.name }}</div>
     </v-card-title>
+    <v-card-subtitle style="padding-top: 16px; font-size: 17px;">
+      Drone: {{ drone.name }}
+    </v-card-subtitle>
     <v-btn icon @click="showCode = true" class="code-popup-button">
       <v-icon>
         mdi-code-braces
       </v-icon>
     </v-btn>
-    <v-card-text class="ma-n2">
-      <div>{{ item.level.adv.level }}</div>
-      <div>{{ item.level.task.level }}</div>
-      <div>Drone: {{ drone.name }}</div>
+    <v-card-text>
+      <div style="font-size: 18px;">
+        {{ item.level.adv.level }} - {{ item.level.task.level }}
+      </div>
     </v-card-text>
     <div v-if="success">
+      <v-card-text v-if="color === 'yellow lighten-2'" style="font-size: 20px">
+        Requirements failed 😥
+      </v-card-text>
+      <v-card-text v-else style="font-size: 20px">
+        Requirements were met 🎉
+      </v-card-text>
       <v-btn class="mb-2 mx-1" color="warning" @click="flyWrapper">
         Retry<v-icon dark right>mdi-reload</v-icon>
       </v-btn>
@@ -56,7 +65,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat color="success" @click="showCode = false">close</v-btn>
+          <v-btn text color="success" @click="showCode = false">close</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -84,9 +93,9 @@ export default {
       this.success = false;
       this.fail = false;
       this.toggleFlying();
-      fly(this.item.code, this.drone.mac, this.item.requirements)
-        .then(() => {
-          this.color = "success";
+      fly(this.item.code, this.drone.mac, this.item.level.task.requirements)
+        .then(res => {
+          this.color = res["flight_status"] ? "success" : "yellow lighten-2";
           this.loading = false;
           this.success = true;
           this.toggleFlying();
