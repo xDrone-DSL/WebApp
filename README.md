@@ -34,7 +34,7 @@ cd backend
 Install all the dependencies.
 
 ```
-npm install
+npm run clean-install
 ```
 
 Make sure you have a `.env.local`, which will enable the dev mode.
@@ -67,7 +67,7 @@ cd ../frontend
 Install all the dependencies.
 
 ```
-npm install
+npm run clean-install
 ```
 
 Simply run the frontend with hot-reloads.
@@ -107,6 +107,6 @@ npm run test:unit
 From the root directory of this repo, run the following commands.
 
 ```
-chmod +x build.sh
+chmod +x build.sh # if it's not executable
 ./build.sh
 ```
