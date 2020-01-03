@@ -34,7 +34,7 @@ cd backend
 Install all the dependencies.
 
 ```
-npm clean install
+npm run clean-install
 ```
 
 Make sure you have a `.env.local`, which will enable the dev mode.
@@ -67,7 +67,7 @@ cd ../frontend
 Install all the dependencies.
 
 ```
-npm clean install
+npm run clean-install
 ```
 
 Simply run the frontend with hot-reloads.
