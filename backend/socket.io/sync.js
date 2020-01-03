@@ -130,7 +130,8 @@ module.exports = io => {
 
         console.log(`APPROVE UID: ${uid}`);
 
-        let mindrone = state.drones[0];
+        const enabledDrones = state.drones.filter(d => d.enabled);
+        let mindrone = enabledDrones[0];
         state.drones.forEach(drone => {
           if (drone.enabled && drone.queue.length < mindrone.queue.length) {
             mindrone = drone;
