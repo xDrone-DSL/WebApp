@@ -95,7 +95,9 @@ export default {
       this.toggleFlying();
       fly(this.item.code, this.drone.mac, this.item.level.task.requirements)
         .then(res => {
-          this.color = res["flight_status"] ? "success" : "yellow lighten-2";
+          this.color = res.data["flight_status"]
+            ? "success"
+            : "yellow lighten-2";
           this.loading = false;
           this.success = true;
           this.toggleFlying();
