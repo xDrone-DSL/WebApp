@@ -785,25 +785,29 @@
           "title": "Flying and landing",
           "summary": "Fly to (1, 0)",
           "description": "Fly and land at the house 1 mile to the east",
-          "environments": [{
+          "environments": [
+            {
               "object": "house",
               "position": {
                 "x": 100,
                 "y": 0
               }
-            }],
-          "requirements": [{
+            }
+          ],
+          "requirements": [
+            {
               "id": 1,
               "class": "LANDING",
               "area": {
-                  "x_low": 50,
-                  "x_high": 150,
-                  "y_low": -10,
-                  "y_high": 200,
-                  "z_low": -50,
-                  "z_high": 50
+                "x_low": 50,
+                "x_high": 150,
+                "y_low": -10,
+                "y_high": 200,
+                "z_low": -50,
+                "z_high": 50
               }
-            }]
+            }
+          ]
         },
         {
           "level": "Task 2",
@@ -811,36 +815,41 @@
           "title": "Performing actions",
           "summary": "Do an action at (-1, 0), then return home.",
           "description": "Fly to the house 1 mile West and deliver a package using the ACTION command, then return home.",
-          "environments": [{
+          "environments": [
+            {
               "object": "house",
               "position": {
                 "x": -100,
                 "y": 0
               }
-            }],
-          "requirements": [{
+            }
+          ],
+          "requirements": [
+            {
               "id": 1,
               "class": "ACTION",
               "area": {
-                  "x_low": -150,
-                  "x_high": -50,
-                  "y_low": 0,
-                  "y_high": 200,
-                  "z_low": -50,
-                  "z_high": 50
+                "x_low": -150,
+                "x_high": -50,
+                "y_low": 0,
+                "y_high": 200,
+                "z_low": -50,
+                "z_high": 50
               }
-            },{
+            },
+            {
               "id": 2,
               "class": "LANDING",
               "area": {
-                  "x_low": -50,
-                  "x_high": 50,
-                  "y_low": -10,
-                  "y_high": 200,
-                  "z_low": -50,
-                  "z_high": 50
+                "x_low": -50,
+                "x_high": 50,
+                "y_low": -10,
+                "y_high": 200,
+                "z_low": -50,
+                "z_high": 50
               }
-            }]
+            }
+          ]
         },
         {
           "level": "Task 3",
@@ -848,43 +857,48 @@
           "title": "",
           "summary": "Fly over the fire at (0, 0.6) and land on the other side.",
           "description": "There as a fire just north of you, fly over it and land on the other side, close to the house.",
-          "environments": [{
+          "environments": [
+            {
               "object": "fire",
               "position": {
                 "x": 0,
                 "y": 60
               }
-            }, {
+            },
+            {
               "object": "house",
               "position": {
                 "x": 0,
                 "y": 150
               }
-	     }],
-          "requirements": [{
+            }
+          ],
+          "requirements": [
+            {
               "id": 1,
               "class": "AVOIDANCE",
               "area": {
-                  "x_low": -50,
-                  "x_high": 50,
-                  "y_low": 0,
-                  "y_high": 100,
-                  "z_low": -110,
-                  "z_high": -10
+                "x_low": -50,
+                "x_high": 50,
+                "y_low": 0,
+                "y_high": 100,
+                "z_low": -110,
+                "z_high": -10
               }
-            },{
+            },
+            {
               "id": 2,
               "class": "LANDING",
               "area": {
-                  "x_low": -50,
-                  "x_high": 50,
-                  "y_low": -10,
-                  "y_high": 200,
-                  "z_low": -160,
-                  "z_high": -110
+                "x_low": -50,
+                "x_high": 50,
+                "y_low": -10,
+                "y_high": 200,
+                "z_low": -160,
+                "z_high": -110
               }
             }
-	  ]
+          ]
         }
       ]
     }
