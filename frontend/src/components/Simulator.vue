@@ -100,8 +100,6 @@ export default {
       this.renderer.setSize(800, 600);
       container.appendChild(this.renderer.domElement);
 
-      //object 2
-
       let loader = new GLTFLoader();
       // Load Drone
       loader.load("/models/drone/scene.gltf", obj => {
@@ -126,61 +124,85 @@ export default {
           case "house":
             // Load House
             loader.load("/models/house/scene.gltf", obj => {
+              obj.scene.scale.set(
+                environment.scale,
+                environment.scale,
+                environment.scale
+              );
               obj.scene.translateX(-environment.position.x * 0.2);
               obj.scene.translateZ(environment.position.y * 0.2);
+              obj.scene.rotation.y = THREE.Math.degToRad(environment.rotation);
+
               this.scene.add(obj.scene);
             });
             break;
           case "forest":
             // Load Forest
             loader.load("/models/forest/scene.gltf", obj => {
-              obj.scene.scale.set(0.175, 0.175, 0.175);
-              obj.scene.translateX(2 - environment.position.x * 0.2);
-              obj.scene.translateZ(2 + environment.position.y * 0.2);
+              const scale = 0.175 * environment.scale;
+              obj.scene.scale.set(scale, scale, scale);
+              obj.scene.translateX(
+                2 * environment.scale - environment.position.x * 0.2
+              );
+              obj.scene.translateZ(
+                2 * environment.scale + environment.position.y * 0.2
+              );
+              obj.scene.rotation.y = THREE.Math.degToRad(environment.rotation);
               this.scene.add(obj.scene);
             });
             break;
           case "fireStation":
             // Load FireStation
             loader.load("/models/fireStation/scene.gltf", obj => {
-              obj.scene.rotation.y = THREE.Math.degToRad(180);
-              obj.scene.scale.set(0.1, 0.1, 0.1);
-
+              const scale = 0.1 * environment.scale;
+              obj.scene.scale.set(scale, scale, scale);
               // 40 in sim == 1 m
-              obj.scene.translateX(-10 + environment.position.x * 0.2);
-              obj.scene.translateZ(10 + environment.position.y * 0.2);
+              obj.scene.translateX(
+                -10 * environment.scale - environment.position.x * 0.2
+              );
+              obj.scene.translateZ(
+                10 * environment.scale + environment.position.y * 0.2
+              );
+              obj.scene.rotation.y = THREE.Math.degToRad(environment.rotation);
               this.scene.add(obj.scene);
             });
             break;
           case "barn":
-            // Load FireStation
+            // Load barn
             loader.load("/models/barn/scene.gltf", obj => {
-              obj.scene.rotation.y = THREE.Math.degToRad(180);
-              obj.scene.scale.set(15, 15, 15);
               // 40 in sim == 1 m
-              obj.scene.translateY(10);
-              obj.scene.translateX(environment.position.x * 0.2);
+              const scale = 15 * environment.scale;
+              obj.scene.scale.set(scale, scale, scale);
+              obj.scene.translateY(8 * environment.scale);
+              obj.scene.translateX(-environment.position.x * 0.2);
               obj.scene.translateZ(environment.position.y * 0.2);
+
+              obj.scene.rotation.y = THREE.Math.degToRad(environment.rotation);
               this.scene.add(obj.scene);
             });
             break;
           case "warehouse":
             // Load warehouse
             loader.load("/models/warehouse/scene.gltf", obj => {
-              obj.scene.rotation.y = THREE.Math.degToRad(180);
-
-              obj.scene.scale.set(0.04, 0.04, 0.04);
+              const scale = 0.04 * environment.scale;
+              obj.scene.scale.set(scale, scale, scale);
               // 40 in sim == 1 m
-              obj.scene.translateX(-10 + environment.position.x * 0.2);
-              obj.scene.translateZ(10 + environment.position.y * 0.2);
+              obj.scene.translateX(
+                10 * environment.scale - environment.position.x * 0.2
+              );
+              obj.scene.translateZ(
+                10 * environment.scale + environment.position.y * 0.2
+              );
+              obj.scene.rotation.y = THREE.Math.degToRad(environment.rotation);
+
               this.scene.add(obj.scene);
             });
             break;
           case "fire":
             // This has to be "var" because case block cannot have "let" or "const"
-            var fireRadius = 10;
-            var fireHeight = 15;
-            var particleCount = 800;
+            var fireRadius = 10 * environment.scale;
+            var fireHeight = 15 * environment.scale;
+            var particleCount = 800 * environment.scale;
 
             var geometry = new particleFire.Geometry(
               fireRadius,
