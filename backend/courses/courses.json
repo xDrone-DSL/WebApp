@@ -51,7 +51,9 @@
               "position": {
                 "x": 200,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 0.5
             }
           ],
           "requirements": [
@@ -81,49 +83,63 @@
               "position": {
                 "x": 200,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 2
             },
             {
               "object": "house",
               "position": {
                 "x": -100,
                 "y": 200
-              }
+              },
+              "rotation": 30,
+              "scale": 0.5
             },
             {
               "object": "house",
               "position": {
                 "x": -200,
                 "y": -200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": 200,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": 300,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": -200,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": -100,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             }
           ],
           "requirements": [
@@ -177,77 +193,99 @@
               "position": {
                 "x": 0,
                 "y": 100
-              }
+              },
+              "rotation": 180,
+              "scale": 1
             },
             {
               "object": "forest",
               "position": {
                 "x": -100,
                 "y": 100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "forest",
               "position": {
                 "x": -100,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": -100,
                 "y": 100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": -100,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": -100,
                 "y": -100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "forest",
               "position": {
                 "x": 200,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": 200,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": 200,
                 "y": 100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": 200,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "forest",
               "position": {
                 "x": 200,
                 "y": -100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "forest",
@@ -261,14 +299,18 @@
               "position": {
                 "x": 200,
                 "y": -100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "fire",
               "position": {
                 "x": 200,
                 "y": -200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             }
           ],
           "requirements": [
@@ -333,28 +375,36 @@
               "position": {
                 "x": 200,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": 0,
                 "y": 100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": -200,
                 "y": 100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": -100,
                 "y": -200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             }
           ],
           "requirements": [
@@ -420,42 +470,54 @@
               "position": {
                 "x": 0,
                 "y": 100
-              }
+              },
+              "rotation": 90,
+              "scale": 0.5
             },
             {
               "object": "house",
               "position": {
                 "x": 200,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": 200,
                 "y": 100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": 200,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": 100,
                 "y": -200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": -200,
                 "y": -200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
@@ -469,14 +531,18 @@
               "position": {
                 "x": -200,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": -100,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             }
           ],
           "requirements": [
@@ -602,63 +668,81 @@
               "position": {
                 "x": 0,
                 "y": 100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": 200,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "barn",
               "position": {
                 "x": 200,
                 "y": 100
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": 200,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": 100,
                 "y": -200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": -200,
                 "y": -200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": -200,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": -200,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "barn",
               "position": {
                 "x": -100,
                 "y": 200
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             }
           ],
           "requirements": [
@@ -791,7 +875,9 @@
               "position": {
                 "x": 100,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             }
           ],
           "requirements": [
@@ -821,7 +907,9 @@
               "position": {
                 "x": -100,
                 "y": 0
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             }
           ],
           "requirements": [
@@ -863,14 +951,18 @@
               "position": {
                 "x": 0,
                 "y": 60
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             },
             {
               "object": "house",
               "position": {
                 "x": 0,
                 "y": 150
-              }
+              },
+              "rotation": 0,
+              "scale": 1
             }
           ],
           "requirements": [
