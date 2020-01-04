@@ -854,7 +854,7 @@
         {
           "level": "Task 3",
           "key": "task3",
-          "title": "",
+          "title": "Avoid the Fire 🔥",
           "summary": "Fly over the fire at (0, 0.6) and land on the other side.",
           "description": "There as a fire just north of you, fly over it and land on the other side, close to the house.",
           "environments": [
