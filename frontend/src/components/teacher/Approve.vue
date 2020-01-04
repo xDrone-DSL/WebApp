@@ -106,7 +106,7 @@ export default {
       this.safety.message = "checking...";
       if (this.team) {
         // Bounds for validation are set here
-        validate(this.team.code, { width: 8, depth: 8, height: 8 }).then(
+        validate(this.team.code, { width: 11, depth: 11, height: 20 }).then(
           res => {
             this.safety = res.data;
             if (res.data.success) {
