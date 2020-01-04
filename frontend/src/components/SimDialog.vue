@@ -11,6 +11,25 @@
       Simulate
     </v-btn>
 
+    <v-dialog v-model="errorCode" max-width="800" style="z-index: 999999">
+      <v-card>
+        <v-card-title>
+          <v-icon color="warning">mdi-alert</v-icon>
+          Your code is invalid!
+        </v-card-title>
+        <v-card-text class="headline">
+          All code must be within the fly clause. Please fix your code before
+          simulating.
+        </v-card-text>
+
+        <v-card-actions>
+          <v-btn color="green darken-1" text @click="errorCode = false">
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <v-dialog v-model="dialog" max-width="800" style="z-index: 999999">
       <v-card>
         <Simulator
@@ -40,16 +59,21 @@ export default {
   },
   methods: {
     getAnimation: function() {
-      simulate(this.code).then(res => {
-        this.animation = res.data.commands;
-        this.dialog = true;
-      });
+      if (this.code[0] === "f" && this.code[this.code.length - 1] === "}") {
+        simulate(this.code).then(res => {
+          this.animation = res.data.commands;
+          this.dialog = true;
+        });
+      } else {
+        this.errorCode = true;
+      }
     }
   },
   data() {
     return {
       animation: [],
-      dialog: false
+      dialog: false,
+      errorCode: false
     };
   }
 };

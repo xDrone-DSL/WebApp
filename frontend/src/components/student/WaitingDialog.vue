@@ -38,6 +38,25 @@
       </v-card>
     </v-dialog>
 
+    <v-dialog v-model="errorCode" max-width="800" style="z-index: 999999">
+      <v-card>
+        <v-card-title>
+          <v-icon color="warning">mdi-alert</v-icon>
+          Your code is invalid!
+        </v-card-title>
+        <v-card-text class="headline">
+          All code must be within the fly clause. Please fix your code before
+          requesting a flight.
+        </v-card-text>
+
+        <v-card-actions>
+          <v-btn color="green darken-1" text @click="errorCode = false">
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <v-snackbar v-model="snackbar" :timeout="3500">
       Request Cancelled
       <v-btn color="pink" text @click="snackbar = false">
@@ -56,7 +75,8 @@ export default {
       dialog: false,
       disabled: false,
       snackbar: false,
-      waitingCancel: false
+      waitingCancel: false,
+      errorCode: false
     };
   },
   props: {
@@ -65,14 +85,18 @@ export default {
   },
   methods: {
     flyWrapper() {
-      this.dialog = true;
-      this.disabled = true;
-      socket.emit("REQUEST_FLIGHT", {
-        name: localStorage.uid,
-        uid: localStorage.uid,
-        level: this.level,
-        code: this.code
-      });
+      if (this.code[0] === "f" && this.code[this.code.length - 1] === "}") {
+        this.dialog = true;
+        this.disabled = true;
+        socket.emit("REQUEST_FLIGHT", {
+          name: localStorage.uid,
+          uid: localStorage.uid,
+          level: this.level,
+          code: this.code
+        });
+      } else {
+        this.errorCode = true;
+      }
     },
     cancelRequest() {
       this.waitingCancel = true;
