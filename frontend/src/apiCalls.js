@@ -39,3 +39,12 @@ export function simulate(prog) {
     }
   });
 }
+
+export function validate(prog, bounds) {
+  return axios.post(`${BASE_URL}/api/validate`, {
+    body: {
+      program: prog,
+      bounds: bounds
+    }
+  });
+}
