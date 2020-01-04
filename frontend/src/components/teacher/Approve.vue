@@ -15,7 +15,10 @@
                 <h3>Team Name: {{ team.name }}</h3>
                 <div>{{ team.level.adv.level }}</div>
                 <div>{{ team.level.task.level }}</div>
-                <div>{{ time }}</div>
+                <div>Submitted: {{ time }}</div>
+                <div :class="safety.success ? 'green--text' : 'red--text'">
+                  Safety: {{ safety.message }}
+                </div>
               </v-card-subtitle>
               <v-card-text class="text-left">
                 <h4>{{ team.level.task.title }}</h4>
@@ -85,16 +88,39 @@
 
 <script>
 import SimDialog from "@/components/SimDialog";
+import { validate } from "@/apiCalls";
 
 export default {
   components: { SimDialog },
   props: ["team", "approve", "rejecta", "rejectb"],
   data: () => ({
-    time: "loading..."
+    time: "loading...",
+    safety: {
+      message: "checking...",
+      success: false
+    }
   }),
+  watch: {
+    team() {
+      // validate
+      this.safety.message = "checking...";
+      if (this.team) {
+        // Bounds for validation are set here
+        validate(this.team.code, { width: 8, depth: 8, height: 8 }).then(
+          res => {
+            this.safety = res.data;
+            if (res.data.success) {
+              this.safety.message = "Safe";
+            }
+          }
+        );
+      }
+    }
+  },
   mounted() {
     setInterval(() => {
       if (this.team) {
+        // load time
         let now = new Date();
         let then = new Date(this.team.time);
         let diff = now.getTime() - then.getTime();
