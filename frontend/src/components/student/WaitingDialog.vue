@@ -77,6 +77,11 @@ export default {
     cancelRequest() {
       this.waitingCancel = true;
       socket.emit("STUDENT_CANCEL_FLIGHT_REQUEST", { uid: localStorage.uid });
+      setTimeout(() => {
+        socket.emit("IAM", { uid: localStorage.uid });
+        socket.emit("REQUEST_FLIGHT_PERMISSION", { uid: localStorage.uid });
+        this.waitingCancel = false;
+      }, 3000);
     }
   },
   mounted() {
