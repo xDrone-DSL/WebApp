@@ -88,12 +88,12 @@ module.exports = io => {
 
     socket.on("STUDENT_CANCEL_FLIGHT_REQUEST", data => {
       const uid = data.uid;
-      const socketId = uidToSocketId[uid];
       state.queue = state.queue.filter(t => t.uid !== uid);
       state.drones.forEach(drone => {
         drone.queue = drone.queue.filter(t => t.uid !== uid);
       });
-      if (socketId) {
+      if (uid) {
+        const socketId = uidToSocketId[uid];
         io.to(socketId).emit("REQUEST_CANCELLED");
       }
       io.emit("UPDATE", state);
@@ -164,9 +164,9 @@ module.exports = io => {
       socket.on("TEACHER_CANCEL_FLIGHT_REQUEST", data => {
         const mac = data.mac;
         const uid = data.uid;
-        const socketId = uidToSocketId[uid];
         console.log(`"FLY DRONE uid:${uid} ${mac}`);
-        if (socketId) {
+        if (uid) {
+          const socketId = uidToSocketId[uid];
           io.to(socketId).emit("REQUEST_FLIGHT_STATUS", { status: false });
         }
         state.drones.filter(d => d.mac === mac)[0].queue.shift(1);

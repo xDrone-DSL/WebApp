@@ -37,4 +37,14 @@ module.exports = app => {
         res.send(response.data);
       });
   });
+
+  app.post("/api/validate", (req, res) => {
+    axios
+      .post(`${FLASK_HOST}/validate`, {
+        body: req.body
+      })
+      .then(response => {
+        res.send(response.data);
+      });
+  });
 };
