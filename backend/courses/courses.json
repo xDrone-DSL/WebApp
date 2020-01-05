@@ -880,7 +880,7 @@
                 "x": 100,
                 "y": 0
               },
-              "rotation": 0,
+              "rotation": 90,
               "scale": 1
             }
           ],
@@ -912,7 +912,7 @@
                 "x": -100,
                 "y": 0
               },
-              "rotation": 0,
+              "rotation": 270,
               "scale": 1
             }
           ],
@@ -957,7 +957,7 @@
                 "y": 60
               },
               "rotation": 0,
-              "scale": 1
+              "scale": 0.9
             },
             {
               "object": "house",
@@ -965,7 +965,7 @@
                 "x": 0,
                 "y": 150
               },
-              "rotation": 0,
+              "rotation": 180,
               "scale": 1
             }
           ],
