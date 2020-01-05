@@ -16,7 +16,11 @@
               v-model="internalTask.level"
               label="Level"
             ></v-text-field>
-            <v-text-field v-model="internalTask.key" label="Key"></v-text-field>
+            <v-text-field
+              v-model="internalTask.key"
+              disabled
+              label="Key"
+            ></v-text-field>
             <v-text-field
               v-model="internalTask.title"
               label="Title"
@@ -32,7 +36,7 @@
             ></v-textarea>
           </v-col>
           <v-col>
-            <v-card>
+            <v-card height="330px">
               <v-card-text>
                 <Simulator
                   v-if="sim"
@@ -78,11 +82,29 @@
         </v-row>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="updateTask(internalTask)">
-            Save
+          <v-btn
+            color="primary"
+            text
+            @click="
+              updateTask(advKey, task.key, internalTask);
+              show = false;
+            "
+          >
+            <div v-if="JSON.stringify(task) != JSON.stringify(internalTask)">
+              Save Locally and Close
+            </div>
+            <div v-else>Close</div>
           </v-btn>
-          <v-btn color="primary" text @click="show = false">
-            Close
+          <v-btn
+            v-if="JSON.stringify(task) != JSON.stringify(internalTask)"
+            color="primary"
+            text
+            @click="
+              show = false;
+              internalTask = JSON.parse(JSON.stringify(task));
+            "
+          >
+            Undo all changes
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -97,6 +119,7 @@ export default {
   components: { Simulator },
   props: {
     task: { type: Object, required: true },
+    advKey: { type: String, required: true },
     updateTask: { type: Function, required: true }
   },
   data() {
@@ -113,12 +136,12 @@ export default {
         this.sim = false;
         setTimeout(() => {
           this.sim = true;
-        }, 10);
+        }, 1000);
       }
     }
   },
   mounted() {
-    this.internalTask = this.task;
+    this.internalTask = JSON.parse(JSON.stringify(this.task));
   }
 };
 </script>

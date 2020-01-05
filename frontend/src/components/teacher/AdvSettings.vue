@@ -25,7 +25,8 @@
                     <v-slide-item v-for="task in adv.tasks" :key="task.key">
                       <TaskSettings
                         :task="task"
-                        :updateTask="internalTask => (task = internalTask)"
+                        :advKey="adv.key"
+                        :updateTask="updateTask"
                       ></TaskSettings>
                     </v-slide-item>
                     <v-slide-item>
@@ -55,11 +56,28 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" disabled text @click="show = false">
-            Save
+          <v-btn
+            color="primary"
+            :disabled="!updates"
+            text
+            @click="
+              setAdvs();
+              show = false;
+              updates = false;
+            "
+          >
+            Publish all changes
           </v-btn>
-          <v-btn color="primary" text @click="show = false">
-            Close
+          <v-btn
+            color="primary"
+            text
+            @click="
+              getAdvs();
+              show = false;
+              updates = false;
+            "
+          >
+            Cancel changes
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -68,7 +86,7 @@
 </template>
 
 <script>
-import { getAllAdventures } from "@/apiCalls";
+import { getAllAdventures, setAllAdventures } from "@/apiCalls";
 import TaskSettings from "@/components/teacher/TaskSettings";
 
 export default {
@@ -76,14 +94,30 @@ export default {
   data() {
     return {
       show: false,
-      advs: []
+      advs: [],
+      updates: false
     };
   },
   mounted() {
-    getAllAdventures()
-      .then(advs => (this.advs = advs))
-      .catch(err => alert(err));
+    this.getAdvs();
   },
-  methods: {}
+  methods: {
+    getAdvs() {
+      getAllAdventures()
+        .then(advs => (this.advs = advs))
+        .catch(err => alert(err));
+    },
+    setAdvs() {
+      setAllAdventures(this.advs)
+        .then((this.show = false))
+        .catch(err => alert(err));
+    },
+    updateTask(advKey, taskKey, internalTask) {
+      this.updates = true;
+      const adv = this.advs.find(adv => adv.key === advKey);
+      const indexOfTask = adv.tasks.findIndex(task => task.key === taskKey);
+      adv.tasks[indexOfTask] = JSON.parse(JSON.stringify(internalTask));
+    }
+  }
 };
 </script>
