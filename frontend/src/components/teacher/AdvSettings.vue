@@ -62,6 +62,7 @@
                         :task="task"
                         :advKey="adv.key"
                         :updateTask="updateTask"
+                        :delTask="delTask"
                       ></TaskSettings>
                     </v-slide-item>
                     <v-slide-item>
@@ -155,6 +156,7 @@ export default {
   },
   methods: {
     delAdv(advKey) {
+      this.updates = true;
       this.advs = this.advs.filter(adv => adv.key != advKey);
     },
     flipAdv(advKey) {
@@ -222,6 +224,11 @@ export default {
       const adv = this.advs.find(adv => adv.key === advKey);
       const indexOfTask = adv.tasks.findIndex(task => task.key === taskKey);
       adv.tasks[indexOfTask] = JSON.parse(JSON.stringify(internalTask));
+    },
+    delTask(advKey, taskKey) {
+      this.updates = true;
+      const adv = this.advs.find(adv => adv.key === advKey);
+      adv.tasks = adv.tasks.filter(task => task.key != taskKey);
     }
   }
 };

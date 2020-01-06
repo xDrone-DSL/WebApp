@@ -5,7 +5,7 @@
         {{ internalTask.level }} - {{ internalTask.title }}
       </v-card-title>
     </v-card>
-    <v-dialog persistent v-model="show" max-width="1000">
+    <v-dialog persistent v-model="show" max-width="930">
       <v-card>
         <v-card-title class="headline">
           Modify task
@@ -25,10 +25,10 @@
               v-model="internalTask.title"
               label="Title"
             ></v-text-field>
-            <v-text-field
+            <v-textarea
               v-model="internalTask.summary"
               label="Summary"
-            ></v-text-field>
+            ></v-textarea>
             <v-textarea
               auto-grow
               v-model="internalTask.description"
@@ -36,7 +36,10 @@
             ></v-textarea>
           </v-col>
           <v-col>
-            <v-card height="330px">
+            <v-card height="380">
+              <v-card-title primary-title>
+                Simulator
+              </v-card-title>
               <v-card-text>
                 <Simulator
                   v-if="sim"
@@ -48,38 +51,94 @@
             </v-card>
             <v-row wrap>
               <v-col
-                class="col-4"
+                cols="6"
                 v-for="(environment, i) in internalTask.environments"
                 :key="i"
               >
-                <v-card>
-                  <v-card-title primary-title>
-                    {{ environment.object }}
-                  </v-card-title>
-                  <v-card-text>
-                    <v-text-field
-                      v-model="environment.position.x"
-                      label="X"
-                    ></v-text-field>
-                    <v-text-field
-                      v-model="environment.position.y"
-                      label="Y"
-                    ></v-text-field>
-                    <v-text-field
-                      v-model="environment.rotation"
-                      label="Rotation"
-                    ></v-text-field>
-                    <v-text-field
-                      v-model="environment.scale"
-                      label="Scale"
-                    ></v-text-field>
+                <v-card height="300">
+                  <v-card-text class="pb-1">
+                    <v-select
+                      :items="models"
+                      v-model="environment.object"
+                      label="Model"
+                    ></v-select>
+                    <v-row wrap>
+                      <v-col class="py-1" cols="6">
+                        <v-text-field
+                          v-model="environment.position.x"
+                          label="X"
+                          type="number"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col class="py-1" cols="6">
+                        <v-text-field
+                          v-model="environment.position.y"
+                          label="Y"
+                          type="number"
+                        ></v-text-field>
+                      </v-col>
+
+                      <v-col class="py-1" cols="6">
+                        <v-text-field
+                          v-model="environment.rotation"
+                          label="Rotation"
+                          type="number"
+                        ></v-text-field>
+                      </v-col>
+                      <v-col class="py-1" cols="6">
+                        <v-text-field
+                          v-model="environment.scale"
+                          label="Scale"
+                          type="number"
+                        ></v-text-field>
+                      </v-col>
+                    </v-row>
                   </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      color="error"
+                      text
+                      @click="internalTask.environments.pop(i)"
+                    >
+                      Delete
+                      <v-icon>
+                        mdi-delete
+                      </v-icon>
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-col>
+              <v-col cols="6">
+                <v-card height="300" @click="newObject()">
+                  <v-layout
+                    class="justify-center align-center"
+                    style="height:100%"
+                  >
+                    <v-flex>
+                      <v-icon class="ma-auto" x-large>
+                        mdi-plus-circle-outline
+                      </v-icon>
+                    </v-flex>
+                  </v-layout>
                 </v-card>
               </v-col>
             </v-row>
           </v-col>
         </v-row>
         <v-card-actions>
+          <v-btn
+            color="error"
+            @click="
+              delTask(advKey, task.key);
+              show = false;
+            "
+          >
+            Delete Task
+            <v-icon class="mx-2">
+              mdi-delete
+            </v-icon>
+          </v-btn>
           <v-spacer></v-spacer>
           <v-btn
             color="primary"
@@ -119,13 +178,15 @@ export default {
   props: {
     task: { type: Object, required: true },
     advKey: { type: String, required: true },
-    updateTask: { type: Function, required: true }
+    updateTask: { type: Function, required: true },
+    delTask: { type: Function, required: true }
   },
   data() {
     return {
       sim: true,
       show: false,
-      internalTask: {}
+      internalTask: {},
+      models: ["house", "forest", "fireStation", "barn", "warehouse", "fire"]
     };
   },
   watch: {
@@ -141,6 +202,19 @@ export default {
   },
   mounted() {
     this.internalTask = JSON.parse(JSON.stringify(this.task));
+  },
+  methods: {
+    newObject() {
+      this.internalTask.environments.push({
+        object: "house",
+        position: {
+          x: 0,
+          y: 0
+        },
+        rotation: 0,
+        scale: 1
+      });
+    }
   }
 };
 </script>
