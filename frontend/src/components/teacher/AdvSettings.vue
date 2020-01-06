@@ -15,8 +15,8 @@
         <v-card-title class="headline">
           Task Settings
           <v-spacer></v-spacer>
-          <v-btn icon @click="uploadTasksClick">
-            <v-icon>mdi-upload</v-icon>
+          <v-btn class="ma-1" @click="uploadTasksClick">
+            <v-icon>mdi-upload</v-icon>Upload Config
           </v-btn>
 
           <input
@@ -26,7 +26,9 @@
             @change="uploadTasks"
             ref="fileUpload"
           />
-          <v-btn icon @click="saveFile"><v-icon>mdi-download</v-icon></v-btn>
+          <v-btn class="ma-1" @click="saveFile">
+            <v-icon>mdi-download</v-icon>Download Config
+          </v-btn>
         </v-card-title>
 
         <v-list v-if="!loading">

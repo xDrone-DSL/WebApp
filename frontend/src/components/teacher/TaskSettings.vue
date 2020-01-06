@@ -196,7 +196,7 @@ export default {
         this.sim = false;
         setTimeout(() => {
           this.sim = true;
-        }, 2000);
+        }, 1000);
       }
     }
   },
