@@ -1,25 +1,60 @@
 <template>
-  <v-list-item @click="show = true">
+  <v-list-item
+    @click="
+      show = true;
+      getAdvs();
+    "
+  >
     <v-list-item-icon>
       <v-icon>mdi-settings</v-icon>
     </v-list-item-icon>
     <v-list-item-content>Task Settings</v-list-item-content>
 
     <v-dialog persistent v-model="show" max-width="900">
-      <v-card>
+      <v-card v-if="show" :loading="loading">
         <v-card-title class="headline">
           Task Settings
         </v-card-title>
 
-        <v-list>
+        <v-list v-if="!loading">
           <v-list-item v-for="adv in advs" :key="adv.key">
             <v-list>
               <v-list-item>
                 <v-list-item-content>
-                  <h3>{{ adv.level }} - {{ adv.title }}</h3>
+                  <h3 v-if="!editAdvTitle[adv.key]">
+                    {{ adv.level }} - {{ adv.title }}
+                    <v-icon class="mx-2" @click="flipAdv(adv.key)">
+                      mdi-pencil
+                    </v-icon>
+                    <v-icon class="mx-2" @click="delAdv(adv.key)">
+                      mdi-delete
+                    </v-icon>
+                  </h3>
+                  <v-row v-else>
+                    <v-col cols="5">
+                      <v-text-field
+                        label="Level"
+                        v-model="adv.level"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="1">
+                      -
+                    </v-col>
+                    <v-col cols="5">
+                      <v-text-field
+                        label="Title"
+                        v-model="adv.title"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="1">
+                      <v-icon @click="flipAdv(adv.key)">
+                        mdi-check
+                      </v-icon>
+                    </v-col>
+                  </v-row>
                 </v-list-item-content>
               </v-list-item>
-              <v-list-item style="width: 900px">
+              <v-list-item style="width: 860px">
                 <v-list-item-content>
                   <v-slide-group show-arrows>
                     <v-slide-item v-for="task in adv.tasks" :key="task.key">
@@ -99,13 +134,34 @@ export default {
     return {
       show: false,
       advs: [],
-      updates: false
+      updates: false,
+      editAdvTitle: {},
+      loading: false
     };
   },
   mounted() {
     this.getAdvs();
   },
+  watch: {
+    advs: {
+      deep: true,
+      handler(advs, oldAdvs) {
+        if (advs.length != oldAdvs.length) {
+          this.editAdvTitle = {};
+          advs.forEach(adv => (this.editAdvTitle[adv.key] = false));
+        }
+      }
+    }
+  },
   methods: {
+    delAdv(advKey) {
+      this.advs = this.advs.filter(adv => adv.key != advKey);
+    },
+    flipAdv(advKey) {
+      this.updates = true;
+      this.editAdvTitle[advKey] = !this.editAdvTitle[advKey];
+      this.editAdvTitle = { ...this.editAdvTitle };
+    },
     newTask(advKey) {
       const adv = this.advs.find(adv => adv.key === advKey);
       let NewTaskNumber;
@@ -147,8 +203,13 @@ export default {
       });
     },
     getAdvs() {
+      this.loading = true;
+      this.advs = [];
       getAllAdventures()
-        .then(advs => (this.advs = advs))
+        .then(advs => {
+          this.advs = advs;
+          this.loading = false;
+        })
         .catch(err => alert(err));
     },
     setAdvs() {
