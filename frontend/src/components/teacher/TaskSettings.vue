@@ -56,7 +56,6 @@
                   <v-card-title primary-title>
                     {{ environment.object }}
                   </v-card-title>
-
                   <v-card-text>
                     <v-text-field
                       v-model="environment.position.x"

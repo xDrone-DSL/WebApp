@@ -19,7 +19,7 @@
                   <h3>{{ adv.level }} - {{ adv.title }}</h3>
                 </v-list-item-content>
               </v-list-item>
-              <v-list-item>
+              <v-list-item style="width: 900px">
                 <v-list-item-content>
                   <v-slide-group show-arrows>
                     <v-slide-item v-for="task in adv.tasks" :key="task.key">
@@ -30,7 +30,11 @@
                       ></TaskSettings>
                     </v-slide-item>
                     <v-slide-item>
-                      <v-card class="ma-3" height="60">
+                      <v-card
+                        class="ma-3"
+                        height="60"
+                        @click="newTask(adv.key)"
+                      >
                         <v-card-actions>
                           <span class="pa-1">
                             <v-icon large>mdi-plus-circle-outline</v-icon>
@@ -44,7 +48,7 @@
             </v-list>
           </v-list-item>
 
-          <v-list-item>
+          <v-list-item @click="newAdv">
             <v-list-item-content>
               <h3>New Adventure</h3>
               <span class="pa-1">
@@ -102,6 +106,46 @@ export default {
     this.getAdvs();
   },
   methods: {
+    newTask(advKey) {
+      const adv = this.advs.find(adv => adv.key === advKey);
+      let NewTaskNumber;
+      if (adv.tasks.length > 0) {
+        const lastTaskKey = adv.tasks[adv.tasks.length - 1].key;
+        NewTaskNumber = parseInt(lastTaskKey.substr(4), 10) + 1;
+      } else {
+        NewTaskNumber = 1;
+      }
+      const newKey = "task" + NewTaskNumber;
+      const newLevel = "Level " + NewTaskNumber;
+      this.updates = true;
+      adv.tasks.push({
+        level: newLevel,
+        key: newKey,
+        title: "New",
+        summary: "",
+        description: "",
+        environments: [],
+        requirements: []
+      });
+    },
+    newAdv() {
+      let newAdvKeyNumber;
+      if (this.advs.length > 0) {
+        const lastAdvKey = this.advs[this.advs.length - 1].key;
+        newAdvKeyNumber = parseInt(lastAdvKey.substr(9), 10) + 1;
+      } else {
+        newAdvKeyNumber = 1;
+      }
+      const newKey = "adventure" + newAdvKeyNumber;
+      const newLevel = "Adventure " + newAdvKeyNumber;
+      this.updates = true;
+      this.advs.push({
+        key: newKey,
+        level: newLevel,
+        title: "New",
+        tasks: []
+      });
+    },
     getAdvs() {
       getAllAdventures()
         .then(advs => (this.advs = advs))
