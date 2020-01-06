@@ -2,17 +2,11 @@
   <div>
     <v-layout>
       <div id="toolbox" style="display: none">
-        <block type="fly"></block>
+        <block type="fly" :disabled="disabled"></block>
         <block type="move"></block>
         <block type="rotateRight"></block>
         <block type="rotateLeft"></block>
-        <block type="action"></block>
-      </div>
-      <div id="toolbox2" style="display: none">
-        <block type="fly" disabled="true"></block>
-        <block type="move"></block>
-        <block type="rotateRight"></block>
-        <block type="rotateLeft"></block>
+        <block type="do"></block>
         <block type="action"></block>
       </div>
       <div id="blocklyDiv" style="height: 75vh; width: 1200px;"></div>
@@ -46,12 +40,12 @@ export default {
   },
   data() {
     return {
-      code: ""
+      code: "",
+      disabled: false
     };
   },
   mounted() {
     const toolbox = document.getElementById("toolbox");
-    const toolbox2 = document.getElementById("toolbox2");
     // Actually run blockly
     const workspace = Blockly.inject("blocklyDiv", {
       toolbox: toolbox,
@@ -60,10 +54,11 @@ export default {
     });
     const myUpdateFunction = () => {
       this.code = Blockly.JavaScript.workspaceToCode(workspace);
+      workspace.updateToolbox(toolbox);
       if (this.code.includes("fly")) {
-        workspace.updateToolbox(toolbox2);
+        this.disabled = true;
       } else {
-        workspace.updateToolbox(toolbox);
+        this.disabled = false;
       }
       document.getElementById("textarea").value = this.code;
     };
