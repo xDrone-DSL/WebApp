@@ -14,6 +14,19 @@
       <v-card v-if="show" :loading="loading">
         <v-card-title class="headline">
           Task Settings
+          <v-spacer></v-spacer>
+          <v-btn icon @click="uploadTasksClick">
+            <v-icon>mdi-upload</v-icon>
+          </v-btn>
+
+          <input
+            accept="application/json"
+            type="file"
+            style="display:none"
+            @change="uploadTasks"
+            ref="fileUpload"
+          />
+          <v-btn icon @click="saveFile"><v-icon>mdi-download</v-icon></v-btn>
         </v-card-title>
 
         <v-list v-if="!loading">
@@ -229,6 +242,50 @@ export default {
       this.updates = true;
       const adv = this.advs.find(adv => adv.key === advKey);
       adv.tasks = adv.tasks.filter(task => task.key != taskKey);
+    },
+    saveFile: function() {
+      // Download the advs data field
+      const data = JSON.stringify(this.advs);
+      const blob = new Blob([data], { type: "application/json" });
+      const e = document.createEvent("MouseEvents"),
+        a = document.createElement("a");
+      a.download = "tasks.json";
+      a.href = window.URL.createObjectURL(blob);
+      a.dataset.downloadurl = ["application/json", a.download, a.href].join(
+        ":"
+      );
+      e.initEvent(
+        "click",
+        true,
+        false,
+        window,
+        0,
+        0,
+        0,
+        0,
+        0,
+        false,
+        false,
+        false,
+        false,
+        0,
+        null
+      );
+      a.dispatchEvent(e);
+    },
+    uploadTasksClick() {
+      this.$refs.fileUpload.click();
+    },
+    uploadTasks() {
+      this.updates = true;
+      this.loading = true;
+      const file = this.$refs.fileUpload.files[0];
+      const reader = new FileReader();
+      reader.readAsText(file, "UTF-8");
+      reader.onload = evt => {
+        this.advs = JSON.parse(evt.target.result);
+        this.loading = false;
+      };
     }
   }
 };
