@@ -138,7 +138,7 @@ module.exports = io => {
           }
         });
 
-        mindrone.queue.push(state.queue[0]);
+        mindrone.queue.push(state.queue.find(team => team.uid === uid));
 
         state.queue = state.queue.filter(team => team.uid != uid);
         io.emit("UPDATE", state);
