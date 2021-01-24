@@ -250,9 +250,6 @@ export default {
       this.camera.updateProjectionMatrix();
 
       this.controls.update();
-
-      // Add takeoff
-      this.animation.unshift({ action: "up", value: "2" });
     },
     animate: function() {
       setTimeout(() => {
@@ -286,59 +283,66 @@ export default {
 
       this.renderer.render(this.scene, this.camera);
     },
+    updateAndCheckFinished: function(stepSize) {
+      this.animation[0].value[0] -= stepSize;
+      if (this.animation[0].value[0] <= 0) {
+        this.animation.shift();
+        return true;
+      }
+      return false;
+    },
     move: function() {
-      if (this.group.position.y < 0) {
+      if (this.group.position.y < 0 || this.animation.length == 0) {
         this.play = false;
         return;
       }
-      if (this.animation.length > 0) {
-        if (this.animation[0].value <= 0) {
-          this.animation.shift();
-          return;
-        }
-        switch (this.animation[0].action) {
-          case "forward":
-            this.group.translateZ(this.speed);
-            this.animation[0].value -= 2 / this.framesPerSecond;
-            break;
-          case "backward":
-            this.group.translateZ(-this.speed);
-            this.animation[0].value -= 2 / this.framesPerSecond;
-            break;
-          case "right":
-            this.group.translateX(-this.speed);
-            this.animation[0].value -= 2 / this.framesPerSecond;
-            break;
-          case "left":
-            this.group.translateX(this.speed);
-            this.animation[0].value -= 2 / this.framesPerSecond;
-            break;
-          case "up":
-            this.group.translateY(this.speed);
-            this.animation[0].value -= 5 / this.framesPerSecond;
-            break;
-          case "down":
-            this.group.translateY(-this.speed);
-            this.animation[0].value -= 5 / this.framesPerSecond;
-            break;
-          case "rotateR":
-            this.group.rotation.y -= this.angleSpeed;
-            this.animation[0].value -= this.angleSpeed;
-            break;
-          case "rotateL":
-            this.group.rotation.y += this.angleSpeed;
-            this.animation[0].value -= this.angleSpeed;
-            break;
-          case "wait":
-            this.animation[0].value -= 1 / this.framesPerSecond;
-            break;
-        }
-      } else {
-        if (this.group.position.y > 0.4) {
+      switch (this.animation[0].action) {
+        case "takeoff":
+          this.animation[0] = { action: "up", value: [2] };
+          break;
+        case "land":
+          this.animation[0] = {
+            action: "down",
+            value: [this.group.position.y]
+          };
+          break;
+        case "forward":
+          this.group.translateZ(this.speed);
+          if (this.updateAndCheckFinished(2 / this.framesPerSecond)) return;
+          break;
+        case "backward":
+          this.group.translateZ(-this.speed);
+          if (this.updateAndCheckFinished(2 / this.framesPerSecond)) return;
+          break;
+        case "right":
+          this.group.translateX(-this.speed);
+          if (this.updateAndCheckFinished(2 / this.framesPerSecond)) return;
+          break;
+        case "left":
+          this.group.translateX(this.speed);
+          if (this.updateAndCheckFinished(2 / this.framesPerSecond)) return;
+          break;
+        case "up":
+          this.group.translateY(this.speed);
+          if (this.updateAndCheckFinished(5 / this.framesPerSecond)) return;
+          break;
+        case "down":
           this.group.translateY(-this.speed);
-        } else {
-          this.play = false;
-        }
+          if (this.updateAndCheckFinished(5 / this.framesPerSecond)) return;
+          break;
+        case "rotateR":
+          this.group.rotation.y -= this.angleSpeed;
+          if (this.updateAndCheckFinished(this.angleSpeed)) return;
+          break;
+        case "rotateL":
+          this.group.rotation.y += this.angleSpeed;
+          if (this.updateAndCheckFinished(this.angleSpeed)) return;
+          break;
+        case "wait":
+          if (this.updateAndCheckFinished(1 / this.framesPerSecond)) return;
+          break;
+        default:
+          console.error("Command not supported", this.animation[0]);
       }
     }
   },
