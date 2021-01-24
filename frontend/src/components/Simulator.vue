@@ -341,8 +341,6 @@ export default {
         case "wait":
           if (this.updateAndCheckFinished(1 / this.framesPerSecond)) return;
           break;
-        default:
-          console.error("Command not supported", this.animation[0]);
       }
     }
   },
