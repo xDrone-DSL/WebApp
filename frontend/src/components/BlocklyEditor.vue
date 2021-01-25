@@ -6,7 +6,6 @@
         <block type="move"></block>
         <block type="rotateRight"></block>
         <block type="rotateLeft"></block>
-        <block type="repeat"></block>
         <block type="action"></block>
       </div>
       <div id="toolbox2" style="display: none">
@@ -14,7 +13,6 @@
         <block type="move"></block>
         <block type="rotateRight"></block>
         <block type="rotateLeft"></block>
-        <block type="repeat"></block>
         <block type="action"></block>
       </div>
       <div id="blocklyDiv" style="height: 75vh; width: 1200px;"></div>
