@@ -1,0 +1,25 @@
+{
+  "tutorials": [
+    {
+      "id": "takeoff-land",
+      "title": "Takeoff and Land",
+      "description": "...",
+      "xml":"<xml xmlns=\"https://developers.google.com/blockly/xml\">\n  <block type=\"fly\" id=\"I6E]IViwk}x#!TLJvYH:\" x=\"10\" y=\"10\">\n    <statement name=\"commands\">\n      <block type=\"move\" id=\"i,8m6A8f^gg/c1RieZYo\">\n        <field name=\"direction\">FORWARD</field>\n        <field name=\"duration\">1</field>\n      </block>\n    </statement>\n  </block>\n</xml>",
+      "code": "fly() {\n  TAKEOFF()\n  FORWARD(1)\n  LAND()\n}"
+    },
+    {
+      "id": "forward",
+      "title": "Forward",
+      "description": "The command \"forward(x)\" means to move the drone forward for x seconds",
+      "xml":"<xml xmlns=\"https://developers.google.com/blockly/xml\">\n  <block type=\"fly\" id=\"I6E]IViwk}x#!TLJvYH:\" x=\"10\" y=\"10\">\n    <statement name=\"commands\">\n      <block type=\"move\" id=\"i,8m6A8f^gg/c1RieZYo\">\n        <field name=\"direction\">FORWARD</field>\n        <field name=\"duration\">1</field>\n      </block>\n    </statement>\n  </block>\n</xml>",
+      "code": "fly() {\n  TAKEOFF()\n  FORWARD(1)\n  LAND()\n}"
+    },
+    {
+      "id": "rotate",
+      "title": "Rotate",
+      "description": "...",
+      "xml":"<xml xmlns=\"https://developers.google.com/blockly/xml\">\n  <block type=\"fly\" id=\"I6E]IViwk}x#!TLJvYH:\" x=\"10\" y=\"10\">\n    <statement name=\"commands\">\n      <block type=\"move\" id=\"i,8m6A8f^gg/c1RieZYo\">\n        <field name=\"direction\">FORWARD</field>\n        <field name=\"duration\">1</field>\n      </block>\n    </statement>\n  </block>\n</xml>",
+      "code": "fly() {\n  TAKEOFF()\n  FORWARD(1)\n  LAND()\n}"
+    }
+  ]
+}

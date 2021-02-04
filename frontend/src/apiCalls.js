@@ -22,6 +22,20 @@ export function getAllTasksInAdventure(advId) {
     .then(res => res.data);
 }
 
+export function getAllTutorialBriefs() {
+  return axios.get(`${BASE_URL}/api/tutorials`).then(res => res.data);
+}
+
+export function getTutorial(tutorialId) {
+  return axios
+    .get(`${BASE_URL}/api/tutorial`, {
+      params: {
+        tutorialId: tutorialId
+      }
+    })
+    .then(res => res.data);
+}
+
 export function fly(prog, mac, req) {
   return axios.post(`${BASE_URL}/api/fly`, {
     body: {

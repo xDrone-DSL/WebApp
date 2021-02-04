@@ -44,6 +44,12 @@ const router = new Router({
       path: "/simulator",
       name: "Simulator",
       component: () => import("./components/Simulator.vue")
+    },
+    {
+      path: "/tutorial/:tutorialId",
+      name: "Tutorial",
+      props: true,
+      component: () => import("./views/Tutorial.vue")
     }
   ]
 });

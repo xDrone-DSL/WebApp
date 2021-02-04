@@ -28,6 +28,9 @@ const io = require("socket.io")(server);
 // COURSES
 const courses = require("./courses/courses.js")(app);
 
+// TUTORIALS
+const tutorials = require("./tutorials/tutorials.js")(app);
+
 // DRONE
 const drone = require("./drone/drone.js")(app);
 
