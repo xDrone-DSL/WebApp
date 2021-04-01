@@ -60,12 +60,12 @@ export default {
   methods: {
     getAnimation: function() {
       if (
-        // code starts with 'f'
-        this.code[0] === "f" &&
+        // code starts with 'm'
+        this.code[0] === "m" &&
         // code ends with '}'
         this.code[this.code.length - 1] === "}" &&
-        // code contains only 1 'fly()'
-        (this.code.match(/fly()/g) || []).length === 1
+        // code contains only 1 'main()'
+        (this.code.match(/main()/g) || []).length === 1
       ) {
         simulate(this.code).then(res => {
           this.animation = res.data.commands;
