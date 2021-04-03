@@ -33,8 +33,11 @@ export default {
     };
   },
   computed: {
-    angleSpeed() {
+    angleSpeedRadius() {
       return Math.PI / 2 / this.framesPerSecond;
+    },
+    angleSpeedDegree() {
+      return 90 / this.framesPerSecond;
     },
     speed() {
       return 4 / 3 / 2.5;
@@ -330,13 +333,13 @@ export default {
           this.group.translateY(-this.speed);
           if (this.updateAndCheckFinished(5 / this.framesPerSecond)) return;
           break;
-        case "rotateR":
-          this.group.rotation.y -= this.angleSpeed;
-          if (this.updateAndCheckFinished(this.angleSpeed)) return;
+        case "rotate_right":
+          this.group.rotation.y -= this.angleSpeedRadius;
+          if (this.updateAndCheckFinished(this.angleSpeedDegree)) return;
           break;
-        case "rotateL":
-          this.group.rotation.y += this.angleSpeed;
-          if (this.updateAndCheckFinished(this.angleSpeed)) return;
+        case "rotate_left":
+          this.group.rotation.y += this.angleSpeedRadius;
+          if (this.updateAndCheckFinished(this.angleSpeedDegree)) return;
           break;
         case "wait":
           if (this.updateAndCheckFinished(1 / this.framesPerSecond)) return;
